@@ -1,11 +1,11 @@
 // ============================================================================
-// XSV STARDUST - MASTER ASTROMETRICS DATABASE (GOF2 + CUSTOM LORE)
+// XSV STARDUST - MASTER ASTROMETRICS DATABASE (CUSTOM LORE)
 // ============================================================================
 
 const systemsDB = [
 
     // ==========================================
-    // 1. ZAVARES SECTOR (Custom Lore)
+    // 1. ZAVARES SECTOR (Setrean Space)
     // ==========================================
     { 
         id: 'brunhilde', name: 'Brunhilde', x: 5500, y: 3500, color: '#ffff99', size: 80, 
@@ -33,62 +33,107 @@ const systemsDB = [
     { id: 'outpost79', name: 'Warren Gateway (Outpost 79)', x: 4000, y: 4000, color: '#cc66ff', size: 60, type: 'wormhole', desc: 'Starfleet border station guarding the stable inter-dimensional wormhole connecting the Alpha Quadrant to the Crux Constellation.', resources: 'Federation Tech, Replicator Rations', planets: [] },
 
     // ==========================================
-    // 2. TERRAN CORE (GOF2 HD)
+    // 2. SOLARIAN CONCORDAT (Human Coalition)
     // ==========================================
-    { id: 'alioth', name: 'Alioth', x: 2500, y: 3000, color: '#ffffcc', size: 70, desc: 'The capital system of the Terran Federation. Heavily defended and highly prosperous.', resources: 'Luxury Goods, High-Tech Electronics', planets: [{ id: 'earth', name: 'Earth', dist: 200, angle: 90, size: 25, color: '#3366ff', desc: 'The birthplace of humanity. A bustling ecumenopolis.', resources: 'Water, VIPs' }, { id: 'alioth_stat', name: 'Alioth Orbital', dist: 250, angle: 180, size: 15, color: '#fff', type: 'station', desc: 'Massive Terran trade hub.', resources: 'Credits, Ships' }] },
-    { id: 'wolfreiser', name: 'Wolf-Reiser', x: 2800, y: 2200, color: '#ff6600', size: 65, desc: 'A bustling system known for heavy industrial mining and corporate espionage.', resources: 'Heavy Metals, Ore', planets: [{ id: 'wr_prime', name: 'Reiser Prime', dist: 180, angle: 0, size: 22, color: '#888', desc: 'Industrial smog covers this mining world.', resources: 'Iron, Gold, Platinum' }] },
-    { id: 'thynome', name: 'Thynome', x: 3200, y: 2800, color: '#ffffff', size: 80, desc: 'Home to Thynome Station and the Thynome Vector Foundation. Known for advanced ship manufacturing.', resources: 'Ship Armor, Weapons', planets: [{ id: 'thynome_stat', name: 'Thynome Station', dist: 150, angle: 180, size: 15, color: '#44aaff', type: 'station', desc: 'Massive orbital shipyard.', resources: 'Ship Upgrades' }] },
-    { id: 'magnetar', name: 'Magnetar', x: 2000, y: 2500, color: '#ff3333', size: 50, desc: 'A dangerous system dominated by a highly magnetic star.', resources: 'Energy Cells', planets: [] },
-    { id: 'pan', name: 'Pan', x: 2200, y: 3500, color: '#ffcc66', size: 60, desc: 'A wealthy Terran trade hub.', resources: 'Food, Medical Supplies', planets: [] },
-    { id: 'aquila', name: 'Aquila', x: 2600, y: 4000, color: '#ffff99', size: 55, desc: 'Terran border system. Frequent skirmishes with Vossk patrols.', resources: 'Scrap Metal', planets: [] },
-    { id: 'augmenta', name: 'Augmenta', x: 3000, y: 2800, color: '#ffcc99', size: 50, desc: 'Terran cybernetics and research hub.', resources: 'Implants, Microchips', planets: [] },
-    { id: 'union', name: 'Union', x: 2400, y: 2000, color: '#ffeeaa', size: 45, desc: 'Terran agricultural center.', resources: 'Biomass', planets: [] },
-    { id: 'buntta', name: 'Buntta', x: 2100, y: 3800, color: '#ffdd88', size: 40, desc: 'Small Terran colony.', resources: 'Plastics', planets: [] },
-    { id: 'beidan', name: 'Beidan', x: 2900, y: 3200, color: '#ffeecc', size: 55, desc: 'Terran military outpost.', resources: 'Weapons', planets: [] },
+    { 
+        id: 'aethelgard', name: 'Aethelgard', x: 2500, y: 3000, color: '#ffffcc', size: 70, 
+        desc: 'The wealthy, bureaucratic capital system of the Solarian Concordat.', resources: 'Luxury Goods, High-Tech Electronics', 
+        planets: [
+            { id: 'aethel_prime', name: 'Aethelgard Prime', dist: 200, angle: 90, size: 25, color: '#3366ff', desc: 'A sprawling ecumenopolis and seat of the Concordat Senate.', resources: 'Water, VIPs' }, 
+            { id: 'aethel_stat', name: 'Concordat Hub', dist: 250, angle: 180, size: 15, color: '#fff', type: 'station', desc: 'Massive Solarian trade hub.', resources: 'Credits, Ships' }
+        ] 
+    },
+    { 
+        id: 'hephaestus', name: 'Hephaestus', x: 2800, y: 2200, color: '#ff6600', size: 65, 
+        desc: 'A bustling system known for heavy industrial mining and corporate espionage.', resources: 'Heavy Metals, Ore', 
+        planets: [
+            { id: 'heph_forge', name: 'The Anvil', dist: 180, angle: 0, size: 22, color: '#888', desc: 'Industrial smog covers this mining world.', resources: 'Iron, Gold, Platinum' }
+        ] 
+    },
+    { 
+        id: 'vector', name: 'Vector Alpha', x: 3200, y: 2800, color: '#ffffff', size: 80, 
+        desc: 'Home to the Vector Foundation. Known for advanced ship manufacturing.', resources: 'Ship Armor, Weapons', 
+        planets: [
+            { id: 'vector_stat', name: 'Vector Shipyards', dist: 150, angle: 180, size: 15, color: '#44aaff', type: 'station', desc: 'Massive orbital shipyard.', resources: 'Ship Upgrades' }
+        ] 
+    },
+    { id: 'pulsar', name: 'Pulsar-9', x: 2000, y: 2500, color: '#ff3333', size: 50, desc: 'A dangerous system dominated by a highly magnetic star.', resources: 'Energy Cells', planets: [] },
+    { id: 'elysium', name: 'Elysium', x: 2200, y: 3500, color: '#ffcc66', size: 60, desc: 'A wealthy Solarian agricultural hub.', resources: 'Food, Medical Supplies', planets: [] },
 
     // ==========================================
-    // 3. VOSSK EMPIRE (GOF2 HD)
+    // 3. KAELEN ASCENDANCY (Militaristic Reptilians)
     // ==========================================
-    { id: 'vikka', name: 'V\'ikka', x: 1500, y: 6000, color: '#33cc33', size: 85, desc: 'The heavily fortified capital system of the Vossk Empire.', resources: 'Vossk Organs, Dark Matter', planets: [{ id: 'vikka_prime', name: 'Vossk Prime', dist: 250, angle: 45, size: 30, color: '#115511', desc: 'The Vossk homeworld. Highly militarized.', resources: 'Vossk Tech' }] },
-    { id: 'suteo', name: 'Suteo', x: 1200, y: 5500, color: '#66ff66', size: 70, desc: 'A major Vossk military staging ground.', resources: 'Weapons, Ammo', planets: [] },
-    { id: 'ymirr', name: 'Y\'mirr', x: 1800, y: 6500, color: '#009900', size: 65, desc: 'A Vossk mining system rich in rare isotopes.', resources: 'Isotopes, Crystals', planets: [] },
-    { id: 'kane', name: 'K\'ane', x: 1000, y: 6800, color: '#22aa22', size: 55, desc: 'Vossk border patrol sector.', resources: 'Scrap', planets: [] },
-    { id: 'nimrr', name: 'Ni\'mrr', x: 2200, y: 5800, color: '#55cc55', size: 60, desc: 'Vossk agricultural system.', resources: 'Space Plants, Food', planets: [] },
-    { id: 'meen', name: 'Me\'en', x: 1400, y: 7000, color: '#44bb44', size: 50, desc: 'Vossk research facility.', resources: 'Data', planets: [] },
-    { id: 'oerkt', name: 'O\'erkt', x: 1900, y: 5200, color: '#77ee77', size: 45, desc: 'Vossk prison colony.', resources: 'Slaves', planets: [] },
+    { 
+        id: 'kael', name: 'Kael\'Drak', x: 1500, y: 6000, color: '#33cc33', size: 85, 
+        desc: 'The heavily fortified capital system of the Kaelen Ascendancy.', resources: 'Kaelen Armor, Dark Matter', 
+        planets: [
+            { id: 'kael_prime', name: 'Drakar Prime', dist: 250, angle: 45, size: 30, color: '#115511', desc: 'The Kaelen homeworld. Highly militarized.', resources: 'Kaelen Tech' },
+            { id: 'kael_stat', name: 'Ascendancy Command', dist: 300, angle: 50, size: 15, color: '#00ff00', type: 'station', desc: 'Kaelen High Command orbital.', resources: 'Classified Data' }
+        ] 
+    },
+    { 
+        id: 'vanguard', name: 'Vanguard', x: 1200, y: 5500, color: '#66ff66', size: 70, 
+        desc: 'A major Kaelen military staging ground.', resources: 'Weapons, Ammo', 
+        planets: [
+            { id: 'vanguard_forge', name: 'The Crucible', dist: 200, angle: 180, size: 25, color: '#444', desc: 'Massive Kaelen weapons manufacturing world.', resources: 'Armor, Weapons' }
+        ] 
+    },
+    { id: 'trench', name: 'The Trench', x: 1800, y: 6500, color: '#009900', size: 65, desc: 'A Kaelen mining system rich in rare isotopes.', resources: 'Isotopes, Crystals', planets: [] },
 
     // ==========================================
-    // 4. NIVELIAN REPUBLIC (GOF2 HD)
+    // 4. VESPERIAN SYNDICATE (Cybernetic Researchers)
     // ==========================================
-    { id: 'weymire', name: 'Weymire', x: 6000, y: 5000, color: '#ccccff', size: 75, desc: 'Capital of the Nivelian Republic. Known for its icy planets and advanced technology.', resources: 'Coolant, Nivelian Tech', planets: [{ id: 'weymire_ice', name: 'Weymire Prime', dist: 200, angle: 270, size: 25, color: '#e6e6ff', desc: 'A frozen, elegant world.', resources: 'Water, Art' }] },
-    { id: 'nesla', name: 'Nesla', x: 6500, y: 5500, color: '#9999ff', size: 60, desc: 'A Nivelian research hub.', resources: 'Blueprints, Data', planets: [] },
-    { id: 'eanya', name: 'Eanya', x: 5500, y: 4500, color: '#aaaaff', size: 55, desc: 'Nivelian trade sector.', resources: 'Luxury Goods', planets: [] },
-    { id: 'sao', name: 'Sao', x: 6800, y: 4800, color: '#8888ff', size: 50, desc: 'Nivelian deep-space observatory.', resources: 'Sensor Tech', planets: [] },
-    { id: 'behmain', name: 'Behmain', x: 6200, y: 4200, color: '#bbbbff', size: 45, desc: 'Nivelian resort system.', resources: 'Credits', planets: [] },
-    { id: 'cuteb', name: 'Cuteb', x: 5800, y: 5800, color: '#ddddff', size: 40, desc: 'Nivelian border patrol.', resources: 'Shields', planets: [] },
+    { 
+        id: 'vesper', name: 'Vesperia', x: 6000, y: 5000, color: '#ccccff', size: 75, 
+        desc: 'Capital of the Vesperian Syndicate. Known for its icy planets and advanced cybernetics.', resources: 'Coolant, Cybernetics', 
+        planets: [
+            { id: 'vesper_ice', name: 'Vesperia Prime', dist: 200, angle: 270, size: 25, color: '#e6e6ff', desc: 'A frozen, elegant world.', resources: 'Water, Data Cores' },
+            { id: 'vesper_stat', name: 'The Archive', dist: 250, angle: 280, size: 15, color: '#fff', type: 'station', desc: 'Vesperian central data orbital.', resources: 'Blueprints' }
+        ] 
+    },
+    { 
+        id: 'oracle', name: 'The Oracle', x: 6500, y: 5500, color: '#9999ff', size: 60, 
+        desc: 'A Vesperian deep-space research hub.', resources: 'Blueprints, Data', 
+        planets: [
+            { id: 'oracle_lab', name: 'Oracle Labs', dist: 180, angle: 45, size: 12, color: '#fff', type: 'station', desc: 'Advanced R&D facility.', resources: 'Tech Blueprints' }
+        ] 
+    },
 
     // ==========================================
-    // 5. MIDORIAN SECTOR (GOF2 HD)
+    // 5. THE RUST BELT (Independent Miners & Rebels)
     // ==========================================
-    { id: 'mido', name: 'Mido', x: 4500, y: 1500, color: '#cc9966', size: 65, desc: 'The heart of the Midorian rebellion. A rugged system filled with asteroid miners.', resources: 'Ore, Explosives', planets: [{ id: 'mido_station', name: 'Midorian Base', dist: 150, angle: 90, size: 15, color: '#885522', type: 'station', desc: 'A hollowed-out asteroid serving as a rebel base.', resources: 'Contraband' }] },
-    { id: 'ginova', name: 'Ginova', x: 5000, y: 1000, color: '#aa7744', size: 55, desc: 'Midorian mining colony.', resources: 'Titanium', planets: [] },
-    { id: 'malo', name: 'Malo', x: 5500, y: 1500, color: '#bb8855', size: 50, desc: 'A lawless Midorian frontier system.', resources: 'Scrap, Weapons', planets: [] },
-    { id: 'neox', name: 'Neox', x: 4800, y: 1800, color: '#ddaa77', size: 45, desc: 'Midorian scrap yard.', resources: 'Scrap', planets: [] },
+    { 
+        id: 'rust', name: 'Rust', x: 4500, y: 1500, color: '#cc9966', size: 65, 
+        desc: 'The heart of the independent miner rebellion. A rugged system filled with asteroid scavengers.', resources: 'Ore, Explosives', 
+        planets: [
+            { id: 'rust_station', name: 'Free-Port Alpha', dist: 150, angle: 90, size: 15, color: '#885522', type: 'station', desc: 'A hollowed-out asteroid serving as a rebel base.', resources: 'Contraband' },
+            { id: 'rust_rock', name: 'Scrap-Heap', dist: 250, angle: 180, size: 20, color: '#664422', desc: 'A heavily strip-mined planet.', resources: 'Scrap' }
+        ] 
+    },
+    { id: 'slag', name: 'Slag', x: 5000, y: 1000, color: '#aa7744', size: 55, desc: 'Independent mining colony.', resources: 'Titanium', planets: [] },
 
     // ==========================================
-    // 6. LOMA PIRATES & NEUTRAL (GOF2 HD)
+    // 6. CRIMSON CORSAIRS & NEUTRAL SPACE
     // ==========================================
-    { id: 'loma', name: 'Loma', x: 3500, y: 7000, color: '#cc0000', size: 55, desc: 'A dangerous system heavily populated by pirates and black-market traders. Proceed with caution.', resources: 'Stolen Goods, Slaves', planets: [{ id: 'loma_hideout', name: 'Pirate Haven', dist: 120, angle: 220, size: 18, color: '#555', type: 'station', desc: 'A wretched hive of scum and villainy.', resources: 'Black Market Weapons' }] },
-    { id: 'pescal', name: 'Pescal Inartu', x: 3000, y: 6000, color: '#00ffcc', size: 60, desc: 'A remote neutral system known for its strange anomalies and hidden jump gates.', resources: 'Artifacts', planets: [] },
-    { id: 'skavac', name: 'Skavac', x: 4500, y: 7000, color: '#ff3366', size: 50, desc: 'A neutral smuggler\'s run.', resources: 'Narcotics', planets: [] },
-    { id: 'prospero', name: 'Prospero', x: 3800, y: 6500, color: '#ff5555', size: 45, desc: 'Pirate staging ground.', resources: 'Ammo', planets: [] },
+    { 
+        id: 'crimson', name: 'Crimson', x: 3500, y: 7000, color: '#cc0000', size: 55, 
+        desc: 'A dangerous system heavily populated by the Crimson Corsairs pirate fleet. Proceed with caution.', resources: 'Stolen Goods, Slaves', 
+        planets: [
+            { id: 'crimson_hideout', name: 'Corsair Haven', dist: 120, angle: 220, size: 18, color: '#555', type: 'station', desc: 'A wretched hive of scum and villainy.', resources: 'Black Market Weapons' }
+        ] 
+    },
+    { id: 'drifter', name: 'Drifter\'s Run', x: 3000, y: 6000, color: '#00ffcc', size: 60, desc: 'A remote neutral system known for its strange anomalies and hidden jump gates.', resources: 'Artifacts', planets: [] },
 
     // ==========================================
-    // 7. THE VOID (GOF2 HD)
+    // 7. THE SHROUD (Alien Anomaly)
     // ==========================================
-    { id: 'void', name: 'The Void', x: 1000, y: 4000, color: '#6600cc', size: 100, type: 'wormhole', desc: 'An anomalous region of space inhabited by the mysterious Void aliens. Extreme danger.', resources: 'Void Crystals', planets: [] },
-    { id: 'void_alpha', name: 'Void Alpha', x: 800, y: 3500, color: '#440088', size: 40, desc: 'Void alien hive.', resources: 'Dark Matter', planets: [] },
-    { id: 'void_beta', name: 'Void Beta', x: 1200, y: 4500, color: '#5500aa', size: 45, desc: 'Void energy storm.', resources: 'Exotic Energy', planets: [] },
+    { 
+        id: 'shroud', name: 'The Shroud', x: 1000, y: 4000, color: '#6600cc', size: 100, type: 'wormhole', 
+        desc: 'An anomalous region of space inhabited by mysterious, non-corporeal entities. Extreme danger.', resources: 'Exotic Crystals', 
+        planets: [
+            { id: 'shroud_hive', name: 'The Monolith', dist: 250, angle: 180, size: 30, color: '#330066', desc: 'A massive, organic alien structure.', resources: 'Dark Matter' }
+        ] 
+    },
 
     // ==========================================
     // 8. ABYSSAL REACH & ANOMALIES
