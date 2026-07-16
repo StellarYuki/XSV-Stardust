@@ -1,0 +1,48 @@
+body { margin: 0; padding: 0; background-color: #000; color: #ff9900; font-family: 'Arial', sans-serif; display: flex; height: 100vh; overflow: hidden; user-select: none; }
+h1, h2, h3 { text-transform: uppercase; margin-top: 0; font-weight: normal; letter-spacing: 1px; }
+p { line-height: 1.5; color: #ccc; }
+
+#lcars-nav { width: 220px; display: flex; flex-direction: column; padding: 20px 10px 20px 20px; gap: 8px; z-index: 10; }
+.nav-title { color: #ff9900; font-size: 28px; font-weight: bold; text-align: right; margin-bottom: 20px; letter-spacing: 2px; }
+.lcars-btn { background-color: #ff9900; color: #000; border: none; padding: 15px; text-align: right; font-weight: bold; font-size: 16px; text-transform: uppercase; cursor: pointer; border-radius: 25px 0 0 25px; transition: filter 0.2s; }
+.lcars-btn:hover { filter: brightness(1.3); }
+.btn-purple { background-color: #cc66ff; }
+.btn-blue { background-color: #99ccff; }
+.btn-red { background-color: #cc0000; color: #fff; }
+.btn-pale { background-color: #ffcc99; }
+.nav-spacer { flex-grow: 1; background-color: #ff9900; border-radius: 25px 0 0 25px; width: 60px; align-self: flex-end; margin-top: 10px; }
+
+#main-content { flex-grow: 1; display: flex; flex-direction: column; padding: 20px 20px 20px 0; position: relative; }
+.lcars-header { height: 45px; background-color: #cc66ff; border-radius: 0 25px 0 0; margin-bottom: 10px; display: flex; align-items: center; padding-left: 20px; color: #000; font-weight: bold; font-size: 20px; letter-spacing: 2px; }
+.page-section { display: none; flex-grow: 1; background-color: #111; border-radius: 0 0 25px 25px; padding: 30px; overflow-y: auto; border-left: 15px solid #ff9900; }
+.active-page { display: flex; flex-direction: column; }
+
+.card { background: #222; padding: 20px; margin-bottom: 15px; border-left: 5px solid #99ccff; border-radius: 0 10px 10px 0; }
+.stat-row { display: flex; justify-content: space-between; align-items: center; max-width: 500px; margin-bottom: 10px; background: #222; padding: 10px 20px; border-left: 5px solid #cc0000; }
+.stat-row input { background: #000; color: #ff9900; border: 1px solid #ff9900; padding: 8px; width: 150px; text-align: center; font-weight: bold; font-size: 16px; }
+
+#map-layout { display: flex; height: 100%; gap: 20px; width: 100%; }
+#map-viewport { flex-grow: 1; background: #020205; border: 2px solid #333; border-radius: 10px; overflow: hidden; position: relative; cursor: grab; background-image: linear-gradient(rgba(255, 153, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 153, 0, 0.05) 1px, transparent 1px); background-size: 100px 100px; }
+#map-viewport:active { cursor: grabbing; }
+#map-canvas { transform-origin: 0 0; width: 8000px; height: 8000px; position: absolute; top: 0; left: 0; }
+#map-side-panel { width: 350px; background: #1a1a1a; padding: 20px; border-top: 15px solid #99ccff; border-radius: 10px; overflow-y: auto; }
+.panel-title { color: #99ccff; border-bottom: 1px solid #333; padding-bottom: 10px; font-size: 24px; }
+
+.clickable { cursor: pointer; transition: filter 0.2s; }
+.clickable:hover { filter: brightness(1.8) drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
+.orbit { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 2; }
+.trade-route { fill: none; stroke: rgba(153, 204, 255, 0.4); stroke-width: 6; stroke-dasharray: 30, 20; }
+.sector-line { fill: none; stroke: rgba(255, 255, 255, 0.08); stroke-width: 15; }
+.sector-label { fill: #333; font-family: Arial; font-size: 180px; font-weight: bold; pointer-events: none; letter-spacing: 15px; transition: opacity 0.5s; }
+.system-label { fill: #fff; font-family: Arial; font-size: 40px; pointer-events: none; opacity: 0.8; transition: opacity 0.5s; }
+.planet-label { fill: #aaa; font-family: Arial; font-size: 20px; pointer-events: none; transition: opacity 0.5s; }
+
+#map-viewport[data-zoom="1"] .sector-label { opacity: 1; }
+#map-viewport[data-zoom="1"] .system-label { opacity: 0; }
+#map-viewport[data-zoom="1"] .zoom-lvl-3 { opacity: 0; pointer-events: none; }
+#map-viewport[data-zoom="2"] .sector-label { opacity: 0.1; }
+#map-viewport[data-zoom="2"] .system-label { opacity: 1; }
+#map-viewport[data-zoom="2"] .zoom-lvl-3 { opacity: 0; pointer-events: none; }
+#map-viewport[data-zoom="3"] .sector-label { opacity: 0; }
+#map-viewport[data-zoom="3"] .system-label { opacity: 0.3; }
+#map-viewport[data-zoom="3"] .zoom-lvl-3 { opacity: 1; pointer-events: auto; }
