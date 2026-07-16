@@ -1,155 +1,4 @@
 // ==========================================
-// XSV STARDUST - MAIN APPLICATION ENGINE
-// ==========================================
-
-// --- PAGE NAVIGATION ---
-function showPage(pageId) {
-    document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active-page'));
-    document.getElementById(pageId).classList.add('active-page');
-    
-    const titles = { 
-        'home': 'HOME STATION', 'rules': 'STARDUST RULES', 'crew': 'CREW REGISTRY', 
-        'map': 'ASTROMETRICS NAV', 'lore': 'LORE STORAGE BANKS', 'vessels': 'FLEET REGISTRY' 
-    };
-    document.getElementById('header-title').innerText = titles[pageId];
-}
-
-// --- RENDER HOME STATION ---
-document.getElementById('home').innerHTML = `
-    <div class="text-block">
-        <h2 style="color: #99ccff; font-size: 32px;">Welcome Aboard the XSV Stardust</h2>
-        <p>We are an independent mercenary crew. This vessel is a heavily modified Type-17 Argo-class shuttle. Originally designed to carry a cargo buggy, the aft section has been completely retrofitted to support deep-space, long-duration roleplay.</p>
-        <p>Amenities are minimal. We have a Bridge, a small Teleporter pad, 4 cramped bunks, a tiny lounge with a 4-seat table, and a compact engineering section. Whether we are docked at a station or exploring deep space, this shuttle serves as our mobile home. We encourage collaborative, creative storytelling where everyone gets to contribute!</p>
-        
-        <h3 style="color: #cc66ff; margin-top:30px;">Current Directive: Operation Abruix</h3>
-        <p>We have secured a shadow-contract to investigate a massive, ancient energy signature emanating from the uncharted Var Lupra system. The signal is coming from Pareah—a hostile, toxic jungle world. Prepare the ship for hazardous navigation through the Varix Gas Clouds.</p>
-    </div>
-`;
-
-// --- RENDER CREW ---
-const crewContainer = document.getElementById('crew-container');
-if (typeof crewDB !== 'undefined') {
-    crewDB.forEach(crew => {
-        crewContainer.innerHTML += `
-            <div class="crew-card">
-                <img src="${crew.sl_pic}" class="crew-pic" alt="Profile Pic" onerror="this.src='https://via.placeholder.com/100/000000/ff9900?text=PIC'">
-                <div class="crew-info">
-                    <h3 style="color:#ff9900; margin-top:0;">${crew.name}</h3>
-                    <p style="margin: 5px 0;"><strong>Rank:</strong> ${crew.rank} | <strong>Dept:</strong> ${crew.dept}</p>
-                    <p style="margin: 10px 0;">${crew.bio}</p>
-                    <a href="${crew.sl_link}" class="sl-link" target="_blank">View Second Life Profile</a>
-                </div>
-            </div>`;
-    });
-}
-
-// --- RENDER VESSELS ---
-const vesselList = document.getElementById('vessel-list');
-if (typeof vesselsDB !== 'undefined') {
-    vesselsDB.forEach(vessel => {
-        vesselList.innerHTML += `<button class="vessel-btn" onclick="loadVessel('${vessel.id}')">${vessel.name}</button>`;
-    });
-}
-
-function loadVessel(id) {
-    const v = vesselsDB.find(v => v.id === id);
-    document.getElementById('vessel-details').style.display = 'block';
-    document.getElementById('vessel-name').innerText = v.name + " (" + v.class + ")";
-    document.getElementById('vessel-desc').innerText = v.desc;
-    
-    let statsHTML = "";
-    v.stats.forEach(stat => {
-        statsHTML += `<div class="stat-row"><span>${stat.label}:</span> <input type="text" value="${stat.value}"></div>`;
-    });
-    document.getElementById('vessel-stats').innerHTML = statsHTML;
-}
-
-// --- RENDER LORE STORAGE ---
-const loreList = document.getElementById('lore-list');
-if (typeof loreStorageDB !== 'undefined') {
-    loreStorageDB.forEach(lore => {
-        loreList.innerHTML += `<button class="lore-btn" onclick="loadStorageLore('${lore.id}')">${lore.title} <span style="float:right; color:#888;">${lore.date}</span></button>`;
-    });
-}
-
-function loadStorageLore(id) {
-    const l = loreStorageDB.find(l => l.id === id);
-    document.getElementById('lore-reader').style.display = 'block';
-    document.getElementById('lore-reader-title').innerText = l.title;
-    document.getElementById('lore-reader-date').innerText = "Logged: " + l.date;
-    document.getElementById('lore-reader-content').innerText = l.content;
-}
-
-// --- RENDER FULL RULES ---
-document.getElementById('rules-container').innerHTML = `
-    <div class="text-block">
-        <h3 style="color:#99ccff;">DEPARTMENTS & COLORS</h3>
-        <p>Our crew uses a color-coding system to easily identify everyone's primary role:</p>
-        <p>• <strong>BLUE (Command & CONN):</strong> The leaders and pilots.<br>
-        • <strong>RED (Security & Tactical):</strong> The protectors and weapons specialists.<br>
-        • <strong>YELLOW (Engineering & Operations):</strong> The fixers and system mechanics.<br>
-        • <strong>BURGUNDY (Science & Medical):</strong> The researchers and healers.</p>
-    </div>
-
-    <div class="text-block">
-        <h3 style="color:#99ccff;">DRESS CODE & UNIFORMS</h3>
-        <p>We are open to most uniforms! While we have "official" uniforms linked below, you may wear what you like as long as it stays within the sci-fi/Trek theme. Civilian attire is also completely allowed while off-duty in the living quarters.</p>
-        <p>• <strong>Females:</strong> Short skirts, thigh-highs, bodysuits, and form-fitting attire are highly encouraged!<br>
-        • <strong>Males:</strong> For men... pants. XD (Bodysuit uniforms are highly encouraged as well!)</p>
-        
-        <p style="color:#ff9900; margin-bottom:5px;"><strong>Official Female Duty Uniforms:</strong></p>
-        <a href="https://marketplace.secondlife.com/p/Jazabelle-Deep-Space-69-complete-outfit/22834766" target="_blank" class="sl-link">Jazabelle 'Deep Space 69'</a>
-        <a href="https://marketplace.secondlife.com/p/Jazabelle-To-Boldly-Go-complete-outfit/28087979" target="_blank" class="sl-link">Jazabelle 'To Boldly Go'</a>
-        <a href="https://marketplace.secondlife.com/p/JRF-Uniform-2360s-Female/14669939" target="_blank" class="sl-link">[JRF] Uniform - 2360s</a>
-
-        <p style="color:#ff9900; margin-top:15px; margin-bottom:5px;"><strong>Official Male Duty Uniforms:</strong></p>
-        <a href="https://marketplace.secondlife.com/p/Mercer-Fleet-Officer-Blue/23627398" target="_blank" class="sl-link">Mercer Fleet Officer</a>
-        <a href="https://marketplace.secondlife.com/p/WW-2371-Uniform-Male/25932021" target="_blank" class="sl-link">WW 2371 Uniform</a>
-        <a href="https://marketplace.secondlife.com/p/JRF-Uniform-2360s-Male/14991576" target="_blank" class="sl-link">JRF 2360s Uniform</a>
-
-        <p style="color:#ff9900; margin-top:15px; margin-bottom:5px;"><strong>Official Equipment and Rank Pips:</strong></p>
-        <a href="https://marketplace.secondlife.com/p/TerraCo-Rank-Pips-Standard-Officer/9390312" target="_blank" class="sl-link">TerraCo Rank Pips</a>
-        <a href="https://marketplace.secondlife.com/p/JRF-Equipment-S3RP-STP-Tricorder/25896747" target="_blank" class="sl-link">[JRF] Tricorder</a>
-        <a href="https://marketplace.secondlife.com/p/JRF-Equipment-Med-Kit/22241217" target="_blank" class="sl-link">[JRF] Med Kit</a>
-        <a href="https://marketplace.secondlife.com/p/JRF-Weapon-Phaser-sidearm-Type-2-MK6/25896599" target="_blank" class="sl-link">[JRF] Phaser Sidearm</a>
-        <a href="https://marketplace.secondlife.com/p/JRF-Weapon-Phaser-rifle-Type-3-MK10/25896366" target="_blank" class="sl-link">[JRF] Phaser Rifle</a>
-    </div>
-
-    <div class="text-block">
-        <h3 style="color:#99ccff;">RANK PIPS & HUD SYSTEM</h3>
-        <p>We use the JRF Equipment HUD system for our overhead titlers and gear. Please set your titler to display your Name, Rank, and "XSV Stardust". Your rank is displayed on your collar using a 6-tier pip system. Rank implies responsibility in the RP, not just power.</p>
-        <p>🟡🟡🟡🟡 | Captain (Mission Commander)<br>
-        🟡🟡🟡 | Commander (First Officer)<br>
-        ⚫🟡🟡 | Lieutenant Commander<br>
-        🟡🟡 | Lieutenant<br>
-        ⚫🟡 | Lieutenant J.G. (Junior Grade)<br>
-        🟡 | Ensign</p>
-    </div>
-
-    <div class="text-block">
-        <h3 style="color:#99ccff;">SHUTTLE OPERATIONS & IC PROTOCOLS</h3>
-        <p><strong>1. ALARMS & RED ALERTS:</strong> When the ship's alarm sounds, all crew are expected to immediately return to their duty station and remain there until the alert is cleared or the mission dictates otherwise. All personal activities are suspended.</p>
-        <p><strong>2. RESOURCE CONSERVATION:</strong> Due to the shuttle's limited water-reclamation and life-support capacities, lavatory and sonic shower usage is strictly rationed. Access is logged and restricted to scheduled cycles. Holding it is part of the job, and unauthorized use will result in IC reprimands.</p>
-        <p><strong>3. REPLICATOR RATIONS:</strong> The mess replicator draws heavily on the warp core. Replicator use is limited to basic rations, water, and coffee. Luxury items or complex meals require Command authorization.</p>
-        <p><strong>4. CRAMPED QUARTERS:</strong> Space is at a premium. Keep your personal gear stowed in your designated bunk area. If you leave your equipment lying around the lounge or bridge, expect Command to place it in the community locker (or the recycler).</p>
-        <p><strong>5. MAINTENANCE DUTY:</strong> We don't have a dedicated janitorial staff. Everyone, regardless of rank, is expected to help scrub the decks, patch conduits, and keep the ship flying.</p>
-    </div>
-
-    <div class="text-block">
-        <h3 style="color:#99ccff;">OOC RULES, LIMITS & CONSENT</h3>
-        <p><strong>1. ADULT THEMES & ERP:</strong> This is a strictly 18+ environment. Lewd scenes and ERP are allowed, but please try to keep them out of the main open areas during active missions. If you get caught fooling around by a superior officer, expect IC consequences!</p>
-        <p><strong>2. CONSENT IS REQUIRED:</strong> Ask for a person's consent and limits before proceeding with combat, sexual touching/teasing, mutilation, perma-death, or any altercations that permanently damage a character's mental or physical state.</p>
-        <p><strong>3. NO GOD-MODDING OR POWER-GAMING:</strong> Your character is not invincible. You cannot force actions on another player without their OOC consent, and you cannot play a character that is akin to a god. Characters must have weaknesses to offset their strengths.</p>
-        <p><strong>4. NO META-GAMING:</strong> Do not use Out-Of-Character (OOC) information for an In-Character (IC) situation. Your character must be at the scene of an active RP (or access an RP terminal) to obtain information.</p>
-        <p><strong>5. CONSEQUENCES:</strong> In-character actions have consequences. You cannot claim something is against your limits if you set yourself up for it (e.g., if you steal IC'ly and get caught, you cannot claim being cuffed is against your limits).</p>
-        <p><strong>6. IC vs. OOC ETIQUETTE:</strong> Keep OOC chatter to a minimum during active roleplay. Use brackets for OOC: (( like this )). Use quotes for speaking: "Like this."</p>
-        <p><strong>7. APPEARANCE:</strong> No child or underage avatars. Characters must look realistic and fit within a sci-fi setting. No excessive glow, particles, or full-bright attachments. Copyright/parody characters (e.g., playing exactly as Obi-Wan) are not allowed.</p>
-        <p><strong>8. NO GRIEFING OR SPAMMING:</strong> Do not use weapons, pushers, particle spammers, or disruptive HUDs inside the shuttle.</p>
-        <p><strong>9. HAVE FUN:</strong> Above all else, we are here to tell a great story together! If any problems occur between players, try to talk it out OOC'ly before approaching management.</p>
-    </div>
-`;
-
-// ==========================================
 // MAP ENGINE & ZOOM LOGIC
 // ==========================================
 const mapCanvas = document.getElementById('map-canvas');
@@ -160,32 +9,37 @@ if (typeof systemsDB !== 'undefined' && mapCanvas) {
         <circle cx="4000" cy="4000" r="3800" fill="#050508" stroke="#111" stroke-width="20"/>
     `;
 
-    // --- DRAW 8 ORGANIC SECTORS ---
+    // --- DRAW 8 ORGANIC SECTORS (Country-like borders) ---
     const sectorBorders = [
-        "M 4000 200 L 4200 1500 L 5000 2000 L 6000 1800 L 7800 4000", // Top Right
-        "M 7800 4000 L 6500 4500 L 5500 6000 L 4500 7800", // Bottom Right
-        "M 4500 7800 L 4000 6000 L 3000 5500 L 2000 7500", // Bottom
-        "M 2000 7500 L 1500 5000 L 500 4500 L 200 4000", // Bottom Left
-        "M 200 4000 L 1000 3000 L 2000 2500 L 1500 1000", // Top Left
-        "M 1500 1000 L 2500 1500 L 3500 1000 L 4000 200", // Top
-        "M 4000 4000 L 5000 2000", // Inner cuts
-        "M 4000 4000 L 3000 5500",
-        "M 4000 4000 L 2000 2500"
+        "M 4000 4000 L 3800 3000 L 3500 2000 L 4000 1000 L 3500 0", // Separates Terran & Midorian
+        "M 4000 4000 L 4500 3500 L 5000 2500 L 5500 1500 L 6000 0", // Separates Midorian & Zavares
+        "M 4000 4000 L 5000 4200 L 6000 4500 L 7000 4000 L 8000 4500", // Separates Zavares & Nivelian
+        "M 4000 4000 L 4500 5000 L 5500 6000 L 6500 7000 L 8000 7500", // Separates Nivelian & Abyssal
+        "M 4000 4000 L 4200 5000 L 4000 6000 L 4500 7000 L 4000 8000", // Separates Abyssal & Loma
+        "M 4000 4000 L 3500 4500 L 2500 5500 L 2000 7000 L 1500 8000", // Separates Loma & Vossk
+        "M 4000 4000 L 3000 4200 L 2000 4500 L 1000 5000 L 0 5500", // Separates Vossk & Void
+        "M 4000 4000 L 3000 3500 L 2000 3000 L 1000 2500 L 0 2000"  // Separates Void & Terran
     ];
 
     sectorBorders.forEach(path => {
         svgHTML += `<path d="${path}" class="sector-line" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="15" stroke-linejoin="round"/>`;
     });
 
-    // Sector Labels
-    svgHTML += `<text x="5500" y="3000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">ZAVARES</text>`;
-    svgHTML += `<text x="2500" y="2000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">TERRAN CORE</text>`;
-    svgHTML += `<text x="2000" y="6000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">VOSSK EMPIRE</text>`;
-    svgHTML += `<text x="6000" y="5500" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">NIVELIAN REP.</text>`;
-    svgHTML += `<text x="4500" y="1500" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">MIDORIAN</text>`;
-    svgHTML += `<text x="1000" y="4000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">THE VOID</text>`;
-    svgHTML += `<text x="3500" y="7000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">LOMA PIRATES</text>`;
-    svgHTML += `<text x="6500" y="7000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">ABYSSAL REACH</text>`;
+    // --- 8 SECTOR LABELS (Placed inside the organic borders) ---
+    const sectors = [
+        { name: "TERRAN CORE", x: 2500, y: 2000 },
+        { name: "MIDORIAN", x: 4500, y: 1500 },
+        { name: "ZAVARES", x: 6000, y: 3000 },
+        { name: "NIVELIAN REP.", x: 6500, y: 5000 },
+        { name: "ABYSSAL REACH", x: 5500, y: 7000 },
+        { name: "LOMA PIRATES", x: 3500, y: 6500 },
+        { name: "VOSSK EMPIRE", x: 1500, y: 6000 },
+        { name: "THE VOID", x: 1200, y: 3500 }
+    ];
+
+    sectors.forEach(sec => {
+        svgHTML += `<text x="${sec.x}" y="${sec.y}" class="sector-label" text-anchor="middle" fill="#333" font-size="140" font-weight="bold" letter-spacing="10" style="pointer-events:none;">${sec.name}</text>`;
+    });
 
     // --- DRAW SYSTEMS & PLANETS ---
     systemsDB.forEach(sys => {
