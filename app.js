@@ -14,6 +14,18 @@ function showPage(pageId) {
     document.getElementById('header-title').innerText = titles[pageId];
 }
 
+// --- RENDER HOME STATION ---
+document.getElementById('home').innerHTML = `
+    <div class="text-block">
+        <h2 style="color: #99ccff; font-size: 32px;">Welcome Aboard the XSV Stardust</h2>
+        <p>We are an independent mercenary crew. This vessel is a heavily modified Type-17 Argo-class shuttle. Originally designed to carry a cargo buggy, the aft section has been completely retrofitted to support deep-space, long-duration roleplay.</p>
+        <p>Amenities are minimal. We have a Bridge, a small Teleporter pad, 4 cramped bunks, a tiny lounge with a 4-seat table, and a compact engineering section. Whether we are docked at a station or exploring deep space, this shuttle serves as our mobile home. We encourage collaborative, creative storytelling where everyone gets to contribute!</p>
+        
+        <h3 style="color: #cc66ff; margin-top:30px;">Current Directive: Operation Abruix</h3>
+        <p>We have secured a shadow-contract to investigate a massive, ancient energy signature emanating from the uncharted Var Lupra system. The signal is coming from Pareah—a hostile, toxic jungle world. Prepare the ship for hazardous navigation through the Varix Gas Clouds.</p>
+    </div>
+`;
+
 // --- RENDER CREW ---
 const crewContainer = document.getElementById('crew-container');
 if (typeof crewDB !== 'undefined') {
@@ -70,12 +82,6 @@ function loadStorageLore(id) {
 
 // --- RENDER FULL RULES ---
 document.getElementById('rules-container').innerHTML = `
-    <div class="text-block">
-        <h3 style="color:#99ccff;">INTRODUCTION</h3>
-        <p>Welcome aboard the XSV Stardust! We are an independent mercenary crew. This vessel is a heavily modified Type-17 Argo-class shuttle. Originally designed to carry a cargo buggy, the aft section has been completely retrofitted to support deep-space, long-duration roleplay.</p>
-        <p>Amenities are minimal. We have a Bridge, a small Teleporter pad, 4 cramped bunks, a tiny lounge with a 4-seat table, and a compact engineering section. Whether we are docked at a station or exploring deep space, this shuttle serves as our mobile home. We encourage collaborative, creative storytelling where everyone gets to contribute!</p>
-    </div>
-
     <div class="text-block">
         <h3 style="color:#99ccff;">DEPARTMENTS & COLORS</h3>
         <p>Our crew uses a color-coding system to easily identify everyone's primary role:</p>
@@ -155,7 +161,6 @@ if (typeof systemsDB !== 'undefined' && mapCanvas) {
     `;
 
     // --- DRAW 8 ORGANIC SECTORS ---
-    // These paths simulate jagged, country-like borders for the 8 sectors.
     const sectorBorders = [
         "M 4000 200 L 4200 1500 L 5000 2000 L 6000 1800 L 7800 4000", // Top Right
         "M 7800 4000 L 6500 4500 L 5500 6000 L 4500 7800", // Bottom Right
