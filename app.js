@@ -154,49 +154,39 @@ if (typeof systemsDB !== 'undefined' && mapCanvas) {
         <circle cx="4000" cy="4000" r="3800" fill="#050508" stroke="#111" stroke-width="20"/>
     `;
 
-    // --- DRAW 16 CURVED SECTORS ---
-    const numSectors = 16;
-    const cx = 4000, cy = 4000, r = 3800;
-    const sectorNames = [
-        "ZAVARES", "TERRAN CORE", "VOSSK EMPIRE", "NIVELIAN REP.", 
-        "MIDORIAN", "LOMA PIRATES", "THE VOID", "ABYSSAL REACH",
-        "RADIANT CORE", "OBSIDIAN MARCHES", "OUTER RIM", "NEBULA WASTES",
-        "SHATTERED EXPANSE", "SILENT SECTOR", "FRONTIER", "UNKNOWN REGIONS"
+    // --- DRAW 8 ORGANIC SECTORS ---
+    // These paths simulate jagged, country-like borders for the 8 sectors.
+    const sectorBorders = [
+        "M 4000 200 L 4200 1500 L 5000 2000 L 6000 1800 L 7800 4000", // Top Right
+        "M 7800 4000 L 6500 4500 L 5500 6000 L 4500 7800", // Bottom Right
+        "M 4500 7800 L 4000 6000 L 3000 5500 L 2000 7500", // Bottom
+        "M 2000 7500 L 1500 5000 L 500 4500 L 200 4000", // Bottom Left
+        "M 200 4000 L 1000 3000 L 2000 2500 L 1500 1000", // Top Left
+        "M 1500 1000 L 2500 1500 L 3500 1000 L 4000 200", // Top
+        "M 4000 4000 L 5000 2000", // Inner cuts
+        "M 4000 4000 L 3000 5500",
+        "M 4000 4000 L 2000 2500"
     ];
 
-    for (let i = 0; i < numSectors; i++) {
-        let angle1 = (i * 360 / numSectors) * (Math.PI / 180);
-        let angle2 = ((i + 1) * 360 / numSectors) * (Math.PI / 180);
-        
-        // Calculate end points on the circle
-        let x1 = cx + r * Math.cos(angle1);
-        let y1 = cy + r * Math.sin(angle1);
-        
-        // Calculate a control point to make it curve (swirl effect)
-        let ctrlAngle = angle1 + 0.3; 
-        let ctrlX = cx + (r * 0.5) * Math.cos(ctrlAngle);
-        let ctrlY = cy + (r * 0.5) * Math.sin(ctrlAngle);
+    sectorBorders.forEach(path => {
+        svgHTML += `<path d="${path}" class="sector-line" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="15" stroke-linejoin="round"/>`;
+    });
 
-        // Draw the curved line
-        svgHTML += `<path d="M ${cx} ${cy} Q ${ctrlX} ${ctrlY} ${x1} ${y1}" class="sector-line" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="10" stroke-dasharray="40,20"/>`;
-        
-        // Place Sector Label in the middle of the slice
-        let midAngle = (angle1 + angle2) / 2;
-        let labelX = cx + (r * 0.7) * Math.cos(midAngle);
-        let labelY = cy + (r * 0.7) * Math.sin(midAngle);
-        
-        // Rotate text to match the slice
-        let rot = (midAngle * 180 / Math.PI) + 90;
-        if (rot > 90 && rot < 270) rot += 180; // Keep text upright
-        
-        svgHTML += `<text x="${labelX}" y="${labelY}" class="sector-label" transform="rotate(${rot}, ${labelX}, ${labelY})" text-anchor="middle" fill="#333" font-size="100" font-weight="bold" letter-spacing="5" style="pointer-events:none;">${sectorNames[i]}</text>`;
-    }
+    // Sector Labels
+    svgHTML += `<text x="5500" y="3000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">ZAVARES</text>`;
+    svgHTML += `<text x="2500" y="2000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">TERRAN CORE</text>`;
+    svgHTML += `<text x="2000" y="6000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">VOSSK EMPIRE</text>`;
+    svgHTML += `<text x="6000" y="5500" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">NIVELIAN REP.</text>`;
+    svgHTML += `<text x="4500" y="1500" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">MIDORIAN</text>`;
+    svgHTML += `<text x="1000" y="4000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">THE VOID</text>`;
+    svgHTML += `<text x="3500" y="7000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">LOMA PIRATES</text>`;
+    svgHTML += `<text x="6500" y="7000" class="sector-label" fill="#333" font-size="150" font-weight="bold" letter-spacing="10" style="pointer-events:none;">ABYSSAL REACH</text>`;
 
     // --- DRAW SYSTEMS & PLANETS ---
     systemsDB.forEach(sys => {
         svgHTML += `<g transform="translate(${sys.x}, ${sys.y})">`;
         
-        // Draw Planets
+        // Draw Planets (Only visible when zoomed in)
         if (sys.planets) {
             sys.planets.forEach(p => {
                 let px = Math.cos(p.angle * Math.PI / 180) * p.dist;
@@ -213,7 +203,7 @@ if (typeof systemsDB !== 'undefined' && mapCanvas) {
             });
         }
 
-        // Draw Star
+        // Draw Star (Always visible)
         if(sys.type === 'blackhole') {
             svgHTML += `<circle cx="0" cy="0" r="${sys.size + 20}" fill="rgba(100,0,255,0.2)" class="zoom-lvl-2"/>`;
             svgHTML += `<circle cx="0" cy="0" r="${sys.size}" fill="#000" stroke="#fff" stroke-width="2" class="clickable" onclick="loadMapLore('${sys.id}', null)"/>`;
