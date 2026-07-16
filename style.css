@@ -46,3 +46,12 @@ p { line-height: 1.5; color: #ccc; }
 #map-viewport[data-zoom="3"] .sector-label { opacity: 0; }
 #map-viewport[data-zoom="3"] .system-label { opacity: 0.3; }
 #map-viewport[data-zoom="3"] .zoom-lvl-3 { opacity: 1; pointer-events: auto; }
+/* NEW STYLES FOR CREW PICS & LORE */
+.crew-card { display: flex; gap: 20px; background: #222; padding: 20px; margin-bottom: 15px; border-left: 5px solid #99ccff; border-radius: 0 10px 10px 0; }
+.crew-pic { width: 100px; height: 100px; border-radius: 10px; border: 2px solid #ff9900; object-fit: cover; background: #000; }
+.crew-info { flex-grow: 1; }
+.sl-link { color: #99ccff; text-decoration: none; font-size: 14px; display: inline-block; margin-top: 10px; border: 1px solid #99ccff; padding: 5px 10px; border-radius: 5px; }
+.sl-link:hover { background: #99ccff; color: #000; }
+.lore-btn, .vessel-btn { background: #333; color: #ff9900; border: 1px solid #ff9900; padding: 10px 15px; cursor: pointer; border-radius: 5px; text-align: left; width: 100%; margin-bottom: 5px; }
+.lore-btn:hover, .vessel-btn:hover { background: #ff9900; color: #000; }
+.vessel-btn { width: auto; }
