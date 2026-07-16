@@ -3,373 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XSV Stardust - Astrometrics & Command</title>
-    <style>
-        /* --- LCARS BASE STYLES --- */
-        body { margin: 0; padding: 0; background-color: #000; color: #ff9900; font-family: 'Arial', sans-serif; display: flex; height: 100vh; overflow: hidden; user-select: none; }
-        h1, h2, h3 { text-transform: uppercase; margin-top: 0; font-weight: normal; letter-spacing: 1px; }
-        p { line-height: 1.5; color: #ccc; }
-        
-        /* --- LEFT NAVIGATION BAR --- */
-        #lcars-nav { width: 220px; display: flex; flex-direction: column; padding: 20px 10px 20px 20px; gap: 8px; }
-        .nav-title { color: #ff9900; font-size: 28px; font-weight: bold; text-align: right; margin-bottom: 20px; letter-spacing: 2px; }
-        .lcars-btn { background-color: #ff9900; color: #000; border: none; padding: 15px; text-align: right; font-weight: bold; font-size: 16px; text-transform: uppercase; cursor: pointer; border-radius: 25px 0 0 25px; transition: filter 0.2s; }
-        .lcars-btn:hover { filter: brightness(1.3); }
-        .btn-purple { background-color: #cc66ff; }
-        .btn-blue { background-color: #99ccff; }
-        .btn-red { background-color: #cc0000; color: #fff; }
-        .btn-pale { background-color: #ffcc99; }
-        .nav-spacer { flex-grow: 1; background-color: #ff9900; border-radius: 25px 0 0 25px; width: 60px; align-self: flex-end; margin-top: 10px; }
-
-        /* --- MAIN CONTENT AREA --- */
-        #main-content { flex-grow: 1; display: flex; flex-direction: column; padding: 20px 20px 20px 0; position: relative; }
-        .lcars-header { height: 45px; background-color: #cc66ff; border-radius: 0 25px 0 0; margin-bottom: 10px; display: flex; align-items: center; padding-left: 20px; color: #000; font-weight: bold; font-size: 20px; letter-spacing: 2px; }
-        .page-section { display: none; flex-grow: 1; background-color: #111; border-radius: 0 0 25px 25px; padding: 30px; overflow-y: auto; border-left: 15px solid #ff9900; }
-        .active-page { display: flex; flex-direction: column; }
-
-        /* --- CONTENT STYLES (Crew, Rules, Stats) --- */
-        .card { background: #222; padding: 20px; margin-bottom: 15px; border-left: 5px solid #99ccff; border-radius: 0 10px 10px 0; }
-        .stat-row { display: flex; justify-content: space-between; align-items: center; max-width: 500px; margin-bottom: 10px; background: #222; padding: 10px 20px; border-left: 5px solid #cc0000; }
-        .stat-row input { background: #000; color: #ff9900; border: 1px solid #ff9900; padding: 8px; width: 120px; text-align: center; font-weight: bold; font-size: 16px; }
-        .text-block { max-width: 800px; margin-bottom: 20px; }
-
-        /* --- MAP STYLES --- */
-        #map-layout { display: flex; height: 100%; gap: 20px; width: 100%; }
-        #map-viewport { flex-grow: 1; background: #05050a; border: 2px solid #333; border-radius: 10px; overflow: hidden; position: relative; cursor: grab; }
-        #map-viewport:active { cursor: grabbing; }
-        #map-canvas { transform-origin: 0 0; width: 4000px; height: 4000px; position: absolute; top: 0; left: 0; }
-        
-        /* Map Side Panel */
-        #map-side-panel { width: 350px; background: #1a1a1a; padding: 20px; border-top: 15px solid #99ccff; border-radius: 10px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-        .panel-title { color: #99ccff; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        
-        /* SVG Map Elements */
-        .clickable { cursor: pointer; transition: stroke-width 0.2s, filter 0.2s; }
-        .clickable:hover { stroke: #fff; stroke-width: 5px; filter: brightness(1.5); }
-        .orbit { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 2; }
-        .trade-route { fill: none; stroke: #99ccff; stroke-width: 4; stroke-dasharray: 20, 15; opacity: 0.6; }
-        .sector-line { stroke: rgba(255, 255, 255, 0.15); stroke-width: 6; stroke-dasharray: 30, 20; }
-        .map-label { fill: #fff; font-family: Arial; font-size: 28px; pointer-events: none; opacity: 0.8; }
-        .sector-label { fill: #444; font-family: Arial; font-size: 120px; font-weight: bold; pointer-events: none; letter-spacing: 10px; }
-    </style>
+    <title>XSV Stardust - Command Hub</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <!-- LEFT NAVIGATION -->
     <div id="lcars-nav">
         <div class="nav-title">XSV<br>STARDUST</div>
-        <button class="lcars-btn" onclick="showPage('home')">01 Home</button>
-        <button class="lcars-btn btn-purple" onclick="showPage('map')">02 Astrometrics</button>
-        <button class="lcars-btn btn-blue" onclick="showPage('lore')">03 Databanks</button>
-        <button class="lcars-btn btn-pale" onclick="showPage('crew')">04 Crew Roster</button>
-        <button class="lcars-btn btn-red" onclick="showPage('stats')">05 Ship Stats</button>
-        <button class="lcars-btn" onclick="showPage('rules')">06 Ship Rules</button>
+        <button class="lcars-btn" onclick="showPage('home')">Home Station</button>
+        <button class="lcars-btn btn-purple" onclick="showPage('rules')">Stardust Rules</button>
+        <button class="lcars-btn btn-blue" onclick="showPage('crew')">Crew Registry</button>
+        <button class="lcars-btn btn-pale" onclick="showPage('map')">Astrometrics Nav</button>
+        <button class="lcars-btn btn-red" onclick="showPage('lore')">Lore Storage Banks</button>
+        <button class="lcars-btn" onclick="showPage('vessels')">Vessels</button>
         <div class="nav-spacer"></div>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main-content">
-        <div class="lcars-header" id="header-title">01-HOME</div>
+        <div class="lcars-header" id="header-title">HOME STATION</div>
 
-        <!-- 01 HOME PAGE -->
+        <!-- HOME STATION -->
         <div id="home" class="page-section active-page">
-            <div class="text-block">
-                <h2 style="color: #99ccff; font-size: 32px;">Welcome Aboard</h2>
-                <p>This terminal provides access to the XSV Stardust's astrometrics sensors, crew manifests, and vital systems.</p>
-                <p>We are an independent mercenary crew operating under ISRB contract. We fly the jobs the big ships can't, and we take the risks the military won't. Keep your gear stowed, respect the life-support rationing, and when the red alert sounds, get to your station.</p>
-                <br>
-                <h3 style="color: #cc66ff;">Current Directive: Operation Abruix</h3>
-                <p>We have secured a shadow-contract to investigate a massive, ancient energy signature emanating from the uncharted Var Lupra system. The signal is coming from Pareah—a hostile, toxic jungle world. Prepare the ship for hazardous navigation through the Varix Gas Clouds.</p>
-            </div>
+            <h2 style="color: #99ccff;">Welcome to the Sabers of Fortune Hub</h2>
+            <p>We are an independent mercenary crew operating under ISRB contract. We fly the jobs the big ships can't, and we take the risks the military won't.</p>
+            <p>This terminal provides access to our astrometrics sensors, crew manifests, mission reports, and vital vessel systems.</p>
         </div>
 
-        <!-- 02 ASTROMETRICS MAP PAGE -->
+        <!-- STARDUST RULES -->
+        <div id="rules" class="page-section">
+            <h2 style="color:#ff9900;">Official Roleplay Guide & Guidelines</h2>
+            <div id="rules-container"></div>
+        </div>
+
+        <!-- CREW REGISTRY -->
+        <div id="crew" class="page-section">
+            <h2 style="color: #ffcc99;">Active Crew Registry</h2>
+            <div id="crew-container"></div>
+        </div>
+
+        <!-- ASTROMETRICS NAV -->
         <div id="map" class="page-section" style="padding:0; border:none; background:none;">
             <div id="map-layout">
-                
-                <!-- Zoomable Canvas Area -->
-                <div id="map-viewport">
-                    <svg id="map-canvas" viewBox="0 0 4000 4000">
-                        
-                        <!-- GALAXY BACKGROUND -->
-                        <circle cx="2000" cy="2000" r="1900" fill="#08080c" stroke="#222" stroke-width="10"/>
-                        
-                        <!-- SECTOR DIVIDERS (8 Slices) -->
-                        <line x1="2000" y1="100" x2="2000" y2="3900" class="sector-line"/>
-                        <line x1="100" y1="2000" x2="3900" y2="2000" class="sector-line"/>
-                        <line x1="656" y1="656" x2="3344" y2="3344" class="sector-line"/>
-                        <line x1="656" y1="3344" x2="3344" y2="656" class="sector-line"/>
-                        
-                        <!-- SECTOR LABELS -->
-                        <text x="2200" y="1000" class="sector-label">ZAVARES</text>
-                        <text x="800" y="1000" class="sector-label">OUTER RIM</text>
-                        <text x="800" y="3000" class="sector-label">NEBULA WASTES</text>
-
-                        <!-- TRADE ROUTES (Dashed Lines) -->
-                        <path d="M 2000 2000 L 2500 1200 L 3200 1400" class="trade-route"/>
-                        <path d="M 2500 1200 L 2800 800" class="trade-route"/>
-
-                        <!-- ========================================== -->
-                        <!-- SOLAR SYSTEMS & PLANETS -->
-                        <!-- ========================================== -->
-
-                        <!-- OUTPOST 79 / WARREN GATEWAY (Center) -->
-                        <g transform="translate(2000, 2000)">
-                            <circle cx="0" cy="0" r="40" fill="#cc66ff" class="clickable" onclick="loadLore('outpost79')"/>
-                            <text x="-70" y="70" class="map-label">Warren Gateway</text>
-                        </g>
-
-                        <!-- BRUNHILDE SYSTEM -->
-                        <g transform="translate(2500, 1200)">
-                            <!-- Orbits -->
-                            <circle cx="0" cy="0" r="100" class="orbit"/>
-                            <circle cx="0" cy="0" r="180" class="orbit"/>
-                            <circle cx="0" cy="0" r="260" class="orbit"/>
-                            <!-- Star -->
-                            <circle cx="0" cy="0" r="50" fill="#ffff99" class="clickable" onclick="loadLore('brunhilde')"/>
-                            <text x="-60" y="80" class="map-label">Brunhilde</text>
-                            <!-- Planets -->
-                            <circle cx="100" cy="0" r="12" fill="#aa5500" class="clickable" onclick="loadLore('militia')"/>
-                            <circle cx="-127" cy="-127" r="18" fill="#00aa00" class="clickable" onclick="loadLore('gastron')"/>
-                            <circle cx="260" cy="0" r="25" fill="#0055ff" class="clickable" onclick="loadLore('necron')"/>
-                        </g>
-
-                        <!-- VAR LUPRA SYSTEM -->
-                        <g transform="translate(3200, 1400)">
-                            <circle cx="0" cy="0" r="120" class="orbit"/>
-                            <circle cx="0" cy="0" r="200" class="orbit"/>
-                            <!-- Star -->
-                            <circle cx="0" cy="0" r="60" fill="#99ccff" class="clickable" onclick="loadLore('varlupra')"/>
-                            <text x="-65" y="90" class="map-label">Var Lupra</text>
-                            <!-- Planets -->
-                            <circle cx="-120" cy="0" r="15" fill="#ff3300" class="clickable" onclick="loadLore('naokin')"/>
-                            <circle cx="141" cy="141" r="22" fill="#009933" class="clickable" onclick="loadLore('pareah')"/>
-                        </g>
-
-                        <!-- WOLF-REISER SYSTEM (GOF2) -->
-                        <g transform="translate(1200, 800)">
-                            <circle cx="0" cy="0" r="150" class="orbit"/>
-                            <circle cx="0" cy="0" r="45" fill="#ff6600" class="clickable" onclick="loadLore('wolfreiser')"/>
-                            <text x="-75" y="75" class="map-label">Wolf-Reiser</text>
-                            <circle cx="150" cy="0" r="18" fill="#888" class="clickable" onclick="loadLore('wolfreiser')"/>
-                        </g>
-
-                        <!-- THYNOME SYSTEM (GOF2) -->
-                        <g transform="translate(1400, 2800)">
-                            <circle cx="0" cy="0" r="130" class="orbit"/>
-                            <circle cx="0" cy="0" r="55" fill="#ffffff" class="clickable" onclick="loadLore('thynome')"/>
-                            <text x="-60" y="85" class="map-label">Thynome</text>
-                            <circle cx="-92" cy="-92" r="14" fill="#44aaff" class="clickable" onclick="loadLore('thynome')"/>
-                        </g>
-
-                        <!-- TERMINUS OUTPOST -->
-                        <g transform="translate(2800, 800)">
-                            <circle cx="0" cy="0" r="25" fill="#ff0000" class="clickable" onclick="loadLore('terminus')"/>
-                            <text x="-100" y="50" class="map-label">Terminus Outpost</text>
-                        </g>
-
-                    </svg>
+                <div id="map-viewport" data-zoom="1">
+                    <svg id="map-canvas" viewBox="0 0 8000 8000"></svg>
                 </div>
-
-                <!-- Map Side Panel -->
                 <div id="map-side-panel">
                     <h2 id="panel-title" class="panel-title">Astrometrics</h2>
-                    <p id="panel-desc">Select a star system, planet, or station on the map to view its databank entry.</p>
-                    <div style="background:#000; padding:15px; border-radius:5px; margin-top:20px;">
-                        <strong style="color:#ff9900;">CONTROLS:</strong><br><br>
-                        • <strong>Scroll Wheel:</strong> Zoom In / Out<br>
-                        • <strong>Click & Drag:</strong> Pan Map<br>
-                        • <strong>Click Object:</strong> Load Lore
-                    </div>
+                    <p id="panel-desc">Select a system or planet.</p>
+                    <p id="panel-resources" style="color:#cc66ff; font-weight:bold;"></p>
                 </div>
             </div>
         </div>
 
-        <!-- 03 LORE DATABANKS PAGE -->
+        <!-- LORE STORAGE BANKS -->
         <div id="lore" class="page-section">
-            <h2 style="color: #99ccff;">Ship's Databanks</h2>
-            <p>Select an entry from the map to read it here, or browse the master files.</p>
-            
-            <div class="card">
-                <h3 style="color:#ff9900;">Astral Supply Co.</h3>
-                <p>An interstellar medium-sized freight company specializing in hazardous materials. Family-owned by the Tora-katasu clan. They operate a private fleet of transport and security ships, maintaining the Night Star and Day Star stations.</p>
-            </div>
-            <div class="card">
-                <h3 style="color:#ff9900;">ISRB (Independent Services Review Board)</h3>
-                <p>An independent organization that handles contracts, licenses, and rights to legitimize mercenary operations. Breaking an ISRB contract classifies a crew as "rogues."</p>
-            </div>
-            <div class="card">
-                <h3 style="color:#ff9900;">The Setrean Species</h3>
-                <p>A resilient species inhabiting Gastron in the Brunhilde system. They utilize advanced robotics (10-20 meter mechs) and heavily armored, sensor-baffling starships powered by ion propulsion.</p>
+            <h2 style="color: #cc0000;">Lore & Mission Reports</h2>
+            <p>Select a file from the databanks below to read the report.</p>
+            <div id="lore-list" style="margin-bottom: 20px;"></div>
+            <div id="lore-reader" class="card" style="display:none;">
+                <h3 id="lore-reader-title" style="color:#ff9900;"></h3>
+                <p id="lore-reader-date" style="color:#99ccff; font-size:12px;"></p>
+                <p id="lore-reader-content"></p>
             </div>
         </div>
 
-        <!-- 04 CREW ROSTER PAGE -->
-        <div id="crew" class="page-section">
-            <h2 style="color: #ffcc99;">Active Crew Roster</h2>
-            
-            <div class="card">
-                <h3 style="color:#ff9900;">Captain Stellar</h3>
-                <p><strong>Rank:</strong> Captain (4 Gold Pips)<br><strong>Department:</strong> Command & CONN (Blue)</p>
-                <p>The commanding officer of the XSV Stardust. Runs a tight ship and ensures the ISRB contracts get paid.</p>
-            </div>
-            <div class="card">
-                <h3 style="color:#cc66ff;">Commander Roman von Ungern-Sternberg</h3>
-                <p><strong>Rank:</strong> Commander (3 Gold Pips)<br><strong>Department:</strong> Command / First Officer</p>
-                <p>Second in command. Handles ship operations and ensures the crew follows protocol.</p>
-            </div>
-            <div class="card">
-                <h3 style="color:#99ccff;">Lieutenant Aika Yasuda</h3>
-                <p><strong>Rank:</strong> XSV Lieutenant (2 Gold Pips)<br><strong>Department:</strong> Operations</p>
-                <p>Key crewmember handling vital ship systems and away missions.</p>
-            </div>
-        </div>
-
-        <!-- 05 SHIP STATS PAGE -->
-        <div id="stats" class="page-section">
-            <h2 style="color: #cc0000;">Ship Systems Dashboard</h2>
-            <p>Update current levels manually after missions, combat, or jumps. These stats reflect the current RP state of the XSV Stardust.</p>
-            
-            <div style="margin-top: 30px;">
-                <div class="stat-row"><span>Hull Integrity:</span> <input type="text" value="100%"></div>
-                <div class="stat-row"><span>Shield Emitters:</span> <input type="text" value="100%"></div>
-                <div class="stat-row"><span>Warp Fuel (Plasma):</span> <input type="text" value="85%"></div>
-                <div class="stat-row"><span>Life Support (O2):</span> <input type="text" value="98%"></div>
-                <div class="stat-row"><span>Water Reclamation:</span> <input type="text" value="RESTRICTED"></div>
-                <div class="stat-row"><span>Replicator Rations:</span> <input type="text" value="Nominal"></div>
-            </div>
-        </div>
-
-        <!-- 06 SHIP RULES PAGE -->
-        <div id="rules" class="page-section">
-            <h2 style="color: #ff9900;">Official Roleplay Guide & Ship Rules</h2>
-            
-            <div class="text-block">
-                <h3 style="color:#99ccff;">Dress Code & Uniforms</h3>
-                <p>We are open to most uniforms! While we have "official" uniforms, you may wear what you like as long as it stays within the sci-fi/Trek theme. Civilian attire is allowed off-duty.</p>
-                <p>• <strong>Females:</strong> Short skirts, thigh-highs, bodysuits, and form-fitting attire are highly encouraged!<br>
-                • <strong>Males:</strong> For men... pants. XD (Bodysuit uniforms are highly encouraged as well!)</p>
-            </div>
-
-            <div class="text-block">
-                <h3 style="color:#99ccff;">Shuttle Operations & IC Protocols</h3>
-                <p><strong>1. Alarms & Red Alerts:</strong> When the alarm sounds, return to your duty station immediately. All personal activities are suspended.</p>
-                <p><strong>2. Resource Conservation:</strong> Lavatory and sonic shower usage is strictly rationed. Access is logged. Holding it is part of the job, and unauthorized use will result in IC reprimands.</p>
-                <p><strong>3. Cramped Quarters:</strong> Keep your gear stowed. If left out, Command will place it in the community locker or recycler.</p>
-            </div>
-
-            <div class="text-block">
-                <h3 style="color:#99ccff;">OOC Rules & Consent</h3>
-                <p>• <strong>Adult Themes:</strong> Strictly 18+. Lewd scenes/ERP allowed, but keep them out of main open areas during active missions. Getting caught by an officer means IC consequences!<br>
-                • <strong>Consent:</strong> Required before combat, sexual touching, mutilation, or perma-death.<br>
-                • <strong>No God-Modding:</strong> Your character is not invincible. You must have weaknesses.</p>
+        <!-- VESSELS -->
+        <div id="vessels" class="page-section">
+            <h2 style="color: #ff9900;">Fleet Registry</h2>
+            <div id="vessel-list" style="display:flex; gap:10px; margin-bottom:20px;"></div>
+            <div id="vessel-details" class="card" style="display:none;">
+                <h3 id="vessel-name" style="color:#cc66ff;"></h3>
+                <p id="vessel-desc"></p>
+                <div id="vessel-stats" style="margin-top:20px;"></div>
             </div>
         </div>
 
     </div>
 
-    <!-- ========================================== -->
-    <!-- JAVASCRIPT LOGIC -->
-    <!-- ========================================== -->
-    <script>
-        // --- PAGE NAVIGATION ---
-        function showPage(pageId) {
-            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active-page'));
-            document.getElementById(pageId).classList.add('active-page');
-            
-            // Update Header Title
-            const titles = { 'home': '01-HOME', 'map': '02-ASTROMETRICS', 'lore': '03-DATABANKS', 'crew': '04-CREW ROSTER', 'stats': '05-SHIP STATS', 'rules': '06-SHIP RULES' };
-            document.getElementById('header-title').innerText = titles[pageId];
-        }
-
-        // --- LORE DATABASE ---
-        const loreDB = {
-            'brunhilde': { title: 'Brunhilde System', text: 'Main Sequence F-Class Star. The core of Setrean space. A war-torn system recovering from the Leiverta Monarchy collapse. Contains 5 planets and the Day Star Station.' },
-            'gastron': { title: 'Gastron', text: 'Lush, mountainous homeworld of the Setrean people. 80% covered in lakes and forests. Orbit contains major shipyards and trade hubs.' },
-            'militia': { title: 'Militia', text: 'Toxic, barren rock bombarded by solar winds. Contains hidden military bases and ruined structures.' },
-            'necron': { title: 'Necron', text: 'Blue gas giant surrounded by an asteroid belt. Hidden mining stations and orbital refineries are located here.' },
-            'varlupra': { title: 'Var Lupra System', text: 'Uncharted B5-Class Star System. Hostile and humid. Source of the ancient "Abruix" ghost signal.' },
-            'naokin': { title: 'Naokin', text: 'Volcanic, geologically unstable world with a toxic sulfuric acid atmosphere.' },
-            'pareah': { title: 'Pareah', text: 'Jungle world teeming with hostile flora and nocturnal Gy\'zoma beasts. The Abruix signal originates here.' },
-            'outpost79': { title: 'Outpost 79 / Warren Gateway', text: 'Starfleet border station guarding the stable inter-dimensional wormhole connecting the Alpha Quadrant to the Crux Constellation. A neutral hub for mercenaries and diplomats.' },
-            'terminus': { title: 'Terminus Outpost', text: 'A small, independent Forward Operating Base and free-port. A discreet layover for mercenary crews, smugglers, and privateers operating off the books.' },
-            'wolfreiser': { title: 'Wolf-Reiser System', text: 'A bustling system known for heavy industrial mining and corporate espionage. (GOF2 Sector)' },
-            'thynome': { title: 'Thynome System', text: 'Home to Thynome Station and the Thynome Vector Foundation. Known for advanced ship manufacturing and research. (GOF2 Sector)' }
-        };
-
-        function loadLore(id) {
-            if(loreDB[id]) {
-                document.getElementById('panel-title').innerText = loreDB[id].title;
-                document.getElementById('panel-desc').innerText = loreDB[id].text;
-            }
-        }
-
-        // --- MAP ZOOM & PAN LOGIC ---
-        const viewport = document.getElementById('map-viewport');
-        const canvas = document.getElementById('map-canvas');
-        
-        // Initial Camera Settings (Centered on Zavares)
-        let scale = 0.4; 
-        let panX = -400;
-        let panY = -200;
-        let isDragging = false;
-        let startX, startY;
-
-        function updateTransform() {
-            canvas.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
-        }
-        updateTransform(); // Apply on load
-
-        // Mouse Wheel Zoom
-        viewport.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            
-            // Get mouse position relative to viewport
-            const rect = viewport.getBoundingClientRect();
-            const mouseX = e.clientX - rect.left;
-            const mouseY = e.clientY - rect.top;
-
-            // Calculate zoom
-            const zoomFactor = 0.1;
-            const direction = e.deltaY < 0 ? 1 : -1;
-            let newScale = scale * (1 + direction * zoomFactor);
-            
-            // Clamp scale between 0.15 (Galaxy view) and 3.0 (Planet view)
-            newScale = Math.max(0.15, Math.min(newScale, 3.0));
-
-            // Adjust pan to zoom towards the mouse cursor
-            const scaleRatio = newScale / scale;
-            panX = mouseX - (mouseX - panX) * scaleRatio;
-            panY = mouseY - (mouseY - panY) * scaleRatio;
-            
-            scale = newScale;
-            updateTransform();
-        });
-
-        // Click and Drag Pan
-        viewport.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX - panX;
-            startY = e.clientY - panY;
-            viewport.style.cursor = 'grabbing';
-        });
-
-        window.addEventListener('mouseup', () => { 
-            isDragging = false; 
-            viewport.style.cursor = 'grab';
-        });
-        
-        window.addEventListener('mouseleave', () => { 
-            isDragging = false; 
-            viewport.style.cursor = 'grab';
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            panX = e.clientX - startX;
-            panY = e.clientY - startY;
-            updateTransform();
-        });
-    </script>
+    <!-- LOAD DATABASES & ENGINE -->
+    <script src="db_systems.js"></script>
+    <script src="db_crew.js"></script>
+    <script src="db_vessels.js"></script>
+    <script src="db_lore.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
