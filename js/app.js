@@ -4,6 +4,8 @@
 
 import { loadCategories } from "./ui.js";
 import { closePanel } from "./panel.js";
+import { starSystems } from "../data/db_star_systems.js";
+import orbitsData from "../data/db_orbits.js";
 
 const header = document.getElementById("main-header");
 const mainContent = document.getElementById("main-content");
@@ -110,18 +112,19 @@ function initializeHierarchicalMap() {
     
     // 8 Varix Sectors with political boundaries
     const sectors = [
-        { id: "varix_core", name: "Varix Core", x: -300, y: -200, radius: 400, color: "#ff6633", systems: ["trinary_system", "core_echo", "core_research"] },
-        { id: "crux_frontier", name: "Crux Frontier", x: 300, y: -200, radius: 400, color: "#ff9944", systems: ["void_scar", "polar_gate"] },
-        { id: "outer_rim", name: "Outer Rim", x: 600, y: 200, radius: 350, color: "#ffaa55", systems: ["brunhilde_system", "var_lupra_system"] },
-        { id: "void_edge", name: "Void Edge", x: -600, y: 200, radius: 350, color: "#ff7722", systems: [] },
-        { id: "cardinal_reach", name: "Cardinal Reach", x: 0, y: 600, radius: 350, color: "#ff8833", systems: [] },
-        { id: "spiral_arc", name: "Spiral Arc", x: -200, y: -600, radius: 350, color: "#ffaa44", systems: [] },
-        { id: "deep_dark", name: "Deep Dark", x: 200, y: -600, radius: 350, color: "#ff6611", systems: [] },
-        { id: "warren_zone", name: "Warren Zone", x: 0, y: 0, radius: 300, color: "#ff9955", systems: ["warren_wormhole", "warren_station"] }
+        { id: 1, name: "Varix Core", x: -350, y: -300, radius: 300, color: "#ff6633" },
+        { id: 2, name: "Crux Frontier", x: -100, y: -400, radius: 300, color: "#ff9944" },
+        { id: 3, name: "Var Lupra Corridor", x: 250, y: -250, radius: 300, color: "#ffaa55" },
+        { id: 4, name: "Void Edge", x: 400, y: 0, radius: 300, color: "#ff7722" },
+        { id: 5, name: "Cardinal Reach", x: 250, y: 250, radius: 300, color: "#ff8833" },
+        { id: 6, name: "Spiral Arc", x: -100, y: 400, radius: 300, color: "#ffaa44" },
+        { id: 7, name: "Deep Dark", x: -350, y: 250, radius: 300, color: "#ff6611" },
+        { id: 8, name: "Warren Zone", x: 0, y: 0, radius: 250, color: "#ff9955" }
     ];
 
     let zoomLevel = 0; // 0=galaxy, 1=sector, 2=system, 3=planets
-    let selectedSystem = null;
+    let currentSector = null;
+    let currentSystem = null;
     let zoom = 1.0;
     let offsetX = 0;
     let offsetY = 0;
@@ -159,47 +162,195 @@ function initializeHierarchicalMap() {
     }
 
     function drawGalaxy() {
-        // Draw 8 sectors as political regions
+        // Draw 8 sectors as political regions with connecting lines
+        ctx.strokeStyle = "#ffaa55";
+        ctx.lineWidth = 1;
+        ctx.globalAlpha = 0.2;
+        
+        // Draw sector dividing lines (political map)
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2, 0);
+        ctx.lineTo(canvas.width / 2, canvas.height);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height / 2);
+        ctx.lineTo(canvas.width, canvas.height / 2);
+        ctx.stroke();
+        
+        ctx.globalAlpha = 1;
+
+        // Draw each sector
         sectors.forEach(sector => {
             const { sx, sy } = worldToScreen(sector.x, sector.y);
             
-            // Draw sector boundary
+            // Sector circle
             ctx.strokeStyle = sector.color;
             ctx.lineWidth = 2;
-            ctx.globalAlpha = 0.3;
+            ctx.globalAlpha = 0.4;
             ctx.beginPath();
             ctx.arc(sx, sy, sector.radius * zoom, 0, Math.PI * 2);
             ctx.stroke();
             ctx.globalAlpha = 1;
             
-            // Draw sector label
+            // Sector label
             ctx.fillStyle = sector.color;
-            ctx.font = `${12 * zoom}px Arial`;
+            ctx.font = `bold ${14 * Math.min(zoom, 1.5)}px Arial`;
             ctx.textAlign = "center";
-            ctx.fillText(sector.name, sx, sy);
+            ctx.textBaseline = "middle";
+            ctx.fillText(sector.name, sx, sy - 30);
+            
+            // Show system count
+            const systemsInSector = starSystems.filter(sys => sys.sector === sector.id);
+            ctx.fillStyle = "#aaaaff";
+            ctx.font = `${11 * Math.min(zoom, 1.5)}px Arial`;
+            ctx.fillText(`${systemsInSector.length} systems`, sx, sy + 30);
         });
     }
 
     function drawSector() {
-        // Draw systems in selected sector
-        ctx.fillStyle = "#ffcc88";
-        ctx.font = `14px Arial`;
+        if (!currentSector) return;
+
+        // Get all systems in this sector
+        const sectorSystems = starSystems.filter(sys => sys.sector === currentSector.id);
+        
+        // Draw sector background
+        const { sx, sy } = worldToScreen(currentSector.x, currentSector.y);
+        ctx.strokeStyle = currentSector.color;
+        ctx.lineWidth = 2;
+        ctx.globalAlpha = 0.2;
+        ctx.beginPath();
+        ctx.arc(sx, sy, currentSector.radius * zoom, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+
+        // Draw back button
+        ctx.fillStyle = "#ff9944";
+        ctx.font = "12px Arial";
+        ctx.textAlign = "left";
+        ctx.fillText("← Back to Galaxy", 20, 20);
+
+        // Draw title
+        ctx.fillStyle = currentSector.color;
+        ctx.font = "bold 18px Arial";
         ctx.textAlign = "center";
-        ctx.fillText("SECTOR VIEW - Click system to zoom", canvas.width / 2, 30);
+        ctx.fillText(currentSector.name, canvas.width / 2, 40);
+
+        // Draw systems
+        sectorSystems.forEach(system => {
+            const { sx, sy } = worldToScreen(system.position.x * 50, system.position.y * 50);
+            
+            // System circle
+            ctx.fillStyle = "#4488ff";
+            ctx.globalAlpha = 0.6;
+            ctx.beginPath();
+            ctx.arc(sx, sy, 12 * zoom, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+
+            // System label
+            ctx.fillStyle = "#ffcc88";
+            ctx.font = `${11 * zoom}px Arial`;
+            ctx.textAlign = "center";
+            ctx.fillText(system.title.split(" (")[0], sx, sy + 25);
+        });
     }
 
     function drawSystem() {
-        ctx.fillStyle = "#ffcc88";
-        ctx.font = `14px Arial`;
+        if (!currentSystem) return;
+
+        const systemData = orbitsData[currentSystem.id];
+        if (!systemData) return;
+
+        // Draw back button
+        ctx.fillStyle = "#ff9944";
+        ctx.font = "12px Arial";
+        ctx.textAlign = "left";
+        ctx.fillText("← Back to Sector", 20, 20);
+
+        // Draw title
+        ctx.fillStyle = "#ffaa55";
+        ctx.font = "bold 18px Arial";
         ctx.textAlign = "center";
-        ctx.fillText("SYSTEM VIEW - Orbital mechanics", canvas.width / 2, 30);
+        ctx.fillText(currentSystem.title, canvas.width / 2, 40);
+
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+
+        // Draw star
+        ctx.fillStyle = "#ffff88";
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Draw belts
+        if (systemData.belts) {
+            systemData.belts.forEach(belt => {
+                ctx.strokeStyle = "#888844";
+                ctx.lineWidth = belt.thickness;
+                ctx.globalAlpha = 0.3;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, belt.radius * zoom, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+            });
+        }
+
+        // Draw planets on orbits
+        if (systemData.planets) {
+            systemData.planets.forEach(planet => {
+                const angle = (planet.angle * Math.PI) / 180;
+                const px = centerX + Math.cos(angle) * planet.radius * zoom;
+                const py = centerY + Math.sin(angle) * planet.radius * zoom;
+
+                // Orbital ring
+                ctx.strokeStyle = "#4488ff";
+                ctx.lineWidth = 1;
+                ctx.globalAlpha = 0.2;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, planet.radius * zoom, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+
+                // Planet
+                ctx.fillStyle = "#44dd44";
+                ctx.beginPath();
+                ctx.arc(px, py, planet.size * zoom * 0.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Label
+                ctx.fillStyle = "#aaffaa";
+                ctx.font = `${10 * zoom}px Arial`;
+                ctx.textAlign = "center";
+                ctx.fillText(planet.id, px, py - planet.size * zoom - 5);
+            });
+        }
+
+        // Draw anomalies
+        if (systemData.anomalies) {
+            systemData.anomalies.forEach(anomaly => {
+                const angle = (anomaly.angle * Math.PI) / 180;
+                const ax = centerX + Math.cos(angle) * anomaly.radius * zoom;
+                const ay = centerY + Math.sin(angle) * anomaly.radius * zoom;
+
+                ctx.fillStyle = "#ff6666";
+                ctx.beginPath();
+                ctx.arc(ax, ay, 5 * zoom, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = "#ffaaaa";
+                ctx.font = `${9 * zoom}px Arial`;
+                ctx.textAlign = "center";
+                ctx.fillText(anomaly.id, ax, ay - 8 * zoom);
+            });
+        }
     }
 
     function drawPlanets() {
         ctx.fillStyle = "#ffcc88";
-        ctx.font = `14px Arial`;
+        ctx.font = "14px Arial";
         ctx.textAlign = "center";
-        ctx.fillText("PLANET VIEW", canvas.width / 2, 30);
+        ctx.fillText("PLANET DETAIL VIEW", canvas.width / 2, 30);
     }
 
     // Mouse wheel zoom
@@ -232,11 +383,35 @@ function initializeHierarchicalMap() {
         draw();
     });
 
-    // Click to select/zoom
+    // Click to navigate
     canvas.addEventListener("click", (e) => {
         const rect = canvas.getBoundingClientRect();
         const sx = e.clientX - rect.left;
         const sy = e.clientY - rect.top;
+
+        // Back button click
+        if (sy < 35) {
+            if (sx < 150) {
+                if (zoomLevel === 1) {
+                    zoomLevel = 0;
+                    currentSector = null;
+                    offsetX = 0;
+                    offsetY = 0;
+                    zoom = 1;
+                    draw();
+                    return;
+                } else if (zoomLevel === 2) {
+                    zoomLevel = 1;
+                    currentSystem = null;
+                    offsetX = 0;
+                    offsetY = 0;
+                    zoom = 1;
+                    draw();
+                    return;
+                }
+            }
+        }
+
         const { x, y } = screenToWorld(sx, sy);
 
         if (zoomLevel === 0) {
@@ -244,10 +419,26 @@ function initializeHierarchicalMap() {
             for (const sector of sectors) {
                 const dist = Math.hypot(x - sector.x, y - sector.y);
                 if (dist <= sector.radius) {
-                    selectedSystem = sector;
+                    currentSector = sector;
                     zoomLevel = 1;
-                    offsetX = -sector.x + canvas.width / (2 * zoom);
-                    offsetY = -sector.y + canvas.height / (2 * zoom);
+                    offsetX = 0;
+                    offsetY = 0;
+                    zoom = 1;
+                    draw();
+                    return;
+                }
+            }
+        } else if (zoomLevel === 1) {
+            // Check if clicked on system
+            const sectorSystems = starSystems.filter(sys => sys.sector === currentSector.id);
+            for (const system of sectorSystems) {
+                const dist = Math.hypot(x - system.position.x * 50, y - system.position.y * 50);
+                if (dist <= 20) {
+                    currentSystem = system;
+                    zoomLevel = 2;
+                    offsetX = 0;
+                    offsetY = 0;
+                    zoom = 1;
                     draw();
                     return;
                 }
