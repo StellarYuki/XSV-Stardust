@@ -3,43 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LCARS Databanks</title>
-
-    <!-- Styles -->
+    <title>XSV Stardust Terminal</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- Sidebar -->
+    <!-- LCARS Sidebar -->
     <div class="lcars-sidebar">
         <div class="lcars-title">XSV<br>STARDUST</div>
         <button class="lcars-tab tab-orange">HOME STATION</button>
         <button class="lcars-tab tab-purple">RULES & GUIDE</button>
         <button class="lcars-tab tab-blue">CREW REGISTRY</button>
-        <button class="lcars-tab tab-orange">ASTROMETRICS NAV</button>
-        <button class="lcars-tab tab-red">LORE STORAGE BANKS</button>
-        <button class="lcars-tab tab-orange">VESSELS</button>
+        <button class="lcars-tab tab-blue">ASTROMETRICS</button>
+        <button class="lcars-tab tab-red">STORAGE BANKS</button>
+        <button class="lcars-tab tab-orange">DOCKED VESSELS</button>
     </div>
 
     <!-- Accent Bar -->
     <div class="lcars-accent"></div>
 
     <!-- Header -->
-    <header>HOME STATION</header>
+    <header id="main-header">HOME STATION</header>
 
     <!-- Main Content -->
-    <div class="main-content">
+    <div class="main-content" id="main-content">
         <h2>WELCOME TO THE XSV STARDUST</h2>
         <p>
             We are an independent mercenary crew operating a heavily retrofitted Type‑17 Argo shuttle.
             While we officially operate under ISRB contracts in the Zavares Sector, we frequently take on
             off‑the‑books shadow‑contracts for Starfleet and other factions.
         </p>
-        <p>
-            We fly the jobs the big ships can’t, and we take the risks the military won’t. This terminal provides
-            access to our astrometrics sensors, crew manifests, mission reports, and vital vessel systems.
-        </p>
     </div>
-</body>
 
+    <!-- Databanks Container -->
+    <div id="databanks" class="lcars-container hidden">
+        <div id="db-categories" class="lcars-column"></div>
+        <div id="db-entries" class="lcars-column"></div>
+    </div>
+
+    <!-- Reader Panel -->
+    <div id="db-panel" class="lcars-panel hidden">
+        <h2 id="db-panel-title"></h2>
+        <div id="db-panel-content"></div>
+        <button id="close-panel" class="lcars-button">Close</button>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
 </html>
