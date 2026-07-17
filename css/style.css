@@ -203,3 +203,19 @@ header {
     border-radius: 8px;
     margin-bottom: 15px;
 }
+
+/* Close Button */
+.lcars-button {
+    background: #7f1fa2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: filter 0.2s ease;
+}
+
+.lcars-button:hover {
+    filter: brightness(1.2);
+}
