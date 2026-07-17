@@ -29,33 +29,103 @@ tabs.forEach(btn => {
             case "HOME STATION":
                 header.textContent = "HOME STATION";
                 mainContent.innerHTML = `
-                    <h2>WELCOME TO THE XSV STARDUST</h2>
-                    <p>
-                        We are an independent mercenary crew operating a heavily retrofitted Type‑17 Argo shuttle.
-                        While we officially operate under ISRB contracts in the Zavares Sector, we frequently take on
-                        off‑the‑books shadow‑contracts for Starfleet and other factions.
-                    </p>
+                    <div class="content-section">
+                        <h2>WELCOME TO THE XSV STARDUST</h2>
+                        <p>
+                            We are an independent mercenary crew operating a heavily retrofitted Type‑17 Argo shuttle, 
+                            designated the <strong>XSV Stardust</strong>. Our vessel has been extensively upgraded with 
+                            experimental technology and cutting-edge systems to handle the most dangerous contracts in the galaxy.
+                        </p>
+                        <p>
+                            While we officially operate under <strong>ISRB contracts in the Zavares Sector</strong>, 
+                            we frequently take on off-the-books shadow-contracts for Starfleet, private corporations, 
+                            and independent factions throughout the Varix Galaxy.
+                        </p>
+                        
+                        <h3>Station Overview</h3>
+                        <ul>
+                            <li><strong>Crew Capacity:</strong> 3 Active + Support AI</li>
+                            <li><strong>Mission Status:</strong> OPERATIONAL</li>
+                            <li><strong>Current Location:</strong> Varix Core - Trinary System</li>
+                            <li><strong>Hull Integrity:</strong> 94%</li>
+                            <li><strong>Power Core:</strong> At Full Capacity</li>
+                        </ul>
+                        
+                        <h3>Recent Briefing</h3>
+                        <p>
+                            Our last successful operation netted significant salvage and intelligence. The crew has returned 
+                            to dock for repairs, resupply, and briefing on the next assignment. Stellar's navigation logs 
+                            indicate unusual activity near the Blue Current Nebula that warrants investigation.
+                        </p>
+                    </div>
                 `;
                 break;
 
             case "RULES & GUIDE":
                 header.textContent = "RULES & GUIDE";
                 mainContent.innerHTML = `
-                    <h2>CREW RULES & GUIDE</h2>
-                    <p>
-                        This section will contain your rules, guidelines, and operational procedures for the XSV Stardust
-                        and associated stations or outposts.
-                    </p>
+                    <div class="content-section">
+                        <h2>CREW OPERATIONAL PROCEDURES</h2>
+                        
+                        <h3>Core Principles</h3>
+                        <ol>
+                            <li><strong>Mission First:</strong> Completion of assigned objectives takes priority. No crew member left behind.</li>
+                            <li><strong>Safety Protocols:</strong> All EVA operations require at least 2-person teams with comms check every 30 seconds.</li>
+                            <li><strong>Chain of Command:</strong> Stellar Yuki (Captain) → Aika (Operations) → Roman (Engineering)</li>
+                            <li><strong>Weapons Protocol:</strong> Authorization required from Captain before armed engagement. Lethal force only when life is threatened.</li>
+                        </ol>
+                        
+                        <h3>Equipment & Maintenance</h3>
+                        <ul>
+                            <li>All equipment must be logged and properly stored after use</li>
+                            <li>Weapon systems require weekly calibration</li>
+                            <li>Medical supplies inventory checked daily</li>
+                            <li>Stardust's reactor core requires biweekly maintenance checks</li>
+                        </ul>
+                        
+                        <h3>Communication Standards</h3>
+                        <ul>
+                            <li>All ship-to-ship communications use encrypted Channel 7</li>
+                            <li>Status reports submitted every 4 hours during active operations</li>
+                            <li>Emergency frequencies: 7.3 MHz (immediate distress), 6.8 MHz (backup)</li>
+                        </ul>
+                        
+                        <h3>Off-Duty Protocols</h3>
+                        <p>Crew members are entitled to minimum 8 hours rest between operations. Personal activities must not interfere with ship readiness.</p>
+                    </div>
                 `;
                 break;
 
             case "CREW REGISTRY":
                 header.textContent = "CREW REGISTRY";
                 mainContent.innerHTML = `
-                    <h2>CREW REGISTRY</h2>
-                    <p>
-                        This section will list your crew members, roles, and profiles. (Stellar: Blue, Aika & Roman: Red.)
-                    </p>
+                    <div class="content-section">
+                        <h2>XSV STARDUST CREW MANIFEST</h2>
+                        
+                        <div class="crew-member blue">
+                            <h3>Stellar Yuki - CAPTAIN</h3>
+                            <p><strong>Role:</strong> Command & Navigation</p>
+                            <p><strong>Specialty:</strong> Tactical planning, stellar navigation, diplomatic negotiation</p>
+                            <p><strong>Status:</strong> Active</p>
+                            <p>Veteran pilot with 12+ years in deep space operations. Expert in reading space anomalies and charting safe routes through hostile territories.</p>
+                        </div>
+                        
+                        <div class="crew-member red">
+                            <h3>Aika - OPERATIONS OFFICER</h3>
+                            <p><strong>Role:</strong> Systems Management & Logistics</p>
+                            <p><strong>Specialty:</strong> Ship systems diagnostics, crew coordination, problem-solving</p>
+                            <p><strong>Status:</strong> Active</p>
+                            <p>Brilliant systems engineer with expertise in AI integration. Can troubleshoot almost any shipboard system under pressure.</p>
+                        </div>
+                        
+                        <div class="crew-member red">
+                            <h3>Roman - CHIEF ENGINEER</h3>
+                            <p><strong>Role:</strong> Engineering & Reactor Operations</p>
+                            <p><strong>Specialty:</strong> Power systems, propulsion, exotic technology</p>
+                            <p><strong>Status:</strong> Active</p>
+                            <p>Expert in experimental drive systems and weapons engineering. Keeps the Stardust running on a shoestring budget through sheer ingenuity.</p>
+                        </div>
+                    </div>
                 `;
                 break;
 
@@ -88,10 +158,61 @@ tabs.forEach(btn => {
             case "DOCKED VESSELS":
                 header.textContent = "DOCKED VESSELS";
                 mainContent.innerHTML = `
-                    <h2>DOCKED VESSELS</h2>
-                    <p>
-                        This section will list vessels currently docked or associated with Astral Supply Co. and the XSV Stardust.
-                    </p>
+                    <div class="content-section">
+                        <h2>XSV STARDUST - VESSEL STATUS REPORT</h2>
+                        
+                        <div class="vessel-stats">
+                            <div class="stat-group">
+                                <h3>Hull & Structure</h3>
+                                <p><strong>Hull Integrity:</strong> 94% <span style="color: #44dd44;">■■■■■■■■■□</span></p>
+                                <p><strong>Shielding:</strong> 87% <span style="color: #4488ff;">■■■■■■■■□□</span></p>
+                                <p><strong>Hull Classification:</strong> Type-17 Argo (Modified)</p>
+                                <p><strong>Displacement:</strong> 450 metric tons</p>
+                                <p><strong>Crew Quarters:</strong> 3 crew pods + 1 medical bay</p>
+                            </div>
+                            
+                            <div class="stat-group">
+                                <h3>Power Systems</h3>
+                                <p><strong>Primary Reactor:</strong> Quantum-Core Mark VII @ 100% <span style="color: #ffff88;">▰▰▰▰▰▰▰▰▰▰</span></p>
+                                <p><strong>Backup Battery:</strong> 74 hours autonomy remaining</p>
+                                <p><strong>Power Distribution:</strong> Nominal</p>
+                                <p><strong>Capacitor Banks:</strong> Charged</p>
+                            </div>
+                            
+                            <div class="stat-group">
+                                <h3>Propulsion</h3>
+                                <p><strong>Primary Engines:</strong> Fluid Warp Drive (Experimental) @ 85% efficiency</p>
+                                <p><strong>RCS Thrusters:</strong> 12x functional</p>
+                                <p><strong>Max Velocity:</strong> Warp 4.7 (Standard cruise: Warp 2.1)</p>
+                                <p><strong>Fuel Status:</strong> 91% <span style="color: #ff9944;">■■■■■■■■■◻</span></p>
+                            </div>
+                            
+                            <div class="stat-group">
+                                <h3>Armaments</h3>
+                                <p><strong>Plasma Cannons:</strong> 2x (70% charge)</p>
+                                <p><strong>Torpedo Tubes:</strong> 1x (5 torpedoes loaded)</p>
+                                <p><strong>Point Defense:</strong> 4x rapid-fire pulse cannons</p>
+                                <p><strong>EMP Generator:</strong> Available (1 hour cooldown)</p>
+                            </div>
+                            
+                            <div class="stat-group">
+                                <h3>Systems & Sensors</h3>
+                                <p><strong>Sensor Array:</strong> Long-range, 8 light-year radius</p>
+                                <p><strong>Communications:</strong> Full-spectrum, encrypted channels active</p>
+                                <p><strong>AI Assistant:</strong> Online and operational</p>
+                                <p><strong>Life Support:</strong> All green - 2 years consumables aboard</p>
+                                <p><strong>Cloaking Device:</strong> Experimental (70% operational, 4-hour duration max)</p>
+                            </div>
+                            
+                            <div class="stat-group">
+                                <h3>Maintenance Schedule</h3>
+                                <p><strong>Last Major Overhaul:</strong> 6 months ago</p>
+                                <p><strong>Next Scheduled Maintenance:</strong> 2 months</p>
+                                <p><strong>Known Issues:</strong> Starboard deflector plate alignment (minor)</p>
+                                <p><strong>Recommended Repairs:</strong> Thruster D-4 replacement</p>
+                            </div>
+                        </div>
+                    </div>
                 `;
                 break;
         }
