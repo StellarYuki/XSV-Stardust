@@ -1,291 +1,255 @@
-/* assets/css/style.css */
-
-/* LCARS Color Palette & Variables */
-:root {
-    --bg-color: #000000;
-    --text-main: #FFCC99;
-    --lcars-orange: #FF9900;
-    --lcars-light-orange: #FFCC99;
-    --lcars-purple: #CC99FF;
-    --lcars-dark-purple: #9966FF;
-    --lcars-blue: #99CCFF;
-    --lcars-dark-blue: #3366FF;
-    --lcars-red: #FF3333;
-    --lcars-dark-red: #CC0000;
-    --font-main: 'Oswald', sans-serif;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+/* =========================
+   Base / LCARS Layout
+   ========================= */
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: var(--font-main);
-    text-transform: uppercase;
-    overflow: hidden; /* Prevent full page scroll, handle inside containers */
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+/* Sidebar */
+
+.lcars-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 180px;
     height: 100vh;
-    display: flex;
-}
-
-/* --- Layout Structure --- */
-.lcars-app-container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    padding: 15px;
-    gap: 15px;
-}
-
-/* --- Left Navigation (The Elbow) --- */
-.lcars-nav {
+    background: #000;
     display: flex;
     flex-direction: column;
-    width: 200px;
-    flex-shrink: 0;
-}
-
-.lcars-top-elbow {
-    background-color: var(--lcars-orange);
-    height: 80px;
-    border-top-left-radius: 40px;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding-right: 20px;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-    width: 100vw; /* Stretches across top */
-    max-width: calc(100vw - 30px);
-    z-index: 10;
-}
-
-.lcars-elbow-inner {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: calc(100% - 150px);
-    height: 50px;
-    background-color: var(--bg-color);
-    border-top-left-radius: 25px;
+    padding-top: 20px;
 }
 
 .lcars-title {
-    color: var(--bg-color);
-    font-size: 24px;
-    z-index: 11;
-    letter-spacing: 2px;
+    color: #ffcc66;
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
 
-.lcars-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    height: 100%;
-}
-
-.lcars-btn, .lcars-block {
+.lcars-tab {
     width: 150px;
-    text-align: right;
     padding: 10px 15px;
-    font-family: var(--font-main);
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    color: var(--bg-color);
+    margin: 5px 0;
+    border-radius: 0 20px 20px 0;
+    color: white;
+    font-weight: bold;
+    text-align: left;
     cursor: pointer;
-    transition: filter 0.2s;
+    border: none;
+    font-size: 14px;
+    transition: filter 0.2s ease;
 }
 
-.lcars-btn:hover {
-    filter: brightness(1.3);
+.tab-orange { background: #b36b00; }
+.tab-purple { background: #7f1fa2; }
+.tab-blue   { background: #004b8d; }
+.tab-red    { background: #a60000; }
+
+.lcars-tab:hover {
+    filter: brightness(1.2);
 }
 
-.lcars-btn.active {
+/* Accent bar */
+
+.lcars-accent {
+    position: fixed;
+    left: 180px;
+    top: 0;
+    width: 10px;
+    height: 100vh;
+    background: #ff9900;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Header */
+
+header {
+    margin-left: 200px;
+    background: #7f1fa2;
     color: #fff;
-    box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
+    padding: 15px 20px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 0 20px 0 0;
 }
 
-.flex-grow {
-    flex-grow: 1;
+/* Main content */
+
+.main-content {
+    margin-left: 200px;
+    padding: 30px;
 }
 
-/* --- Colors --- */
-.btn-orange, .block-orange { background-color: var(--lcars-orange); }
-.btn-purple, .block-purple { background-color: var(--lcars-purple); }
-.btn-blue, .block-blue { background-color: var(--lcars-blue); }
-.btn-red, .block-red { background-color: var(--lcars-red); }
-.bar-orange { background-color: var(--lcars-orange); color: var(--bg-color); }
-.bar-purple { background-color: var(--lcars-purple); color: var(--bg-color); }
-.bar-blue { background-color: var(--lcars-blue); color: var(--bg-color); }
-.bar-red { background-color: var(--lcars-red); color: var(--bg-color); }
+.main-content h2 {
+    color: #66ccff;
+    margin-top: 0;
+}
 
-/* --- Main Content Area --- */
-.lcars-content {
-    flex-grow: 1;
+.main-content p {
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* =========================
+   Databanks Layout
+   ========================= */
+
+.hidden {
+    display: none;
+}
+
+.databanks {
+    margin-left: 200px;
+    padding: 20px 30px;
+    color: #fff;
+}
+
+.databanks-header h2 {
+    margin: 0;
+    background: #7f1fa2;
+    padding: 10px 15px;
+    border-radius: 10px 10px 0 0;
+}
+
+.databanks-header h3 {
+    margin: 10px 0 5px;
+    color: #66ccff;
+}
+
+.databanks-header p {
+    margin: 0 0 15px;
+    color: #ccc;
+}
+
+.databanks-body {
+    display: flex;
+    gap: 20px;
+}
+
+/* Columns */
+
+.db-column {
+    flex: 1;
+    background: #111;
+    border-radius: 10px;
+    padding: 15px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* Category buttons (left, gold) */
+
+.db-category-btn {
+    display: block;
+    width: 100%;
+    background: #ffcc66;
+    color: #000;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    font-weight: bold;
+    transition: filter 0.2s ease;
+}
+
+.db-category-btn:hover {
+    filter: brightness(1.15);
+}
+
+/* Entry buttons (right, blue) */
+
+.db-entry-btn {
+    display: block;
+    width: 100%;
+    background: #66ccff;
+    color: #000;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    font-weight: bold;
+    transition: filter 0.2s ease;
+}
+
+.db-entry-btn:hover {
+    filter: brightness(1.15);
+}
+
+/* =========================
+   Centered Detail Panel
+   ========================= */
+
+.db-panel {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.db-panel-inner {
+    background: #111;
+    border-radius: 12px;
+    width: 60%;
+    max-width: 900px;
+    max-height: 80vh;
+    padding: 20px 25px;
+    border: 3px solid #ff9966;
     display: flex;
     flex-direction: column;
-    margin-top: 85px; /* Offset for the top elbow */
-    height: calc(100% - 85px);
     position: relative;
 }
 
-.page {
-    display: none;
-    height: 100%;
-    flex-direction: column;
-    animation: fadeIn 0.3s ease-in-out;
-}
+/* Static close button (does not scroll) */
 
-.page.active {
-    display: flex;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateX(10px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-.header-bar {
-    padding: 5px 15px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-    display: inline-block;
-}
-
-.content-pad {
-    padding: 0 20px;
-    overflow-y: auto;
-    flex-grow: 1;
-}
-
-.content-pad h3 { color: var(--lcars-blue); margin-bottom: 10px; }
-.content-pad p, .content-pad ul { margin-bottom: 15px; line-height: 1.5; text-transform: none; }
-.content-pad ul { padding-left: 20px; }
-
-.directive-box {
-    border: 2px solid var(--lcars-red);
-    padding: 15px;
-    border-radius: 10px;
-    background: rgba(204, 0, 0, 0.1);
-}
-
-.lcars-link {
-    color: var(--lcars-orange);
-    text-decoration: none;
-}
-.lcars-link:hover { text-decoration: underline; }
-
-/* --- Grid & Cards (Crew) --- */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.crew-card {
-    border: 2px solid var(--lcars-purple);
-    border-radius: 15px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: rgba(204, 153, 255, 0.05);
-}
-
-.crew-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid var(--lcars-blue);
-}
-
-/* --- Split View (Lore & Vessels) --- */
-.split-view {
-    display: flex;
-    gap: 20px;
-    height: 100%;
-}
-
-.list-pane {
-    width: 30%;
-    border-right: 2px solid var(--lcars-orange);
-    padding-right: 10px;
-    overflow-y: auto;
-}
-
-.list-item {
-    background: var(--lcars-dark-blue);
-    color: var(--bg-color);
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 10px;
+.db-panel-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #7f1fa2;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
 }
-.list-item:hover { background: var(--lcars-blue); }
 
-.reader-pane {
-    width: 70%;
-    padding: 10px;
+.db-panel-close:hover {
+    filter: brightness(1.2);
+}
+
+/* Panel content scrolls independently */
+
+.db-panel-content {
+    margin-top: 40px; /* space under close button */
     overflow-y: auto;
+    max-height: calc(80vh - 80px);
+    line-height: 1.6;
+    color: #ddd;
 }
 
-/* --- Vessel Dashboard Inputs --- */
-.vessel-stat-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.vessel-stat-group label {
-    width: 100px;
-    color: var(--lcars-orange);
-}
-.vessel-stat-group input {
-    background: var(--bg-color);
-    border: 1px solid var(--lcars-blue);
-    color: var(--lcars-light-orange);
-    padding: 5px 10px;
-    font-family: var(--font-main);
-    font-size: 16px;
-    border-radius: 10px;
-    width: 150px;
+.db-panel h2 {
+    margin: 0 0 10px;
+    color: #66ccff;
 }
 
-/* --- Astrometrics Map --- */
-.astrometrics-container {
-    display: flex;
-    height: calc(100% - 50px);
-    gap: 15px;
-}
+/* Optional: profile / station images later */
 
-#map-viewport {
-    flex-grow: 1;
-    background: #050510;
-    border: 2px solid var(--lcars-purple);
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden; /* Crucial for pan/zoom */
-    cursor: grab;
-}
-#map-viewport:active { cursor: grabbing; }
-
-#map-content {
+.db-profile-img {
     width: 100%;
-    height: 100%;
-    transform-origin: 0 0; /* Zoom from top left, JS handles offset */
-}
-
-.side-panel {
-    width: 300px;
-    background: rgba(153, 102, 255, 0.1);
-    border: 2px solid var(--lcars-purple);
-    border-radius: 20px;
-    padding: 15px;
-    overflow-y: auto;
+    max-width: 320px;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
