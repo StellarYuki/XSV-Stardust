@@ -192,10 +192,14 @@ header {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.7);
-    display: flex;
+    display: none; /* hidden by default */
     align-items: center;
     justify-content: center;
     z-index: 999;
+}
+
+.db-panel.open {
+    display: flex; /* only visible when .open is added */
 }
 
 .db-panel-inner {
@@ -211,7 +215,7 @@ header {
     position: relative;
 }
 
-/* Static close button (does not scroll) */
+/* Static close button */
 
 .db-panel-close {
     position: absolute;
@@ -230,10 +234,10 @@ header {
     filter: brightness(1.2);
 }
 
-/* Panel content scrolls independently */
+/* Scrollable content */
 
 .db-panel-content {
-    margin-top: 40px; /* space under close button */
+    margin-top: 40px;
     overflow-y: auto;
     max-height: calc(80vh - 80px);
     line-height: 1.6;
