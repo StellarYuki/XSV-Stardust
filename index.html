@@ -11,7 +11,7 @@
     <div id="lcars-nav">
         <div class="nav-title">XSV<br>STARDUST</div>
         <button class="lcars-btn" onclick="showPage('home')">Home Station</button>
-        <button class="lcars-btn btn-purple" onclick="showPage('rules')">Stardust Rules</button>
+        <button class="lcars-btn btn-purple" onclick="showPage('rules')">Rules & Guide</button>
         <button class="lcars-btn btn-blue" onclick="showPage('crew')">Crew Registry</button>
         <button class="lcars-btn btn-pale" onclick="showPage('map')">Astrometrics Nav</button>
         <button class="lcars-btn btn-red" onclick="showPage('lore')">Lore Storage Banks</button>
@@ -25,12 +25,12 @@
 
         <!-- HOME STATION -->
         <div id="home" class="page-section active-page">
-            <h2 style="color: #99ccff;">Welcome to the Sabers of Fortune Hub</h2>
-            <p>We are an independent mercenary crew operating under ISRB contract. We fly the jobs the big ships can't, and we take the risks the military won't.</p>
-            <p>This terminal provides access to our astrometrics sensors, crew manifests, mission reports, and vital vessel systems.</p>
+            <h2 style="color: #99ccff;">Welcome to the XSV Stardust</h2>
+            <p>We are an independent mercenary crew operating a heavily retrofitted Type-17 Argo shuttle. While we officially operate under ISRB contracts in the Zavares Sector, we frequently take on off-the-books shadow-contracts for Starfleet and other factions.</p>
+            <p>We fly the jobs the big ships can't, and we take the risks the military won't. This terminal provides access to our astrometrics sensors, crew manifests, mission reports, and vital vessel systems.</p>
         </div>
 
-        <!-- STARDUST RULES -->
+        <!-- RULES & GUIDE -->
         <div id="rules" class="page-section">
             <h2 style="color:#ff9900;">Official Roleplay Guide & Guidelines</h2>
             <div id="rules-container"></div>
@@ -60,11 +60,11 @@
         <div id="lore" class="page-section">
             <h2 style="color: #cc0000;">Lore & Mission Reports</h2>
             <p>Select a file from the databanks below to read the report.</p>
-            <div id="lore-list" style="margin-bottom: 20px;"></div>
+            <div id="lore-list" style="margin-bottom: 20px; display:flex; flex-direction:column; gap:15px;"></div>
             <div id="lore-reader" class="card" style="display:none;">
                 <h3 id="lore-reader-title" style="color:#ff9900;"></h3>
                 <p id="lore-reader-date" style="color:#99ccff; font-size:12px;"></p>
-                <p id="lore-reader-content"></p>
+                <p id="lore-reader-content" style="white-space: pre-wrap;"></p>
             </div>
         </div>
 
@@ -81,7 +81,6 @@
 
     </div>
 
-    <!-- LOAD DATABASES & ENGINE -->
     <script src="db_systems.js"></script>
     <script src="db_crew.js"></script>
     <script src="db_vessels.js"></script>
