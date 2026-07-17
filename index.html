@@ -1,90 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XSV Stardust - Command Hub</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- LEFT NAVIGATION -->
-    <div id="lcars-nav">
-        <div class="nav-title">XSV<br>STARDUST</div>
-        <button class="lcars-btn" onclick="showPage('home')">Home Station</button>
-        <button class="lcars-btn btn-purple" onclick="showPage('rules')">Rules & Guide</button>
-        <button class="lcars-btn btn-blue" onclick="showPage('crew')">Crew Registry</button>
-        <button class="lcars-btn btn-pale" onclick="showPage('map')">Astrometrics Nav</button>
-        <button class="lcars-btn btn-red" onclick="showPage('lore')">Lore Storage Banks</button>
-        <button class="lcars-btn" onclick="showPage('vessels')">Vessels</button>
-        <div class="nav-spacer"></div>
-    </div>
+<!-- Databanks Button -->
+<button id="open-databanks">Databanks</button>
 
-    <!-- MAIN CONTENT -->
-    <div id="main-content">
-        <div class="lcars-header" id="header-title">HOME STATION</div>
+<!-- Databanks UI -->
+<div id="databanks">
+    <div id="db-categories"></div>
+    <div id="db-entries"></div>
+</div>
 
-        <!-- HOME STATION -->
-        <div id="home" class="page-section active-page">
-            <h2 style="color: #99ccff;">Welcome to the XSV Stardust</h2>
-            <p>We are an independent mercenary crew operating a heavily retrofitted Type-17 Argo shuttle. While we officially operate under ISRB contracts in the Zavares Sector, we frequently take on off-the-books shadow-contracts for Starfleet and other factions.</p>
-            <p>We fly the jobs the big ships can't, and we take the risks the military won't. This terminal provides access to our astrometrics sensors, crew manifests, mission reports, and vital vessel systems.</p>
-        </div>
+<!-- Reader Panel -->
+<div id="db-panel">
+    <h2 id="db-panel-title"></h2>
+    <div id="db-panel-content"></div>
+    <button onclick="closePanel()">Close</button>
+</div>
 
-        <!-- RULES & GUIDE -->
-        <div id="rules" class="page-section">
-            <h2 style="color:#ff9900;">Official Roleplay Guide & Guidelines</h2>
-            <div id="rules-container"></div>
-        </div>
-
-        <!-- CREW REGISTRY -->
-        <div id="crew" class="page-section">
-            <h2 style="color: #ffcc99;">Active Crew Registry</h2>
-            <div id="crew-container"></div>
-        </div>
-
-        <!-- ASTROMETRICS NAV -->
-        <div id="map" class="page-section" style="padding:0; border:none; background:none;">
-            <div id="map-layout">
-                <div id="map-viewport" data-zoom="1">
-                    <svg id="map-canvas" viewBox="0 0 8000 8000"></svg>
-                </div>
-                <div id="map-side-panel">
-                    <h2 id="panel-title" class="panel-title">Astrometrics</h2>
-                    <p id="panel-desc">Select a system or planet.</p>
-                    <p id="panel-resources" style="color:#cc66ff; font-weight:bold;"></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- LORE STORAGE BANKS -->
-        <div id="lore" class="page-section">
-            <h2 style="color: #cc0000;">Lore & Mission Reports</h2>
-            <p>Select a file from the databanks below to read the report.</p>
-            <div id="lore-list" style="margin-bottom: 20px; display:flex; flex-direction:column; gap:15px;"></div>
-            <div id="lore-reader" class="card" style="display:none;">
-                <h3 id="lore-reader-title" style="color:#ff9900;"></h3>
-                <p id="lore-reader-date" style="color:#99ccff; font-size:12px;"></p>
-                <p id="lore-reader-content" style="white-space: pre-wrap;"></p>
-            </div>
-        </div>
-
-        <!-- VESSELS -->
-        <div id="vessels" class="page-section">
-            <h2 style="color: #ff9900;">Fleet Registry</h2>
-            <div id="vessel-list" style="display:flex; gap:10px; margin-bottom:20px;"></div>
-            <div id="vessel-details" class="card" style="display:none;">
-                <h3 id="vessel-name" style="color:#cc66ff;"></h3>
-                <p id="vessel-desc"></p>
-                <div id="vessel-stats" style="margin-top:20px;"></div>
-            </div>
-        </div>
-
-    </div>
-
-    <script src="db_systems.js"></script>
-    <script src="db_crew.js"></script>
-    <script src="db_vessels.js"></script>
-    <script src="db_lore.js"></script>
-    <script src="app.js"></script>
-</body>
-</html>
+<script type="module" src="js/app.js"></script>
