@@ -10,14 +10,14 @@ const db_crew = [
     name: "Roman von Ungern-Sternberg (KecskeShajt Corvinus)",
     rank: "Commander (First Officer)",
     pips: "🟡🟡🟡",
-    department: "Command & CONN (Blue)",
+    department: "Security & Tactical (Red)",
     profile: "secondlife:///app/agent/0847548f-36a5-4dc7-8dee-d296dbbabe32/about"
   },
   {
     name: "Aika Yasuda 安田愛佳 (BlackTails)",
     rank: "Lieutenant",
     pips: "🟡🟡",
-    department: "Command & CONN (Blue)",
+    department: "Security & Tactical (Red)",
     profile: "secondlife:///app/agent/857930c8-f80e-4107-b5a6-edb14d5c5eec/about"
   }
 ];
