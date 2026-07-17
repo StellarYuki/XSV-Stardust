@@ -1,5 +1,5 @@
 // ==========================================
-// DATABANK: VESSELS
+// DATABANK: VESSELS (ONLY SHIPS)
 // ==========================================
 
 export const db_vessels = [
@@ -14,43 +14,42 @@ export const db_vessels = [
         tags: ["XSV Stardust", "Utility Shuttle", "Mechs", "Frontier Operations", "Astral Supply Co"],
         content: `
 ⦿ Overview:
-The XSV Stardust is a heavily modified long-range utility shuttle used by independent contractors. Designed for frontier operations, it blends cargo capacity, mech deployment capability, and defensive systems into a compact frame.
+The XSV Stardust is a heavily modified long-range utility shuttle used by independent contractors. Designed for frontier operations, it blends cargo capacity, mech deployment capability, and defensive capabilities.
 
----------------------------------------------
-SHIP SPECIFICATIONS
----------------------------------------------
+⦿ Ship Specifications:
 • Class: Long-Range Utility Shuttle  
-• Length: 42 meters  
-• Crew Capacity: 6–12  
-• Hangar: 2–3 mechs  
+• Type: Modified Type-17 Argo (Retrofitted)
+• Length: 26 meters  
+• Width: 14 meters
+• Height: 6.5 meters
+• Tonnage: 420 tons fully loaded
+• Crew Capacity: 4 (min 1)
+• Hangar: 2–3 mechs (converted aft cargo bay)
 • Engines: Dual hydrogen reactors + ion propulsion  
-• Armor: Reinforced ore-composite plating  
-• Shields: Early energy deflection grid  
-• Sensors: Mid-range optical + debris filtering AI  
+• Armor: Reinforced Zeplox ore-composite plating (sensor-baffling)
+• Shields: Mana Range Micro-Generators
+• Sensors: CCX-VS02 Compact Array
 • Communications: Deep Space Network compatible
+• Weapons: Twin Forward-Mounted Pulse Cannons, Micro-Torpedo Launcher
 
----------------------------------------------
-INTERIOR LAYOUT
----------------------------------------------
+⦿ Interior Layout:
 • Bridge — Compact, efficient, reinforced viewports  
-• Living Quarters — Modular bunks, small galley  
+• Living Quarters — 4 cramped modular bunks
+• Mess Area — Small lounge with 4-seat table
 • Engineering — Reactor access, coolant systems  
-• Cargo Bay — Multi-purpose storage  
-• Mech Hangar — Deployment rails, maintenance tools  
+• Cargo Bay — Converted to additional living quarters
+• Teleporter Pad — Single unit for transport operations
 • Medical Bay — Basic treatment station  
 • Armory — Small weapons locker
 
----------------------------------------------
-ROLE IN CAMPAIGN
----------------------------------------------
-The Stardust serves as the crew’s mobile base of operations. Its mech hangar allows rapid deployment for ground missions, construction tasks, and combat encounters. The ship’s rugged design makes it ideal for navigating debris fields and unstable frontier regions.
+⦿ Role in Campaign:
+The Stardust serves as the crew's mobile base of operations and primary transport vessel. Its compact design makes it ideal for discreet missions through dangerous space.
 
----------------------------------------------
-NOTES
----------------------------------------------
-• Originally a corporate shuttle before being rebuilt.  
-• Known for reliability despite its age.  
+⦿ Notes:
+• Originally a Federation Type-17 Argo shuttle, salvaged from debris fields.
+• Known for reliability and sensor-baffling hull composition.
 • Crew often customizes interior modules for mission needs.
+• Water reclamation system is easily overtaxed, requiring strict rationing.
         `
     },
 
@@ -66,37 +65,39 @@ NOTES
 ⦿ Overview:
 The Huntress is a long-range exploration vessel designed to deploy heavy mechanized units planetside. Built for endurance, it excels in harsh environments, frontier worlds, and uncharted systems.
 
----------------------------------------------
-SHIP SPECIFICATIONS
----------------------------------------------
-• Class: Heavy Dropship  
-• Length: 58 meters  
-• Crew Capacity: 8–16  
+⦿ Ship Specifications:
+• Class: Heavy Dropship / Exploration Vessel
+• Type: Astral ER-X
+• Manufacture: Thynome Vector Foundation
+• Length: 80 meters  
+• Width: 39 meters (80 meter wingspan)
+• Height: 16 meters
+• Tonnage: 110,851 tons fully loaded
+• Crew Capacity: 7-30
 • Mech Capacity: 4–6 units  
-• Engines: High-output hydrogen reactor + atmospheric thrusters  
-• Armor: Thick composite plating  
-• Shields: Enhanced deflection grid  
-• Sensors: Advanced terrain mapping + wildlife detection  
-• Communications: Planetary relay uplink
+• Engines: Hybrid Logic Drive Type D with base fluid core
+• Armor: Zeplox Harden ZX-1
+• Shields: Mana Range GT-5
+• Sensors: CCX-VS06 Array (capable of scanning entire planets the size of Mars)
+• Cooling: Dual Injection Triplex Coolers
+• Power: Fused Pylon GS Type B
+• Warp: Base Fluid Core capable
+• Bays: 5 total bays
 
----------------------------------------------
-ROLE IN CAMPAIGN
----------------------------------------------
+⦿ Role in Campaign:
 The Huntress is used for:
-• Planetary exploration  
-• Wildlife suppression  
-• Heavy construction  
-• Combat deployment  
-• Hazardous environment missions  
+• Planetary exploration and reconnaissance
+• Wildlife suppression operations
+• Heavy construction projects
+• Combat deployment with full mech complement
+• Hazardous environment missions
 
-Its mech complement allows it to handle threats that smaller vessels cannot.
-
----------------------------------------------
-NOTES
----------------------------------------------
-• Often deployed alongside the XSV Stardust for joint missions.  
-• Known for its distinctive silhouette and reinforced landing struts.  
+⦿ Notes:
+• Often deployed alongside the XSV Stardust for joint operations.
+• Known for distinctive silhouette and reinforced landing struts.
+• Hybrid design combining Thynome and Clan technologies.
 • Considered one of the most reliable dropships in frontier operations.
+• Warp-capable for deep-space exploration.
         `
     }
 
