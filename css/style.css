@@ -1,160 +1,97 @@
 /* -----------------------------------------
-   LCARS Base Styling
+   LCARS Terminal Theme (XSV Stardust)
 ----------------------------------------- */
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #1a1a1a;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #000;
     color: #fff;
 }
 
-/* LCARS Header */
+/* Header Bar */
 header {
-    background: #ff9966;
-    color: black;
-    padding: 15px;
-    border-radius: 0 0 20px 0;
+    background: #7f1fa2; /* purple LCARS bar */
+    color: white;
+    padding: 15px 20px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 0 20px 0 0;
 }
 
-/* LCARS Color Bar */
-.lcars-bar {
-    height: 12px;
-    background: #ff9966;
-    border-radius: 0 0 20px 0;
-    margin-bottom: 10px;
-}
-
-/* -----------------------------------------
-   LCARS Buttons
------------------------------------------ */
-
-.lcars-button {
-    background: #ff9966;
-    color: black;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 0 20px 20px 0;
-    font-size: 18px;
-    cursor: pointer;
-    margin: 10px 0;
-    transition: filter 0.2s ease;
-}
-
-.lcars-button:hover {
-    filter: brightness(1.15);
-}
-
-/* -----------------------------------------
-   Databanks Container
------------------------------------------ */
-
-.lcars-container {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    background: #2b2b2b;
-    border-radius: 20px;
-    margin-top: 20px;
-
-    /* fade-in */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.lcars-container.show {
-    opacity: 1;
-}
-
-.hidden {
-    display: none;
-}
-
-/* -----------------------------------------
-   Category + Entry Columns
------------------------------------------ */
-
-.lcars-column {
-    flex: 1;
-    background: #444;
-    padding: 15px;
-    border-radius: 10px;
-    overflow-y: auto;
-    max-height: 70vh;
-}
-
-/* Category Buttons */
-.db-category-btn {
-    display: block;
-    width: 100%;
-    background: #ffcc66;
-    color: black;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 8px;
-    text-align: left;
-    cursor: pointer;
-    transition: filter 0.2s ease;
-}
-
-.db-category-btn:hover {
-    filter: brightness(1.15);
-}
-
-/* Entry Buttons */
-.db-entry-btn {
-    display: block;
-    width: 100%;
-    background: #66ccff;
-    color: black;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 8px;
-    text-align: left;
-    cursor: pointer;
-    transition: filter 0.2s ease;
-}
-
-.db-entry-btn:hover {
-    filter: brightness(1.15);
-}
-
-/* -----------------------------------------
-   Reader Panel
------------------------------------------ */
-
-.lcars-panel {
+/* Sidebar */
+.lcars-sidebar {
     position: fixed;
-    right: 0;
+    left: 0;
     top: 0;
-    width: 40%;
+    width: 180px;
     height: 100%;
-    background: #222;
-    color: #fff;
-    padding: 20px;
-    border-left: 5px solid #ff9966;
-    overflow-y: auto;
-    z-index: 999;
-
-    /* slide-in */
-    transform: translateX(100%);
-    transition: transform 0.35s ease;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
 }
 
-.lcars-panel.open {
-    transform: translateX(0);
+/* Sidebar Title */
+.lcars-title {
+    color: #ffcc66;
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
 
-.lcars-panel h2 {
+/* Sidebar Buttons */
+.lcars-tab {
+    width: 150px;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 0 20px 20px 0;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+}
+
+/* Color-coded tabs */
+.tab-orange { background: #b36b00; }
+.tab-purple { background: #7f1fa2; }
+.tab-blue   { background: #004b8d; }
+.tab-red    { background: #a60000; }
+
+/* Hover effect */
+.lcars-tab:hover {
+    filter: brightness(1.2);
+}
+
+/* Main Content Area */
+.main-content {
+    margin-left: 200px;
+    padding: 30px;
+}
+
+/* Section Title */
+.main-content h2 {
+    color: #66ccff;
     margin-top: 0;
 }
 
-/* Profile Images */
-.db-profile-img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 8px;
-    margin-bottom: 15px;
+/* Paragraphs */
+.main-content p {
+    line-height: 1.6;
+    color: #ddd;
+}
+
+/* LCARS Accent Bar */
+.lcars-accent {
+    position: fixed;
+    left: 180px;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background: #ff9900;
+    border-radius: 0 10px 10px 0;
 }
