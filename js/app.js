@@ -2,7 +2,7 @@
 // LCARS Navigation + Databanks
 // ===============================
 
-import { loadCategories, loadEntriesForCategory } from "./ui.js";
+import { loadCategories } from "./ui.js";
 import { closePanel } from "./panel.js";
 
 const header = document.getElementById("main-header");
@@ -15,7 +15,7 @@ const tabs = document.querySelectorAll(".lcars-tab");
 
 window.addEventListener("DOMContentLoaded", () => {
     databanks.classList.add("hidden");
-    panel.classList.add("hidden");
+    panel.classList.remove("open"); // ensure panel is hidden
 });
 
 // Sidebar navigation
@@ -24,8 +24,8 @@ tabs.forEach(btn => {
     btn.addEventListener("click", () => {
         const label = btn.textContent.trim();
 
-        // Hide panel and databanks by default
-        panel.classList.add("hidden");
+        // Always hide panel when switching sections
+        panel.classList.remove("open");
         databanks.classList.add("hidden");
 
         switch (label) {
@@ -88,7 +88,6 @@ tabs.forEach(btn => {
                         This section will list vessels currently docked or associated with Astral Supply Co. and the XSV Stardust.
                     </p>
                 `;
-                // Later: loadEntriesForCategory("Vessels");
                 break;
         }
     });
