@@ -104,14 +104,37 @@ closePanelBtn.addEventListener("click", () => {
 
 // Hierarchical Map System
 async function initializeHierarchicalMap() {
+    console.log("Map initialization starting...");
+    
     // Load data
-    const { starSystems } = await import("../data/db_star_systems.js");
-    const orbitsData = (await import("../data/db_orbits.js")).default;
+    try {
+        const { starSystems } = await import("../data/db_star_systems.js");
+        const orbitsData = (await import("../data/db_orbits.js")).default;
+        console.log("Data loaded:", starSystems.length, "systems");
 
-    const canvas = document.getElementById("starMapCanvas");
-    if (!canvas) return;
+        const canvas = document.getElementById("starMapCanvas");
+        if (!canvas) {
+            console.error("Canvas not found!");
+            return;
+        }
 
-    const ctx = canvas.getContext("2d");
+        console.log("Canvas found, size:", canvas.clientWidth, "x", canvas.clientHeight);
+        const ctx = canvas.getContext("2d");
+        
+        // Set canvas size before any drawing
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        console.log("Canvas context set, actual size:", canvas.width, "x", canvas.height);
+        
+        // Test draw a rectangle
+        ctx.fillStyle = "#ff0000";
+        ctx.fillRect(10, 10, 100, 100);
+        console.log("Test rectangle drawn");
+        
+    } catch (err) {
+        console.error("Error in map initialization:", err);
+        return;
+    }
     
     // 8 Varix Sectors with political boundaries
     const sectors = [
