@@ -3,16 +3,25 @@
 // ===============================
 
 import { stations } from "../data/db_stations.js";
+import { species } from "../data/db_species.js";
+import { db_factions } from "../data/db_factions.js";
+import { starSystems } from "../data/db_star_systems.js";
+import { db_campaign } from "../data/db_campaign.js";
+import { db_vessels } from "../data/db_vessels.js";
+import { db_lore_extended as loreExt } from "../data/db_lore_extended.js";
 import { openPanel } from "./panel.js";
 
 const categoryList = document.getElementById("db-categories");
 const entryList = document.getElementById("db-entries");
 
-// For now, we start with one category: Stations.
-// Later we can add Species, Factions, Star Systems, Campaign, Vessels, Extended Lore.
-
 const databankCategories = {
-    "Stations": stations
+    "Stations": stations,
+    "Species": species,
+    "Factions": db_factions,
+    "Star Systems": starSystems,
+    "Campaign": db_campaign,
+    "Vessels": db_vessels,
+    "Extended Lore": loreExt
 };
 
 export function loadCategories() {
