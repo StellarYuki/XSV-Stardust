@@ -62,9 +62,10 @@ tabs.forEach(btn => {
             case "ASTROMETRICS":
                 header.textContent = "ASTROMETRICS";
                 mainContent.style.padding = "0";
-                mainContent.style.height = "100%";
+                mainContent.style.height = "calc(100vh - 70px)";
+                mainContent.style.flex = "1";
                 mainContent.innerHTML = `
-                    <canvas id="starMapCanvas" style="width: 100%; height: 100%; background: #020214; display: block;"></canvas>
+                    <canvas id="starMapCanvas" style="width: 100%; height: 100%; background: #020214; display: block; flex: 1;"></canvas>
                     <div id="mapInfoPanel" class="db-panel" style="display: none;">
                         <div class="db-panel-inner">
                             <button id="close-map-panel" class="db-panel-close">Close</button>

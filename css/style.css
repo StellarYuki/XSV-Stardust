@@ -83,6 +83,9 @@ header {
 .main-content {
     margin-left: 200px;
     padding: 30px;
+    min-height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
 }
 
 .main-content h2 {
