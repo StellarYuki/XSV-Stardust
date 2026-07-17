@@ -16,6 +16,72 @@ const tabs = document.querySelectorAll(".lcars-tab");
 window.addEventListener("DOMContentLoaded", () => {
     databanks.classList.add("hidden");
     panel.classList.remove("open");
+    
+    // Load Home Station by default
+    header.textContent = "HOME STATION";
+    mainContent.innerHTML = `
+        <div class="content-section">
+            <h2>⦿ THE XSV STARDUST</h2>
+            <p style="font-size: 13px; color: #aaa;">Revised: [7-16-2026]</p>
+            <p style="font-size: 13px; color: #aaa;">Sabers of Fortune</p>
+            
+            <h3>Overview</h3>
+            <p>
+                The XSV Stardust is a heavily modified, long-range utility shuttle designed for high-speed transport, 
+                escort, and mercenary operations. Owned and operated by an independent mercenary crew under ISRB contract.
+            </p>
+            
+            <h3>Specifications</h3>
+            <ul>
+                <li><strong>Type:</strong> Modified Utility Shuttle / Fast Transport</li>
+                <li><strong>Class:</strong> Type-17 Argo (Retrofitted)</li>
+                <li><strong>Length:</strong> 26m | <strong>Width:</strong> 14m | <strong>Height:</strong> 6.5m</li>
+                <li><strong>Tonnage:</strong> 420 tons fully loaded</li>
+                <li><strong>Max Crew:</strong> 4 | <strong>Min Crew:</strong> 1</li>
+                <li><strong>Armor:</strong> Reinforced Zeplox Plating (Sensor-Baffling)</li>
+                <li><strong>Shielding:</strong> Mana Range Micro-Generators</li>
+            </ul>
+            
+            <h3>Systems</h3>
+            <ul>
+                <li><strong>Sensors:</strong> CCX-VS02 Compact Array</li>
+                <li><strong>Warp:</strong> Compact Fluid Core</li>
+                <li><strong>Power:</strong> Fused Pylon GS Type C (Miniaturized)</li>
+                <li><strong>Engines:</strong> Hybrid Ion-Impulse Drive</li>
+                <li><strong>Weapons:</strong> Twin Forward-Mounted Pulse Cannons, Micro-Torpedo Launcher</li>
+            </ul>
+            
+            <h3>History</h3>
+            <p>
+                The origins of the XSV Stardust are shrouded in mystery. Its base chassis—a Type-17 Argo-class shuttle—does not match 
+                standard Setrean or Thynome Vector Foundation designs. It is believed to be a relic from a forgotten era, or perhaps 
+                a vessel that fell through a spatial anomaly from a distant sector.
+            </p>
+            <p>
+                The derelict hull was discovered adrift in the debris fields near the gas giant Necron by an Astral Supply Co. security 
+                patrol in 5068 S.Y. Recognizing the advanced nature of its ion-propulsion engines and sensor-baffling hull, it was salvaged 
+                and sold to an independent mercenary crew.
+            </p>
+            <p>
+                The crew heavily retrofitted the vessel to bring it up to modern operational standards. The massive aft cargo bay, originally 
+                designed to hold a ground transport buggy, was completely gutted. In its place, compact living quarters for a 4-person crew, 
+                a small mess area, and enhanced life support systems were installed to allow for deep-space, long-duration missions.
+            </p>
+            <p>
+                Today, the Stardust operates primarily within the Crux Constellation, taking high-risk contracts from the Independent 
+                Services Review Board (ISRB). Due to its speed and stealth capabilities, it is frequently hired by Astral Supply Co. 
+                to escort high-value freight through the dangerous Varix Gas Clouds or run security patrols near the Night Star station.
+            </p>
+            
+            <h3>Notable Characteristics</h3>
+            <ul>
+                <li>The Stardust's hull composition naturally scrambles standard sensors, making it difficult to track in deep space.</li>
+                <li>Due to the experimental nature of its retrofitted life support, the ship's water-reclamation systems are easily overtaxed.</li>
+                <li>The vessel lacks a dedicated hangar or cargo bay; all gear must be stowed in the cramped crew quarters.</li>
+                <li><strong>S.Y.:</strong> Refers to the Stellar Year of the Universal Coordinate Plane.</li>
+            </ul>
+        </div>
+    `;
 });
 
 tabs.forEach(btn => {
@@ -30,33 +96,65 @@ tabs.forEach(btn => {
                 header.textContent = "HOME STATION";
                 mainContent.innerHTML = `
                     <div class="content-section">
-                        <h2>WELCOME TO THE XSV STARDUST</h2>
+                        <h2>⦿ THE XSV STARDUST</h2>
+                        <p style="font-size: 13px; color: #aaa;">Revised: [7-16-2026]</p>
+                        <p style="font-size: 13px; color: #aaa;">Sabers of Fortune</p>
+                        
+                        <h3>Overview</h3>
                         <p>
-                            We are an independent mercenary crew operating a heavily retrofitted Type‑17 Argo shuttle, 
-                            designated the <strong>XSV Stardust</strong>. Our vessel has been extensively upgraded with 
-                            experimental technology and cutting-edge systems to handle the most dangerous contracts in the galaxy.
-                        </p>
-                        <p>
-                            While we officially operate under <strong>ISRB contracts in the Zavares Sector</strong>, 
-                            we frequently take on off-the-books shadow-contracts for Starfleet, private corporations, 
-                            and independent factions throughout the Varix Galaxy.
+                            The XSV Stardust is a heavily modified, long-range utility shuttle designed for high-speed transport, 
+                            escort, and mercenary operations. Owned and operated by an independent mercenary crew under ISRB contract.
                         </p>
                         
-                        <h3>Station Overview</h3>
+                        <h3>Specifications</h3>
                         <ul>
-                            <li><strong>Crew Capacity:</strong> 3 Active + Support AI</li>
-                            <li><strong>Mission Status:</strong> OPERATIONAL</li>
-                            <li><strong>Current Location:</strong> Varix Core - Trinary System</li>
-                            <li><strong>Hull Integrity:</strong> 94%</li>
-                            <li><strong>Power Core:</strong> At Full Capacity</li>
+                            <li><strong>Type:</strong> Modified Utility Shuttle / Fast Transport</li>
+                            <li><strong>Class:</strong> Type-17 Argo (Retrofitted)</li>
+                            <li><strong>Length:</strong> 26m | <strong>Width:</strong> 14m | <strong>Height:</strong> 6.5m</li>
+                            <li><strong>Tonnage:</strong> 420 tons fully loaded</li>
+                            <li><strong>Max Crew:</strong> 4 | <strong>Min Crew:</strong> 1</li>
+                            <li><strong>Armor:</strong> Reinforced Zeplox Plating (Sensor-Baffling)</li>
+                            <li><strong>Shielding:</strong> Mana Range Micro-Generators</li>
                         </ul>
                         
-                        <h3>Recent Briefing</h3>
+                        <h3>Systems</h3>
+                        <ul>
+                            <li><strong>Sensors:</strong> CCX-VS02 Compact Array</li>
+                            <li><strong>Warp:</strong> Compact Fluid Core</li>
+                            <li><strong>Power:</strong> Fused Pylon GS Type C (Miniaturized)</li>
+                            <li><strong>Engines:</strong> Hybrid Ion-Impulse Drive</li>
+                            <li><strong>Weapons:</strong> Twin Forward-Mounted Pulse Cannons, Micro-Torpedo Launcher</li>
+                        </ul>
+                        
+                        <h3>History</h3>
                         <p>
-                            Our last successful operation netted significant salvage and intelligence. The crew has returned 
-                            to dock for repairs, resupply, and briefing on the next assignment. Stellar's navigation logs 
-                            indicate unusual activity near the Blue Current Nebula that warrants investigation.
+                            The origins of the XSV Stardust are shrouded in mystery. Its base chassis—a Type-17 Argo-class shuttle—does not match 
+                            standard Setrean or Thynome Vector Foundation designs. It is believed to be a relic from a forgotten era, or perhaps 
+                            a vessel that fell through a spatial anomaly from a distant sector.
                         </p>
+                        <p>
+                            The derelict hull was discovered adrift in the debris fields near the gas giant Necron by an Astral Supply Co. security 
+                            patrol in 5068 S.Y. Recognizing the advanced nature of its ion-propulsion engines and sensor-baffling hull, it was salvaged 
+                            and sold to an independent mercenary crew.
+                        </p>
+                        <p>
+                            The crew heavily retrofitted the vessel to bring it up to modern operational standards. The massive aft cargo bay, originally 
+                            designed to hold a ground transport buggy, was completely gutted. In its place, compact living quarters for a 4-person crew, 
+                            a small mess area, and enhanced life support systems were installed to allow for deep-space, long-duration missions.
+                        </p>
+                        <p>
+                            Today, the Stardust operates primarily within the Crux Constellation, taking high-risk contracts from the Independent 
+                            Services Review Board (ISRB). Due to its speed and stealth capabilities, it is frequently hired by Astral Supply Co. 
+                            to escort high-value freight through the dangerous Varix Gas Clouds or run security patrols near the Night Star station.
+                        </p>
+                        
+                        <h3>Notable Characteristics</h3>
+                        <ul>
+                            <li>The Stardust's hull composition naturally scrambles standard sensors, making it difficult to track in deep space.</li>
+                            <li>Due to the experimental nature of its retrofitted life support, the ship's water-reclamation systems are easily overtaxed.</li>
+                            <li>The vessel lacks a dedicated hangar or cargo bay; all gear must be stowed in the cramped crew quarters.</li>
+                            <li><strong>S.Y.:</strong> Refers to the Stellar Year of the Universal Coordinate Plane.</li>
+                        </ul>
                     </div>
                 `;
                 break;
@@ -65,33 +163,58 @@ tabs.forEach(btn => {
                 header.textContent = "RULES & GUIDE";
                 mainContent.innerHTML = `
                     <div class="content-section">
-                        <h2>CREW OPERATIONAL PROCEDURES</h2>
+                        <h2>🚀 WELCOME ABOARD THE XSV STARDUST</h2>
+                        <p style="font-size: 13px; color: #aaa;">Official Roleplay Guide & Ship Rules</p>
                         
-                        <h3>Core Principles</h3>
+                        <h3>Introduction</h3>
+                        <p>
+                            Welcome aboard the XSV Stardust! We are an independent mercenary crew. This vessel is a heavily modified 
+                            Type-17 Argo-class shuttle. Originally designed to carry a cargo buggy, the aft section has been completely 
+                            retrofitted to support deep-space, long-duration roleplay.
+                        </p>
+                        <p>
+                            Amenities are minimal. We have a Bridge, a small Teleporter pad, 4 cramped bunks, a tiny lounge with a 4-seat table, 
+                            and a compact engineering section. Whether we are docked at a station or exploring deep space, this shuttle serves as 
+                            our mobile home. We encourage collaborative, creative storytelling where everyone gets to contribute!
+                        </p>
+                        
+                        <h3>🎨 Departments & Colors</h3>
+                        <p>Our crew uses a color-coding system to easily identify everyone's primary role:</p>
+                        <ul>
+                            <li><strong>BLUE (Command & CONN):</strong> The leaders and pilots.</li>
+                            <li><strong>RED (Security & Tactical):</strong> The protectors and weapons specialists.</li>
+                            <li><strong>YELLOW (Engineering & Operations):</strong> The fixers and system mechanics.</li>
+                            <li><strong>BURGUNDY (Science & Medical):</strong> The researchers and healers.</li>
+                        </ul>
+                        
+                        <h3>⭐ Rank Pips & HUD System</h3>
+                        <p>
+                            We use the JRF Equipment HUD system for our overhead titlers and gear. Please set your titler to display your Name, 
+                            Rank, and "XSV Stardust". Your rank is displayed on your collar using a 6-tier pip system. Rank implies responsibility 
+                            in the RP, not just power.
+                        </p>
+                        
+                        <h3>🛠️ Shuttle Operations & IC Protocols</h3>
+                        <p>Because this is a small shuttle and not a luxury starship, we run a tight ship. The following In-Character rules apply:</p>
                         <ol>
-                            <li><strong>Mission First:</strong> Completion of assigned objectives takes priority. No crew member left behind.</li>
-                            <li><strong>Safety Protocols:</strong> All EVA operations require at least 2-person teams with comms check every 30 seconds.</li>
-                            <li><strong>Chain of Command:</strong> Stellar Yuki (Captain) → Aika (Operations) → Roman (Engineering)</li>
-                            <li><strong>Weapons Protocol:</strong> Authorization required from Captain before armed engagement. Lethal force only when life is threatened.</li>
+                            <li><strong>ALARMS & RED ALERTS:</strong> When the ship's alarm sounds, all crew are expected to immediately return to their duty station and remain there until the alert is cleared or the mission dictates otherwise.</li>
+                            <li><strong>RESOURCE CONSERVATION:</strong> Due to the shuttle's limited water-reclamation and life-support capacities, lavatory and sonic shower usage is strictly rationed.</li>
+                            <li><strong>REPLICATOR RATIONS:</strong> The mess replicator draws heavily on the warp core. Use is limited to basic rations, water, and coffee. Luxury items require Command authorization.</li>
+                            <li><strong>CRAMPED QUARTERS:</strong> Space is at a premium. Keep your personal gear stowed in your designated bunk area.</li>
+                            <li><strong>MAINTENANCE DUTY:</strong> Everyone, regardless of rank, is expected to help scrub the decks, patch conduits, and keep the ship flying.</li>
                         </ol>
                         
-                        <h3>Equipment & Maintenance</h3>
-                        <ul>
-                            <li>All equipment must be logged and properly stored after use</li>
-                            <li>Weapon systems require weekly calibration</li>
-                            <li>Medical supplies inventory checked daily</li>
-                            <li>Stardust's reactor core requires biweekly maintenance checks</li>
-                        </ul>
-                        
-                        <h3>Communication Standards</h3>
-                        <ul>
-                            <li>All ship-to-ship communications use encrypted Channel 7</li>
-                            <li>Status reports submitted every 4 hours during active operations</li>
-                            <li>Emergency frequencies: 7.3 MHz (immediate distress), 6.8 MHz (backup)</li>
-                        </ul>
-                        
-                        <h3>Off-Duty Protocols</h3>
-                        <p>Crew members are entitled to minimum 8 hours rest between operations. Personal activities must not interfere with ship readiness.</p>
+                        <h3>📜 OOC Rules, Limits & Consent</h3>
+                        <ol style="font-size: 13px;">
+                            <li><strong>ADULT THEMES & ERP:</strong> This is a strictly 18+ environment. Consent is REQUIRED.</li>
+                            <li><strong>NO GOD-MODDING:</strong> Your character is not invincible and must have weaknesses.</li>
+                            <li><strong>NO META-GAMING:</strong> Do not use OOC information for IC situations.</li>
+                            <li><strong>CONSEQUENCES:</strong> IC actions have IC consequences.</li>
+                            <li><strong>IC vs. OOC:</strong> Keep OOC chatter to a minimum. Use (( brackets )) for OOC.</li>
+                            <li><strong>APPEARANCE:</strong> No child/underage avatars. Characters must look realistic and fit within sci-fi setting.</li>
+                            <li><strong>NO GRIEFING:</strong> Do not use weapons, pushers, or disruptive HUDs inside the shuttle.</li>
+                            <li><strong>HAVE FUN:</strong> Above all else, we are here to tell a great story together!</li>
+                        </ol>
                     </div>
                 `;
                 break;
