@@ -63,13 +63,14 @@ tabs.forEach(btn => {
                 header.textContent = "ASTROMETRICS";
                 mainContent.innerHTML = `
                     <div style="display: flex; height: 100%; gap: 10px;">
-                        <div style="flex: 1;">
-                            <canvas id="starMapCanvas" style="width: 100%; height: 100%; background: #020214; border-radius: 8px;"></canvas>
-                        </div>
-                        <div id="mapInfoPanel" style="width: 300px; background: rgba(10, 5, 30, 0.9); border: 1px solid #ffcc88; padding: 10px; border-radius: 8px; overflow-y: auto;">
-                            <div style="color: #ffcc88;"><strong>Selected:</strong> <span id="selectedName">None</span></div>
-                            <div style="color: #ffcc88;"><strong>Type:</strong> <span id="selectedType">—</span></div>
-                            <div style="color: #ffcc88;"><strong>Notes:</strong> <span id="selectedNotes">—</span></div>
+                        <canvas id="starMapCanvas" style="flex: 1; background: #020214; border-radius: 8px; cursor: grab;"></canvas>
+                        <div id="mapInfoPanel" style="width: 280px; background: rgba(10, 5, 30, 0.9); border: 1px solid #ffcc88; padding: 12px; border-radius: 8px; overflow-y: auto; color: #ffcc88; font-size: 13px; display: none;">
+                            <div><strong>Selected:</strong> <span id="selectedName">None</span></div>
+                            <hr style="border: none; border-top: 1px solid #ffcc88; margin: 8px 0;">
+                            <div><strong>Type:</strong> <span id="selectedType">—</span></div>
+                            <hr style="border: none; border-top: 1px solid #ffcc88; margin: 8px 0;">
+                            <div><strong>Notes:</strong></div>
+                            <div id="selectedNotes" style="font-size: 12px; margin-top: 4px;">—</div>
                         </div>
                     </div>
                 `;
@@ -244,16 +245,17 @@ function initializeMapRenderer() {
         const selectedNameEl = document.getElementById("selectedName");
         const selectedTypeEl = document.getElementById("selectedType");
         const selectedNotesEl = document.getElementById("selectedNotes");
+        const mapInfoPanel = document.getElementById("mapInfoPanel");
         
         if (!obj) {
-            selectedNameEl.textContent = "None";
-            selectedTypeEl.textContent = "—";
-            selectedNotesEl.textContent = "—";
+            mapInfoPanel.style.display = "none";
             return;
         }
+        
         selectedNameEl.textContent = obj.name;
         selectedTypeEl.textContent = obj.type;
         selectedNotesEl.textContent = obj.notes || "—";
+        mapInfoPanel.style.display = "block";
     }
 
     resizeCanvas();
