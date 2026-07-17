@@ -1,100 +1,51 @@
 // ===============================
-// LCARS Navigation + Databanks
+// Databanks UI (Categories/Entries)
 // ===============================
 
-import { loadCategories } from "./ui.js";
-import { closePanel } from "./panel.js";
+import { stations } from "../data/db_stations.js";
+import { openPanel } from "./panel.js";
 
-const header = document.getElementById("main-header");
-const mainContent = document.getElementById("main-content");
-const databanks = document.getElementById("databanks");
-const panel = document.getElementById("db-panel");
-const closePanelBtn = document.getElementById("close-panel");
+const categoryList = document.getElementById("db-categories");
+const entryList = document.getElementById("db-entries");
 
-const tabs = document.querySelectorAll(".lcars-tab");
+// For now, we start with one category: Stations.
+// Later we can add Species, Factions, Star Systems, Campaign, Vessels, Extended Lore.
 
-window.addEventListener("DOMContentLoaded", () => {
-    databanks.classList.add("hidden");
-    panel.classList.remove("open"); // ensure panel is hidden
-});
+const databankCategories = {
+    "Stations": stations
+};
 
-// Sidebar navigation
+export function loadCategories() {
+    categoryList.innerHTML = "";
+    entryList.innerHTML = "";
 
-tabs.forEach(btn => {
-    btn.addEventListener("click", () => {
-        const label = btn.textContent.trim();
+    Object.keys(databankCategories).forEach(categoryName => {
+        const btn = document.createElement("button");
+        btn.className = "db-category-btn";
+        btn.textContent = categoryName;
 
-        // Always hide panel when switching sections
-        panel.classList.remove("open");
-        databanks.classList.add("hidden");
+        btn.addEventListener("click", () => {
+            loadEntriesForCategory(categoryName);
+        });
 
-        switch (label) {
-            case "HOME STATION":
-                header.textContent = "HOME STATION";
-                mainContent.innerHTML = `
-                    <h2>WELCOME TO THE XSV STARDUST</h2>
-                    <p>
-                        We are an independent mercenary crew operating a heavily retrofitted Type‑17 Argo shuttle.
-                        While we officially operate under ISRB contracts in the Zavares Sector, we frequently take on
-                        off‑the‑books shadow‑contracts for Starfleet and other factions.
-                    </p>
-                `;
-                break;
-
-            case "RULES & GUIDE":
-                header.textContent = "RULES & GUIDE";
-                mainContent.innerHTML = `
-                    <h2>CREW RULES & GUIDE</h2>
-                    <p>
-                        This section will contain your rules, guidelines, and operational procedures for the XSV Stardust
-                        and associated stations or outposts.
-                    </p>
-                `;
-                break;
-
-            case "CREW REGISTRY":
-                header.textContent = "CREW REGISTRY";
-                mainContent.innerHTML = `
-                    <h2>CREW REGISTRY</h2>
-                    <p>
-                        This section will list your crew members, roles, and profiles. (Stellar: Blue, Aika & Roman: Red.)
-                    </p>
-                `;
-                break;
-
-            case "ASTROMETRICS":
-                header.textContent = "ASTROMETRICS";
-                mainContent.innerHTML = `
-                    <h2>ASTROMETRICS</h2>
-                    <p>
-                        This section will show star systems, routes, and navigation data for Brunhilde, Var Lupra,
-                        and other regions in the Crux Constellation.
-                    </p>
-                `;
-                break;
-
-            case "STORAGE BANKS":
-                header.textContent = "STORAGE BANKS";
-                mainContent.innerHTML = "";
-                databanks.classList.remove("hidden");
-                loadCategories();
-                break;
-
-            case "DOCKED VESSELS":
-                header.textContent = "DOCKED VESSELS";
-                mainContent.innerHTML = `
-                    <h2>DOCKED VESSELS</h2>
-                    <p>
-                        This section will list vessels currently docked or associated with Astral Supply Co. and the XSV Stardust.
-                    </p>
-                `;
-                break;
-        }
+        categoryList.appendChild(btn);
     });
-});
+}
 
-// Close panel button
+export function loadEntriesForCategory(categoryName) {
+    entryList.innerHTML = "";
 
-closePanelBtn.addEventListener("click", () => {
-    closePanel();
-});
+    const entries = databankCategories[categoryName] || [];
+
+    entries.forEach(entry => {
+        const btn = document.createElement("button");
+        btn.className = "db-entry-btn";
+        btn.textContent = entry.title;
+
+        btn.addEventListener("click", () => {
+            openPanel(entry);
+        });
+
+        entryList.appendChild(btn);
+    });
+}
