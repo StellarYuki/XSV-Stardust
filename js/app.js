@@ -21,65 +21,50 @@ window.addEventListener("DOMContentLoaded", () => {
     header.textContent = "HOME STATION";
     mainContent.innerHTML = `
         <div class="content-section">
-            <h2>⦿ THE XSV STARDUST</h2>
-            <p style="font-size: 13px; color: #aaa;">Revised: [7-16-2026]</p>
-            <p style="font-size: 13px; color: #aaa;">Sabers of Fortune</p>
+            <h2>⦿ WELCOME TO THE XSV STARDUST</h2>
             
-            <h3>Overview</h3>
             <p>
-                The XSV Stardust is a heavily modified, long-range utility shuttle designed for high-speed transport, 
-                escort, and mercenary operations. Owned and operated by an independent mercenary crew under ISRB contract.
+                We are an <strong>independent mercenary crew</strong> operating the XSV Stardust—a heavily modified Type-17 
+                Argo-class shuttle. Our vessel is equipped with experimental technology and cutting-edge systems designed for 
+                high-speed transport, escort missions, and deep-space operations.
             </p>
             
-            <h3>Specifications</h3>
+            <h3>Who We Are</h3>
+            <p>
+                The XSV Stardust operates primarily within the <strong>Crux Constellation</strong> under contract with the 
+                <strong>Independent Services Review Board (ISRB)</strong>. We take on high-risk contracts that require speed, 
+                stealth, and tactical expertise. Due to our ship's unique capabilities, we are frequently hired by Astral Supply Co. 
+                to escort high-value freight through dangerous space lanes or run security patrols near major stations.
+            </p>
+            
+            <h3>What We Do</h3>
             <ul>
-                <li><strong>Type:</strong> Modified Utility Shuttle / Fast Transport</li>
-                <li><strong>Class:</strong> Type-17 Argo (Retrofitted)</li>
-                <li><strong>Length:</strong> 26m | <strong>Width:</strong> 14m | <strong>Height:</strong> 6.5m</li>
-                <li><strong>Tonnage:</strong> 420 tons fully loaded</li>
-                <li><strong>Max Crew:</strong> 4 | <strong>Min Crew:</strong> 1</li>
-                <li><strong>Armor:</strong> Reinforced Zeplox Plating (Sensor-Baffling)</li>
-                <li><strong>Shielding:</strong> Mana Range Micro-Generators</li>
+                <li><strong>Mercenary Operations:</strong> High-risk escort and security missions</li>
+                <li><strong>Deep-Space Exploration:</strong> Long-duration missions beyond charted space</li>
+                <li><strong>Tactical Response:</strong> Fast-deployment response to emerging threats</li>
+                <li><strong>Salvage & Recovery:</strong> Retrieval of valuable assets in hostile environments</li>
             </ul>
             
-            <h3>Systems</h3>
-            <ul>
-                <li><strong>Sensors:</strong> CCX-VS02 Compact Array</li>
-                <li><strong>Warp:</strong> Compact Fluid Core</li>
-                <li><strong>Power:</strong> Fused Pylon GS Type C (Miniaturized)</li>
-                <li><strong>Engines:</strong> Hybrid Ion-Impulse Drive</li>
-                <li><strong>Weapons:</strong> Twin Forward-Mounted Pulse Cannons, Micro-Torpedo Launcher</li>
-            </ul>
-            
-            <h3>History</h3>
+            <h3>Our Crew</h3>
             <p>
-                The origins of the XSV Stardust are shrouded in mystery. Its base chassis—a Type-17 Argo-class shuttle—does not match 
-                standard Setrean or Thynome Vector Foundation designs. It is believed to be a relic from a forgotten era, or perhaps 
-                a vessel that fell through a spatial anomaly from a distant sector.
-            </p>
-            <p>
-                The derelict hull was discovered adrift in the debris fields near the gas giant Necron by an Astral Supply Co. security 
-                patrol in 5068 S.Y. Recognizing the advanced nature of its ion-propulsion engines and sensor-baffling hull, it was salvaged 
-                and sold to an independent mercenary crew.
-            </p>
-            <p>
-                The crew heavily retrofitted the vessel to bring it up to modern operational standards. The massive aft cargo bay, originally 
-                designed to hold a ground transport buggy, was completely gutted. In its place, compact living quarters for a 4-person crew, 
-                a small mess area, and enhanced life support systems were installed to allow for deep-space, long-duration missions.
-            </p>
-            <p>
-                Today, the Stardust operates primarily within the Crux Constellation, taking high-risk contracts from the Independent 
-                Services Review Board (ISRB). Due to its speed and stealth capabilities, it is frequently hired by Astral Supply Co. 
-                to escort high-value freight through the dangerous Varix Gas Clouds or run security patrols near the Night Star station.
+                We are a <strong>tight-knit team of three specialists</strong>, each bringing unique skills to every mission. 
+                While our accommodations are minimal—the shuttle was never designed for comfort—our crew excels at adapting, 
+                improvising, and accomplishing objectives under extreme pressure.
             </p>
             
-            <h3>Notable Characteristics</h3>
-            <ul>
-                <li>The Stardust's hull composition naturally scrambles standard sensors, making it difficult to track in deep space.</li>
-                <li>Due to the experimental nature of its retrofitted life support, the ship's water-reclamation systems are easily overtaxed.</li>
-                <li>The vessel lacks a dedicated hangar or cargo bay; all gear must be stowed in the cramped crew quarters.</li>
-                <li><strong>S.Y.:</strong> Refers to the Stellar Year of the Universal Coordinate Plane.</li>
-            </ul>
+            <h3>The Ship</h3>
+            <p>
+                The XSV Stardust is a marvel of retrofit engineering. Its hull composition naturally scrambles standard sensors, 
+                making it difficult to track in deep space. Combined with its advanced propulsion systems and tactical capabilities, 
+                the Stardust is both a home and a weapon—perfectly suited for independent operations on the edge of known space.
+            </p>
+            
+            <h3>Join Us</h3>
+            <p>
+                If you're interested in joining our roleplay group aboard the XSV Stardust, please review the <strong>RULES & GUIDE</strong> 
+                section for our operational procedures, dress code, and IC protocols. We welcome new crew members who are committed to 
+                collaborative storytelling and creating an engaging roleplay experience for everyone.
+            </p>
         </div>
     `;
 });
@@ -96,65 +81,50 @@ tabs.forEach(btn => {
                 header.textContent = "HOME STATION";
                 mainContent.innerHTML = `
                     <div class="content-section">
-                        <h2>⦿ THE XSV STARDUST</h2>
-                        <p style="font-size: 13px; color: #aaa;">Revised: [7-16-2026]</p>
-                        <p style="font-size: 13px; color: #aaa;">Sabers of Fortune</p>
+                        <h2>⦿ WELCOME TO THE XSV STARDUST</h2>
                         
-                        <h3>Overview</h3>
                         <p>
-                            The XSV Stardust is a heavily modified, long-range utility shuttle designed for high-speed transport, 
-                            escort, and mercenary operations. Owned and operated by an independent mercenary crew under ISRB contract.
+                            We are an <strong>independent mercenary crew</strong> operating the XSV Stardust—a heavily modified Type-17 
+                            Argo-class shuttle. Our vessel is equipped with experimental technology and cutting-edge systems designed for 
+                            high-speed transport, escort missions, and deep-space operations.
                         </p>
                         
-                        <h3>Specifications</h3>
+                        <h3>Who We Are</h3>
+                        <p>
+                            The XSV Stardust operates primarily within the <strong>Crux Constellation</strong> under contract with the 
+                            <strong>Independent Services Review Board (ISRB)</strong>. We take on high-risk contracts that require speed, 
+                            stealth, and tactical expertise. Due to our ship's unique capabilities, we are frequently hired by Astral Supply Co. 
+                            to escort high-value freight through dangerous space lanes or run security patrols near major stations.
+                        </p>
+                        
+                        <h3>What We Do</h3>
                         <ul>
-                            <li><strong>Type:</strong> Modified Utility Shuttle / Fast Transport</li>
-                            <li><strong>Class:</strong> Type-17 Argo (Retrofitted)</li>
-                            <li><strong>Length:</strong> 26m | <strong>Width:</strong> 14m | <strong>Height:</strong> 6.5m</li>
-                            <li><strong>Tonnage:</strong> 420 tons fully loaded</li>
-                            <li><strong>Max Crew:</strong> 4 | <strong>Min Crew:</strong> 1</li>
-                            <li><strong>Armor:</strong> Reinforced Zeplox Plating (Sensor-Baffling)</li>
-                            <li><strong>Shielding:</strong> Mana Range Micro-Generators</li>
+                            <li><strong>Mercenary Operations:</strong> High-risk escort and security missions</li>
+                            <li><strong>Deep-Space Exploration:</strong> Long-duration missions beyond charted space</li>
+                            <li><strong>Tactical Response:</strong> Fast-deployment response to emerging threats</li>
+                            <li><strong>Salvage & Recovery:</strong> Retrieval of valuable assets in hostile environments</li>
                         </ul>
                         
-                        <h3>Systems</h3>
-                        <ul>
-                            <li><strong>Sensors:</strong> CCX-VS02 Compact Array</li>
-                            <li><strong>Warp:</strong> Compact Fluid Core</li>
-                            <li><strong>Power:</strong> Fused Pylon GS Type C (Miniaturized)</li>
-                            <li><strong>Engines:</strong> Hybrid Ion-Impulse Drive</li>
-                            <li><strong>Weapons:</strong> Twin Forward-Mounted Pulse Cannons, Micro-Torpedo Launcher</li>
-                        </ul>
-                        
-                        <h3>History</h3>
+                        <h3>Our Crew</h3>
                         <p>
-                            The origins of the XSV Stardust are shrouded in mystery. Its base chassis—a Type-17 Argo-class shuttle—does not match 
-                            standard Setrean or Thynome Vector Foundation designs. It is believed to be a relic from a forgotten era, or perhaps 
-                            a vessel that fell through a spatial anomaly from a distant sector.
-                        </p>
-                        <p>
-                            The derelict hull was discovered adrift in the debris fields near the gas giant Necron by an Astral Supply Co. security 
-                            patrol in 5068 S.Y. Recognizing the advanced nature of its ion-propulsion engines and sensor-baffling hull, it was salvaged 
-                            and sold to an independent mercenary crew.
-                        </p>
-                        <p>
-                            The crew heavily retrofitted the vessel to bring it up to modern operational standards. The massive aft cargo bay, originally 
-                            designed to hold a ground transport buggy, was completely gutted. In its place, compact living quarters for a 4-person crew, 
-                            a small mess area, and enhanced life support systems were installed to allow for deep-space, long-duration missions.
-                        </p>
-                        <p>
-                            Today, the Stardust operates primarily within the Crux Constellation, taking high-risk contracts from the Independent 
-                            Services Review Board (ISRB). Due to its speed and stealth capabilities, it is frequently hired by Astral Supply Co. 
-                            to escort high-value freight through the dangerous Varix Gas Clouds or run security patrols near the Night Star station.
+                            We are a <strong>tight-knit team of three specialists</strong>, each bringing unique skills to every mission. 
+                            While our accommodations are minimal—the shuttle was never designed for comfort—our crew excels at adapting, 
+                            improvising, and accomplishing objectives under extreme pressure.
                         </p>
                         
-                        <h3>Notable Characteristics</h3>
-                        <ul>
-                            <li>The Stardust's hull composition naturally scrambles standard sensors, making it difficult to track in deep space.</li>
-                            <li>Due to the experimental nature of its retrofitted life support, the ship's water-reclamation systems are easily overtaxed.</li>
-                            <li>The vessel lacks a dedicated hangar or cargo bay; all gear must be stowed in the cramped crew quarters.</li>
-                            <li><strong>S.Y.:</strong> Refers to the Stellar Year of the Universal Coordinate Plane.</li>
-                        </ul>
+                        <h3>The Ship</h3>
+                        <p>
+                            The XSV Stardust is a marvel of retrofit engineering. Its hull composition naturally scrambles standard sensors, 
+                            making it difficult to track in deep space. Combined with its advanced propulsion systems and tactical capabilities, 
+                            the Stardust is both a home and a weapon—perfectly suited for independent operations on the edge of known space.
+                        </p>
+                        
+                        <h3>Join Us</h3>
+                        <p>
+                            If you're interested in joining our roleplay group aboard the XSV Stardust, please review the <strong>RULES & GUIDE</strong> 
+                            section for our operational procedures, dress code, and IC protocols. We welcome new crew members who are committed to 
+                            collaborative storytelling and creating an engaging roleplay experience for everyone.
+                        </p>
                     </div>
                 `;
                 break;
@@ -193,6 +163,35 @@ tabs.forEach(btn => {
                             Rank, and "XSV Stardust". Your rank is displayed on your collar using a 6-tier pip system. Rank implies responsibility 
                             in the RP, not just power.
                         </p>
+                        
+                        <h3>👗 Dress Code & Uniforms</h3>
+                        <p>
+                            We are open to most uniforms! While we have "official" uniforms linked below, you may wear what you like as long as 
+                            it stays within the sci-fi theme. Civilian attire is also completely allowed while off-duty.
+                        </p>
+                        
+                        <h4>Official Female Duty Uniforms:</h4>
+                        <ul style="font-size: 13px;">
+                            <li><strong>Jazabelle 'Deep Space 69':</strong> <a href="https://marketplace.secondlife.com/p/Jazabelle-Deep-Space-69-complete-outfit/22834766" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                            <li><strong>Jazabelle 'To Boldly Go':</strong> <a href="https://marketplace.secondlife.com/p/Jazabelle-To-Boldly-Go-complete-outfit/28087979" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                            <li><strong>[JRF] Uniform - 2360s:</strong> <a href="https://marketplace.secondlife.com/p/JRF-Uniform-2360s-Female/14669939" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                        </ul>
+                        
+                        <h4>Official Male Duty Uniforms:</h4>
+                        <ul style="font-size: 13px;">
+                            <li><strong>Mercer Fleet Officer:</strong> <a href="https://marketplace.secondlife.com/p/Mercer-Fleet-Officer-Blue/23627398" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                            <li><strong>WW 2371 Uniform:</strong> <a href="https://marketplace.secondlife.com/p/WW-2371-Uniform-Male/25932021" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                            <li><strong>JRF 2360s Uniform:</strong> <a href="https://marketplace.secondlife.com/p/JRF-Uniform-2360s-Male/14991576" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                        </ul>
+                        
+                        <h4>Equipment & Rank Pips:</h4>
+                        <ul style="font-size: 13px;">
+                            <li><strong>TerraCo Rank Pips (Standard, Officer):</strong> <a href="https://marketplace.secondlife.com/p/TerraCo-Rank-Pips-Standard-Officer/9390312" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                            <li><strong>[JRF] Equipment - S3RP STP Tricorder:</strong> <a href="https://marketplace.secondlife.com/p/JRF-Equipment-S3RP-STP-Tricorder/25896747" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                            <li><strong>[JRF] Equipment - Med Kit:</strong> <a href="https://marketplace.secondlife.com/p/JRF-Equipment-Med-Kit/22241217" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                            <li><strong>[JRF] Weapon - Phaser sidearm Type 2 MK6:</strong> <a href="https://marketplace.secondlife.com/p/JRF-Weapon-Phaser-sidearm-Type-2-MK6/25896599" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                            <li><strong>[JRF] Weapon - Phaser rifle Type 3 MK10:</strong> <a href="https://marketplace.secondlife.com/p/JRF-Weapon-Phaser-rifle-Type-3-MK10/25896366" target="_blank" style="color: #66ccff;">View in Marketplace</a></li>
+                        </ul>
                         
                         <h3>🛠️ Shuttle Operations & IC Protocols</h3>
                         <p>Because this is a small shuttle and not a luxury starship, we run a tight ship. The following In-Character rules apply:</p>
@@ -348,383 +347,263 @@ closePanelBtn.addEventListener("click", () => {
 
 // Hierarchical Map System
 async function initializeHierarchicalMap() {
-    console.log("Map initialization starting...");
+    console.log("🗺️  Map initialization starting...");
     
-    // Load data
+    const canvas = document.getElementById("starMapCanvas");
+    if (!canvas) {
+        console.error("❌ Canvas element not found!");
+        return;
+    }
+
     try {
+        // Load data
         const { starSystems } = await import("../data/db_star_systems.js");
         const orbitsData = (await import("../data/db_orbits.js")).default;
-        console.log("Data loaded:", starSystems.length, "systems");
+        console.log("✅ Data loaded:", starSystems.length, "systems");
 
-        const canvas = document.getElementById("starMapCanvas");
-        if (!canvas) {
-            console.error("Canvas not found!");
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+            console.error("❌ Canvas 2D context failed!");
             return;
         }
 
-        console.log("Canvas found, size:", canvas.clientWidth, "x", canvas.clientHeight);
-        const ctx = canvas.getContext("2d");
-        
-        // Set canvas size before any drawing
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
-        console.log("Canvas context set, actual size:", canvas.width, "x", canvas.height);
-        
-        // Test draw a rectangle
-        ctx.fillStyle = "#ff0000";
-        ctx.fillRect(10, 10, 100, 100);
-        console.log("Test rectangle drawn");
-        
-    } catch (err) {
-        console.error("Error in map initialization:", err);
-        return;
-    }
-    
-    // 8 Varix Sectors with political boundaries
-    const sectors = [
-        { id: 1, name: "Varix Core", x: -350, y: -300, radius: 300, color: "#ff6633" },
-        { id: 2, name: "Crux Frontier", x: -100, y: -400, radius: 300, color: "#ff9944" },
-        { id: 3, name: "Var Lupra Corridor", x: 250, y: -250, radius: 300, color: "#ffaa55" },
-        { id: 4, name: "Void Edge", x: 400, y: 0, radius: 300, color: "#ff7722" },
-        { id: 5, name: "Cardinal Reach", x: 250, y: 250, radius: 300, color: "#ff8833" },
-        { id: 6, name: "Spiral Arc", x: -100, y: 400, radius: 300, color: "#ffaa44" },
-        { id: 7, name: "Deep Dark", x: -350, y: 250, radius: 300, color: "#ff6611" },
-        { id: 8, name: "Warren Zone", x: 0, y: 0, radius: 250, color: "#ff9955" }
-    ];
+        // Sectors array
+        const sectors = [
+            { id: 1, name: "Varix Core", x: -300, y: -200, radius: 150, color: "#ff6633" },
+            { id: 2, name: "Crux Frontier", x: 100, y: -200, radius: 150, color: "#ff9944" },
+            { id: 3, name: "Var Lupra Corridor", x: 200, y: 50, radius: 150, color: "#ffaa55" },
+            { id: 4, name: "Void Edge", x: 100, y: 200, radius: 150, color: "#ff7722" },
+            { id: 5, name: "Cardinal Reach", x: -100, y: 200, radius: 150, color: "#ff8833" },
+            { id: 6, name: "Spiral Arc", x: -200, y: 50, radius: 150, color: "#ffaa44" },
+            { id: 7, name: "Deep Dark", x: -200, y: -150, radius: 150, color: "#ff6611" },
+            { id: 8, name: "Warren Zone", x: 0, y: 0, radius: 100, color: "#ff9955" }
+        ];
 
-    let zoomLevel = 0; // 0=galaxy, 1=sector, 2=system, 3=planets
-    let currentSector = null;
-    let currentSystem = null;
-    let zoom = 1.0;
-    let offsetX = 0;
-    let offsetY = 0;
-    let isDragging = false;
-    let dragStartX = 0, dragStartY = 0, dragOriginX = 0, dragOriginY = 0;
+        let zoomLevel = 0;
+        let currentSector = null;
+        let currentSystem = null;
 
-    function resizeCanvas() {
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
-        zoom = Math.min(0.6, canvas.width / 1200);
-        draw();
-    }
+        function draw() {
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
 
-    function worldToScreen(x, y) {
-        return {
-            sx: canvas.width / 2 + (x + offsetX) * zoom,
-            sy: canvas.height / 2 + (y + offsetY) * zoom
-        };
-    }
+            ctx.fillStyle = "#020214";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    function screenToWorld(sx, sy) {
-        return {
-            x: (sx - canvas.width / 2) / zoom - offsetX,
-            y: (sy - canvas.height / 2) / zoom - offsetY
-        };
-    }
+            if (zoomLevel === 0) drawGalaxy();
+            else if (zoomLevel === 1) drawSector();
+            else if (zoomLevel === 2) drawSystem();
+        }
 
-    function draw() {
-        ctx.fillStyle = "#020214";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        function drawGalaxy() {
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const scale = 1.5;
 
-        if (zoomLevel === 0) drawGalaxy();
-        else if (zoomLevel === 1) drawSector();
-        else if (zoomLevel === 2) drawSystem();
-        else if (zoomLevel === 3) drawPlanets();
-    }
+            // Draw sectors
+            sectors.forEach(sector => {
+                const x = centerX + sector.x * scale;
+                const y = centerY + sector.y * scale;
 
-    function drawGalaxy() {
-        // Draw 8 sectors as political regions with connecting lines
-        ctx.strokeStyle = "#ffaa55";
-        ctx.lineWidth = 1;
-        ctx.globalAlpha = 0.2;
-        
-        // Draw sector dividing lines (political map)
-        ctx.beginPath();
-        ctx.moveTo(canvas.width / 2, 0);
-        ctx.lineTo(canvas.width / 2, canvas.height);
-        ctx.stroke();
-        
-        ctx.beginPath();
-        ctx.moveTo(0, canvas.height / 2);
-        ctx.lineTo(canvas.width, canvas.height / 2);
-        ctx.stroke();
-        
-        ctx.globalAlpha = 1;
+                // Sector circle
+                ctx.strokeStyle = sector.color;
+                ctx.lineWidth = 2;
+                ctx.globalAlpha = 0.5;
+                ctx.beginPath();
+                ctx.arc(x, y, sector.radius * scale, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.globalAlpha = 1;
 
-        // Draw each sector
-        sectors.forEach(sector => {
-            const { sx, sy } = worldToScreen(sector.x, sector.y);
-            
-            // Sector circle
-            ctx.strokeStyle = sector.color;
-            ctx.lineWidth = 2;
-            ctx.globalAlpha = 0.4;
-            ctx.beginPath();
-            ctx.arc(sx, sy, sector.radius * zoom, 0, Math.PI * 2);
-            ctx.stroke();
-            ctx.globalAlpha = 1;
-            
-            // Sector label
-            ctx.fillStyle = sector.color;
-            ctx.font = `bold ${14 * Math.min(zoom, 1.5)}px Arial`;
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText(sector.name, sx, sy - 30);
-            
-            // Show system count
-            const systemsInSector = starSystems.filter(sys => sys.sector === sector.id);
-            ctx.fillStyle = "#aaaaff";
-            ctx.font = `${11 * Math.min(zoom, 1.5)}px Arial`;
-            ctx.fillText(`${systemsInSector.length} systems`, sx, sy + 30);
-        });
-    }
+                // Sector label
+                ctx.fillStyle = sector.color;
+                ctx.font = "bold 13px Arial";
+                ctx.textAlign = "center";
+                ctx.fillText(sector.name, x, y - 20);
 
-    function drawSector() {
-        if (!currentSector) return;
+                // System count
+                const sysCnt = starSystems.filter(s => s.sector === sector.id).length;
+                ctx.fillStyle = "#aaaaff";
+                ctx.font = "11px Arial";
+                ctx.fillText(`${sysCnt} systems`, x, y + 15);
+            });
 
-        // Get all systems in this sector
-        const sectorSystems = starSystems.filter(sys => sys.sector === currentSector.id);
-        
-        // Draw sector background
-        const { sx, sy } = worldToScreen(currentSector.x, currentSector.y);
-        ctx.strokeStyle = currentSector.color;
-        ctx.lineWidth = 2;
-        ctx.globalAlpha = 0.2;
-        ctx.beginPath();
-        ctx.arc(sx, sy, currentSector.radius * zoom, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.globalAlpha = 1;
-
-        // Draw back button
-        ctx.fillStyle = "#ff9944";
-        ctx.font = "12px Arial";
-        ctx.textAlign = "left";
-        ctx.fillText("← Back to Galaxy", 20, 20);
-
-        // Draw title
-        ctx.fillStyle = currentSector.color;
-        ctx.font = "bold 18px Arial";
-        ctx.textAlign = "center";
-        ctx.fillText(currentSector.name, canvas.width / 2, 40);
-
-        // Draw systems
-        sectorSystems.forEach(system => {
-            const { sx, sy } = worldToScreen(system.position.x * 50, system.position.y * 50);
-            
-            // System circle
-            ctx.fillStyle = "#4488ff";
-            ctx.globalAlpha = 0.6;
-            ctx.beginPath();
-            ctx.arc(sx, sy, 12 * zoom, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.globalAlpha = 1;
-
-            // System label
+            // Instructions
             ctx.fillStyle = "#ffcc88";
-            ctx.font = `${11 * zoom}px Arial`;
+            ctx.font = "12px Arial";
             ctx.textAlign = "center";
-            ctx.fillText(system.title.split(" (")[0], sx, sy + 25);
-        });
-    }
-
-    function drawSystem() {
-        if (!currentSystem) return;
-
-        const systemData = orbitsData[currentSystem.id];
-        if (!systemData) return;
-
-        // Draw back button
-        ctx.fillStyle = "#ff9944";
-        ctx.font = "12px Arial";
-        ctx.textAlign = "left";
-        ctx.fillText("← Back to Sector", 20, 20);
-
-        // Draw title
-        ctx.fillStyle = "#ffaa55";
-        ctx.font = "bold 18px Arial";
-        ctx.textAlign = "center";
-        ctx.fillText(currentSystem.title, canvas.width / 2, 40);
-
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-
-        // Draw star
-        ctx.fillStyle = "#ffff88";
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Draw belts
-        if (systemData.belts) {
-            systemData.belts.forEach(belt => {
-                ctx.strokeStyle = "#888844";
-                ctx.lineWidth = belt.thickness;
-                ctx.globalAlpha = 0.3;
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, belt.radius * zoom, 0, Math.PI * 2);
-                ctx.stroke();
-                ctx.globalAlpha = 1;
-            });
+            ctx.fillText("Click a sector to explore", centerX, 30);
         }
 
-        // Draw planets on orbits
-        if (systemData.planets) {
-            systemData.planets.forEach(planet => {
-                const angle = (planet.angle * Math.PI) / 180;
-                const px = centerX + Math.cos(angle) * planet.radius * zoom;
-                const py = centerY + Math.sin(angle) * planet.radius * zoom;
+        function drawSector() {
+            if (!currentSector) return;
 
-                // Orbital ring
-                ctx.strokeStyle = "#4488ff";
-                ctx.lineWidth = 1;
-                ctx.globalAlpha = 0.2;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const sectorSystems = starSystems.filter(s => s.sector === currentSector.id);
+
+            // Title
+            ctx.fillStyle = currentSector.color;
+            ctx.font = "bold 18px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText(currentSector.name, centerX, 35);
+
+            // Draw systems
+            sectorSystems.forEach(system => {
+                const x = centerX + system.position.x * 30;
+                const y = centerY + system.position.y * 30;
+
+                // System dot
+                ctx.fillStyle = "#4488ff";
+                ctx.globalAlpha = 0.7;
                 ctx.beginPath();
-                ctx.arc(centerX, centerY, planet.radius * zoom, 0, Math.PI * 2);
-                ctx.stroke();
+                ctx.arc(x, y, 8, 0, Math.PI * 2);
+                ctx.fill();
                 ctx.globalAlpha = 1;
 
-                // Planet
-                ctx.fillStyle = "#44dd44";
-                ctx.beginPath();
-                ctx.arc(px, py, planet.size * zoom * 0.5, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Label
-                ctx.fillStyle = "#aaffaa";
-                ctx.font = `${10 * zoom}px Arial`;
+                // System label
+                ctx.fillStyle = "#ffcc88";
+                ctx.font = "10px Arial";
                 ctx.textAlign = "center";
-                ctx.fillText(planet.id, px, py - planet.size * zoom - 5);
+                ctx.fillText(system.title.split(" (")[0], x, y + 18);
             });
+
+            // Back button
+            ctx.fillStyle = "#ff9944";
+            ctx.font = "11px Arial";
+            ctx.textAlign = "left";
+            ctx.fillText("← BACK", 20, 30);
         }
 
-        // Draw anomalies
-        if (systemData.anomalies) {
-            systemData.anomalies.forEach(anomaly => {
-                const angle = (anomaly.angle * Math.PI) / 180;
-                const ax = centerX + Math.cos(angle) * anomaly.radius * zoom;
-                const ay = centerY + Math.sin(angle) * anomaly.radius * zoom;
+        function drawSystem() {
+            if (!currentSystem) return;
 
-                ctx.fillStyle = "#ff6666";
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+
+            // Title
+            ctx.fillStyle = "#ffaa55";
+            ctx.font = "bold 16px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText(currentSystem.title, centerX, 35);
+
+            const systemData = orbitsData[currentSystem.id];
+            if (systemData) {
+                // Draw star
+                ctx.fillStyle = "#ffff88";
                 ctx.beginPath();
-                ctx.arc(ax, ay, 5 * zoom, 0, Math.PI * 2);
+                ctx.arc(centerX, centerY, 6, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.fillStyle = "#ffaaaa";
-                ctx.font = `${9 * zoom}px Arial`;
-                ctx.textAlign = "center";
-                ctx.fillText(anomaly.id, ax, ay - 8 * zoom);
-            });
+                // Draw planets
+                if (systemData.planets) {
+                    systemData.planets.forEach(planet => {
+                        const angle = (planet.angle * Math.PI) / 180;
+                        const px = centerX + Math.cos(angle) * planet.radius * 2;
+                        const py = centerY + Math.sin(angle) * planet.radius * 2;
+
+                        // Orbit line
+                        ctx.strokeStyle = "#4488ff";
+                        ctx.lineWidth = 0.5;
+                        ctx.globalAlpha = 0.2;
+                        ctx.beginPath();
+                        ctx.arc(centerX, centerY, planet.radius * 2, 0, Math.PI * 2);
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+
+                        // Planet
+                        ctx.fillStyle = "#44dd44";
+                        ctx.beginPath();
+                        ctx.arc(px, py, 4, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Label
+                        ctx.fillStyle = "#aaffaa";
+                        ctx.font = "9px Arial";
+                        ctx.textAlign = "center";
+                        ctx.fillText(planet.id, px, py - 8);
+                    });
+                }
+            }
+
+            // Back button
+            ctx.fillStyle = "#ff9944";
+            ctx.font = "11px Arial";
+            ctx.textAlign = "left";
+            ctx.fillText("← BACK", 20, 30);
         }
-    }
 
-    function drawPlanets() {
-        ctx.fillStyle = "#ffcc88";
-        ctx.font = "14px Arial";
-        ctx.textAlign = "center";
-        ctx.fillText("PLANET DETAIL VIEW", canvas.width / 2, 30);
-    }
+        // Click handler
+        canvas.addEventListener("click", (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const clickY = e.clientY - rect.top;
 
-    // Mouse wheel zoom
-    canvas.addEventListener("wheel", (e) => {
-        e.preventDefault();
-        zoom *= e.deltaY > 0 ? 0.9 : 1.1;
-        zoom = Math.max(0.3, Math.min(5, zoom));
-        draw();
-    }, { passive: false });
-
-    // Drag/pan
-    canvas.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        dragStartX = e.clientX;
-        dragStartY = e.clientY;
-        dragOriginX = offsetX;
-        dragOriginY = offsetY;
-        canvas.style.cursor = "grabbing";
-    });
-
-    window.addEventListener("mouseup", () => {
-        isDragging = false;
-        canvas.style.cursor = "grab";
-    });
-
-    window.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        offsetX = dragOriginX - (e.clientX - dragStartX) / zoom;
-        offsetY = dragOriginY - (e.clientY - dragStartY) / zoom;
-        draw();
-    });
-
-    // Click to navigate
-    canvas.addEventListener("click", (e) => {
-        const rect = canvas.getBoundingClientRect();
-        const sx = e.clientX - rect.left;
-        const sy = e.clientY - rect.top;
-
-        // Back button click
-        if (sy < 35) {
-            if (sx < 150) {
+            // Back button
+            if (clickY < 40 && clickX < 100) {
                 if (zoomLevel === 1) {
                     zoomLevel = 0;
                     currentSector = null;
-                    offsetX = 0;
-                    offsetY = 0;
-                    zoom = 1;
                     draw();
-                    return;
                 } else if (zoomLevel === 2) {
                     zoomLevel = 1;
                     currentSystem = null;
-                    offsetX = 0;
-                    offsetY = 0;
-                    zoom = 1;
                     draw();
-                    return;
                 }
+                return;
             }
-        }
 
-        const { x, y } = screenToWorld(sx, sy);
+            if (zoomLevel === 0) {
+                // Check sector click
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const scale = 1.5;
 
-        if (zoomLevel === 0) {
-            // Check if clicked on sector
-            for (const sector of sectors) {
-                const dist = Math.hypot(x - sector.x, y - sector.y);
-                if (dist <= sector.radius) {
-                    currentSector = sector;
-                    zoomLevel = 1;
-                    offsetX = 0;
-                    offsetY = 0;
-                    zoom = 1;
-                    draw();
-                    return;
-                }
+                sectors.forEach(sector => {
+                    const x = centerX + sector.x * scale;
+                    const y = centerY + sector.y * scale;
+                    const dist = Math.hypot(clickX - x, clickY - y);
+
+                    if (dist <= sector.radius * scale) {
+                        currentSector = sector;
+                        zoomLevel = 1;
+                        draw();
+                    }
+                });
+            } else if (zoomLevel === 1 && currentSector) {
+                // Check system click
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const sectorSystems = starSystems.filter(s => s.sector === currentSector.id);
+
+                sectorSystems.forEach(system => {
+                    const x = centerX + system.position.x * 30;
+                    const y = centerY + system.position.y * 30;
+                    const dist = Math.hypot(clickX - x, clickY - y);
+
+                    if (dist <= 15) {
+                        currentSystem = system;
+                        zoomLevel = 2;
+                        draw();
+                    }
+                });
             }
-        } else if (zoomLevel === 1) {
-            // Check if clicked on system
-            const sectorSystems = starSystems.filter(sys => sys.sector === currentSector.id);
-            for (const system of sectorSystems) {
-                const dist = Math.hypot(x - system.position.x * 50, y - system.position.y * 50);
-                if (dist <= 20) {
-                    currentSystem = system;
-                    zoomLevel = 2;
-                    offsetX = 0;
-                    offsetY = 0;
-                    zoom = 1;
-                    draw();
-                    return;
-                }
-            }
-        }
-    });
-
-    // Close panel button
-    const closeBtn = document.getElementById("close-map-panel");
-    if (closeBtn) {
-        closeBtn.addEventListener("click", () => {
-            document.getElementById("mapInfoPanel").style.display = "none";
         });
-    }
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+        // Mouse wheel zoom
+        canvas.addEventListener("wheel", (e) => {
+            e.preventDefault();
+            // Can add zoom functionality here later
+        }, { passive: false });
+
+        // Initial draw
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        draw();
+        
+        window.addEventListener("resize", draw);
+        console.log("✅ Map ready!");
+
+    } catch (err) {
+        console.error("❌ Map error:", err);
+    }
 }
