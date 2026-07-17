@@ -3,51 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XSV Stardust Terminal</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>XSV Stardust | Roleplay Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
-    <!-- LCARS Sidebar -->
-    <div class="lcars-sidebar">
-        <div class="lcars-title">XSV<br>STARDUST</div>
-        <button class="lcars-tab tab-orange">HOME STATION</button>
-        <button class="lcars-tab tab-purple">RULES & GUIDE</button>
-        <button class="lcars-tab tab-blue">CREW REGISTRY</button>
-        <button class="lcars-tab tab-blue">ASTROMETRICS</button>
-        <button class="lcars-tab tab-red">STORAGE BANKS</button>
-        <button class="lcars-tab tab-orange">DOCKED VESSELS</button>
+
+    <div class="lcars-app-container">
+        
+        <!-- LCARS Left Navigation & Top Elbow -->
+        <nav class="lcars-nav">
+            <div class="lcars-top-elbow">
+                <div class="lcars-elbow-inner"></div>
+                <h1 class="lcars-title">XSV STARDUST // ISRB REGISTRY</h1>
+            </div>
+            
+            <div class="lcars-menu">
+                <div class="lcars-block block-orange"></div>
+                <button class="lcars-btn btn-blue active" data-target="page-home">HOME STATION</button>
+                <button class="lcars-btn btn-purple" data-target="page-rules">STARDUST RULES</button>
+                <button class="lcars-btn btn-red" data-target="page-crew">CREW REGISTRY</button>
+                <button class="lcars-btn btn-orange" data-target="page-lore">LORE BANKS</button>
+                <button class="lcars-btn btn-blue" data-target="page-vessels">VESSELS</button>
+                <button class="lcars-btn btn-purple" data-target="page-astrometrics">ASTROMETRICS</button>
+                <div class="lcars-block block-red flex-grow"></div>
+                <div class="lcars-block block-orange">5092 S.Y.</div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="lcars-content">
+            
+            <!-- HOME STATION -->
+            <section id="page-home" class="page active">
+                <div class="header-bar bar-blue"><h2>HOME STATION // STATUS</h2></div>
+                <div class="content-pad">
+                    <h3>WELCOME ABOARD THE XSV STARDUST</h3>
+                    <p>We are an independent mercenary crew operating a heavily modified Type-17 Argo-class shuttle. Originally designed to carry a cargo buggy, the aft section has been completely retrofitted to support deep-space, long-duration roleplay under the Independent Services Review Board (ISRB).</p>
+                    
+                    <div class="directive-box">
+                        <h4>CURRENT DIRECTIVE: OPERATION ABRUIX</h4>
+                        <p><strong>Target:</strong> Var Lupra System (Planet Pareah)</p>
+                        <p><strong>Objective:</strong> Navigate the hazardous Varix Gas Clouds, survive the toxic atmosphere and Gy'zoma beasts of Pareah, and secure the ancient "Abruix" technology.</p>
+                        <p><strong>Status:</strong> Preparing for expedition. Taking on secondary ISRB contracts to fund shielding upgrades.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STARDUST RULES -->
+            <section id="page-rules" class="page">
+                <div class="header-bar bar-purple"><h2>STARDUST RULES // PROTOCOLS</h2></div>
+                <div class="content-pad">
+                    <h3>OOC & IC GUIDELINES</h3>
+                    <p>This is a strictly 18+ environment. We encourage collaborative, creative storytelling where everyone gets to contribute!</p>
+                    <ul>
+                        <li><strong>IC Protocols:</strong> Alarms & Red Alerts suspend all personal activities. Replicator rations and sonic showers are strictly rationed.</li>
+                        <li><strong>OOC Limits:</strong> Consent is required for combat, perma-death, or severe alterations. No god-modding or meta-gaming.</li>
+                        <li><strong>Dress Code:</strong> Standard XSV Stardust uniforms required on duty. Civilian attire allowed off-duty.</li>
+                        <li><strong>Rank Pips:</strong> We use the JRF Equipment HUD system (6-tier pip system).</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 20px;">DEPARTMENT COLORS</h3>
+                    <ul>
+                        <li><strong style="color: var(--lcars-blue);">BLUE:</strong> Command & CONN (Leaders and pilots)</li>
+                        <li><strong style="color: var(--lcars-red);">RED:</strong> Security & Tactical (Protectors and weapons)</li>
+                        <li><strong style="color: var(--lcars-orange);">YELLOW:</strong> Engineering & Operations (Fixers and mechanics)</li>
+                        <li><strong style="color: var(--lcars-purple);">BURGUNDY:</strong> Science & Medical (Researchers and healers)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CREW REGISTRY -->
+            <section id="page-crew" class="page">
+                <div class="header-bar bar-red"><h2>CREW REGISTRY // MANIFEST</h2></div>
+                <div class="content-pad">
+                    <div id="crew-container" class="grid-container">
+                        <!-- Crew cards injected via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- LORE STORAGE BANKS -->
+            <section id="page-lore" class="page">
+                <div class="header-bar bar-orange"><h2>LORE STORAGE BANKS // ARCHIVES</h2></div>
+                <div class="content-pad split-view">
+                    <div class="list-pane" id="lore-list">
+                        <!-- Lore list injected via JS -->
+                    </div>
+                    <div class="reader-pane" id="lore-reader">
+                        <h3>SELECT A FILE</h3>
+                        <p>Awaiting input...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VESSELS -->
+            <section id="page-vessels" class="page">
+                <div class="header-bar bar-blue"><h2>VESSELS // ENGINEERING</h2></div>
+                <div class="content-pad split-view">
+                    <div class="list-pane" id="vessel-list">
+                        <!-- Vessel list injected via JS -->
+                    </div>
+                    <div class="reader-pane" id="vessel-dashboard">
+                        <h3>VESSEL DASHBOARD</h3>
+                        <p>Select a vessel to initialize telemetry.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ASTROMETRICS NAV -->
+            <section id="page-astrometrics" class="page">
+                <div class="header-bar bar-purple"><h2>ASTROMETRICS // SENSORS</h2></div>
+                <div class="astrometrics-container">
+                    <div id="map-viewport">
+                        <!-- SVG Map injected and manipulated via JS -->
+                        <div id="map-content"></div>
+                    </div>
+                    <div id="map-panel" class="side-panel">
+                        <h3>SCANNER OFFLINE</h3>
+                        <p>Select a stellar body for telemetry.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
     </div>
 
-    <!-- Accent Bar -->
-    <div class="lcars-accent"></div>
+    <!-- Data Files -->
+    <script src="data/db_campaigns.js"></script>
+    <script src="data/db_crew.js"></script>
+    <script src="data/db_factions.js"></script>
+    <script src="data/db_lore.js"></script>
+    <script src="data/db_species.js"></script>
+    <script src="data/db_star_systems.js"></script>
+    <script src="data/db_stations.js"></script>
+    <script src="data/db_vessels.js"></script>
 
-    <!-- Header -->
-    <header id="main-header">HOME STATION</header>
-
-    <!-- Main Content -->
-    <div class="main-content" id="main-content">
-        <h2>WELCOME TO THE XSV STARDUST</h2>
-        <p>
-            We are an independent mercenary crew operating a heavily retrofitted Type‑17 Argo shuttle.
-            While we officially operate under ISRB contracts in the Zavares Sector, we frequently take on
-            off‑the‑books shadow‑contracts for Starfleet and other factions.
-        </p>
-    </div>
-
-    <!-- Databanks Container -->
-    <div id="databanks" class="lcars-container hidden">
-        <div id="db-categories" class="lcars-column"></div>
-        <div id="db-entries" class="lcars-column"></div>
-    </div>
-
-    <!-- Reader Panel -->
-    <div id="db-panel" class="lcars-panel hidden">
-        <h2 id="db-panel-title"></h2>
-        <div id="db-panel-content"></div>
-        <button id="close-panel" class="lcars-button">Close</button>
-    </div>
-
-    <script type="module" src="js/app.js"></script>
+    <!-- Logic Files -->
+    <script src="js/app.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/panel.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/starmap.js"></script>
+    <script src="js/ui.js"></script>
 </body>
 </html>
