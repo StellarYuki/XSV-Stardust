@@ -6,7 +6,7 @@ export const stations = [
     {
         id: "day_star",
         title: "Day Star Station",
-        image: null, // later: "assets/vessels/day_star.png" or similar
+        image: null,
         content: `
 ⦿ Overview:
 Day Star is the primary headquarters station of Astral Supply Co.
@@ -44,17 +44,11 @@ it has opened up many new routes along an old forgotten frontier.
 Astral Supply uses the station as a refinery for fuel and other commodities.
 Small patrols are often seen in and around the station due to a recent uprise of pirate activity.
 
-⦿ Location:
-Varix Gas Clouds, Crux Constellation, Zavares Sector.
-
 ⦿ Night Star Bar - Twilight:
 A small bar residing within the Night Star itself.
 Offering a cozy atmosphere and friendly services via its robotic staff.
-Sitting between the waiting area, hangars, and space docks, travelers can find the bar's specialty:
+Sitting between the waiting area, hangars, and space docks, travelers can find the bar's specialty;
 "Lumix Noodles"—glowing blue ramen said to be a local delicacy among connoisseurs.
-
-Travelers often talk of trade, business, and mining within the bar's walls while newcomers ask for directions
-while looking for a place to rest.
 
 ⦿ History:
 The Night Star was originally created by the Leiverta Proliferation Front in 4821 S.Y.
