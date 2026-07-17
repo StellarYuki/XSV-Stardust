@@ -61,21 +61,20 @@ tabs.forEach(btn => {
 
             case "ASTROMETRICS":
                 header.textContent = "ASTROMETRICS";
+                mainContent.style.padding = "0";
+                mainContent.style.height = "100%";
                 mainContent.innerHTML = `
-                    <div style="display: flex; height: 100%; gap: 10px;">
-                        <canvas id="starMapCanvas" style="flex: 1; background: #020214; border-radius: 8px; cursor: grab;"></canvas>
-                        <div id="mapInfoPanel" style="width: 280px; background: rgba(10, 5, 30, 0.9); border: 1px solid #ffcc88; padding: 12px; border-radius: 8px; overflow-y: auto; color: #ffcc88; font-size: 13px; display: none;">
-                            <div><strong>Selected:</strong> <span id="selectedName">None</span></div>
-                            <hr style="border: none; border-top: 1px solid #ffcc88; margin: 8px 0;">
-                            <div><strong>Type:</strong> <span id="selectedType">—</span></div>
-                            <hr style="border: none; border-top: 1px solid #ffcc88; margin: 8px 0;">
-                            <div><strong>Notes:</strong></div>
-                            <div id="selectedNotes" style="font-size: 12px; margin-top: 4px;">—</div>
+                    <canvas id="starMapCanvas" style="width: 100%; height: 100%; background: #020214; display: block;"></canvas>
+                    <div id="mapInfoPanel" class="db-panel" style="display: none;">
+                        <div class="db-panel-inner">
+                            <button id="close-map-panel" class="db-panel-close">Close</button>
+                            <h2 id="selectedName"></h2>
+                            <div id="selectedInfo" class="db-panel-content"></div>
                         </div>
                     </div>
                 `;
                 // Load map after DOM is ready
-                setTimeout(() => initializeMapRenderer(), 100);
+                setTimeout(() => initializeHierarchicalMap(), 100);
                 break;
 
             case "STORAGE BANKS":
@@ -102,34 +101,32 @@ closePanelBtn.addEventListener("click", () => {
     closePanel();
 });
 
-// Map initialization
-function initializeMapRenderer() {
+// Hierarchical Map System
+function initializeHierarchicalMap() {
     const canvas = document.getElementById("starMapCanvas");
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
     
-    // Import map config inline since we can't import in this module easily
-    const MAP_CONFIG = {
-        scale: 1.0,
-        objects: [
-            { id: "trinary_system", name: "Trinary System", type: "system", x: -200, y: 50, radius: 6, color: "#ff9966", notes: "Primary core system; high traffic." },
-            { id: "brunhilde_system", name: "Brunhilde System", type: "system", x: -80, y: 120, radius: 6, color: "#ff9966", notes: "Industrial system with debris fields." },
-            { id: "var_lupra_system", name: "Var Lupra", type: "system", x: 140, y: 40, radius: 6, color: "#ff9966", notes: "Cloud‑rich system; station presence." },
-            { id: "warren_wormhole", name: "Warren Wormhole", type: "wormhole", x: 60, y: -80, radius: 8, color: "#66ccff", notes: "Major transit anomaly; high‑risk corridor." },
-            { id: "warren_station", name: "Warren Relay Station", type: "station", x: 80, y: -60, radius: 4, color: "#ffff66", notes: "Monitoring and traffic control for Warren Wormhole." },
-            { id: "arcavion_reach", name: "Arcavion Reach", type: "system", x: -260, y: -40, radius: 5, color: "#ffcc88", notes: "Military frontier; patrol routes." },
-            { id: "aquila_union", name: "Aquila Union", type: "system", x: 220, y: -10, radius: 5, color: "#ffcc88", notes: "Political hub; trade and diplomacy." },
-            { id: "mido_drift", name: "Mido Drift", type: "system", x: 10, y: 160, radius: 5, color: "#ffcc88", notes: "Sparse frontier; salvage operations." }
-        ],
-        stardust: { id: "xsv_stardust", name: "XSV Stardust", type: "ship", x: 68, y: -72, radius: 5, color: "#ff66ff", notes: "Current position: holding pattern near Warren Wormhole." }
-    };
+    // 8 Varix Sectors with political boundaries
+    const sectors = [
+        { id: "varix_core", name: "Varix Core", x: -300, y: -200, radius: 400, color: "#ff6633", systems: ["trinary_system", "core_echo", "core_research"] },
+        { id: "crux_frontier", name: "Crux Frontier", x: 300, y: -200, radius: 400, color: "#ff9944", systems: ["void_scar", "polar_gate"] },
+        { id: "outer_rim", name: "Outer Rim", x: 600, y: 200, radius: 350, color: "#ffaa55", systems: ["brunhilde_system", "var_lupra_system"] },
+        { id: "void_edge", name: "Void Edge", x: -600, y: 200, radius: 350, color: "#ff7722", systems: [] },
+        { id: "cardinal_reach", name: "Cardinal Reach", x: 0, y: 600, radius: 350, color: "#ff8833", systems: [] },
+        { id: "spiral_arc", name: "Spiral Arc", x: -200, y: -600, radius: 350, color: "#ffaa44", systems: [] },
+        { id: "deep_dark", name: "Deep Dark", x: 200, y: -600, radius: 350, color: "#ff6611", systems: [] },
+        { id: "warren_zone", name: "Warren Zone", x: 0, y: 0, radius: 300, color: "#ff9955", systems: ["warren_wormhole", "warren_station"] }
+    ];
 
+    let zoomLevel = 0; // 0=galaxy, 1=sector, 2=system, 3=planets
+    let selectedSystem = null;
     let zoom = 1.0;
     let offsetX = 0;
     let offsetY = 0;
     let isDragging = false;
-    let dragStartX, dragStartY, dragOriginX, dragOriginY;
+    let dragStartX = 0, dragStartY = 0, dragOriginX = 0, dragOriginY = 0;
 
     function resizeCanvas() {
         canvas.width = canvas.clientWidth;
@@ -139,60 +136,81 @@ function initializeMapRenderer() {
 
     function worldToScreen(x, y) {
         return {
-            sx: canvas.width / 2 + (x * MAP_CONFIG.scale + offsetX) * zoom,
-            sy: canvas.height / 2 + (y * MAP_CONFIG.scale + offsetY) * zoom
+            sx: canvas.width / 2 + (x + offsetX) * zoom,
+            sy: canvas.height / 2 + (y + offsetY) * zoom
+        };
+    }
+
+    function screenToWorld(sx, sy) {
+        return {
+            x: (sx - canvas.width / 2) / zoom - offsetX,
+            y: (sy - canvas.height / 2) / zoom - offsetY
         };
     }
 
     function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#020214";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.save();
-        ctx.strokeStyle = "#111133";
-        ctx.lineWidth = 1;
-        const step = 50 * zoom;
-        for (let x = 0; x < canvas.width; x += step) {
-            ctx.beginPath();
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, canvas.height);
-            ctx.stroke();
-        }
-        for (let y = 0; y < canvas.height; y += step) {
-            ctx.beginPath();
-            ctx.moveTo(0, y);
-            ctx.lineTo(canvas.width, y);
-            ctx.stroke();
-        }
-        ctx.restore();
-
-        MAP_CONFIG.objects.forEach((obj) => {
-            const { sx, sy } = worldToScreen(obj.x, obj.y);
-            ctx.beginPath();
-            ctx.fillStyle = obj.color;
-            ctx.arc(sx, sy, obj.radius * zoom, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.fillStyle = "#ffcc88";
-            ctx.font = `${10 * zoom}px system-ui, sans-serif`;
-            ctx.textAlign = "left";
-            ctx.textBaseline = "top";
-            ctx.fillText(obj.name, sx + 6 * zoom, sy + 4 * zoom);
-        });
-
-        const sd = MAP_CONFIG.stardust;
-        const { sx: sdx, sy: sdy } = worldToScreen(sd.x, sd.y);
-        ctx.beginPath();
-        ctx.fillStyle = sd.color;
-        ctx.arc(sdx, sdy, sd.radius * zoom, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = "#ff66ff";
-        ctx.font = `${10 * zoom}px system-ui, sans-serif`;
-        ctx.textAlign = "left";
-        ctx.textBaseline = "bottom";
-        ctx.fillText(sd.name, sdx + 6 * zoom, sdy - 4 * zoom);
+        if (zoomLevel === 0) drawGalaxy();
+        else if (zoomLevel === 1) drawSector();
+        else if (zoomLevel === 2) drawSystem();
+        else if (zoomLevel === 3) drawPlanets();
     }
 
+    function drawGalaxy() {
+        // Draw 8 sectors as political regions
+        sectors.forEach(sector => {
+            const { sx, sy } = worldToScreen(sector.x, sector.y);
+            
+            // Draw sector boundary
+            ctx.strokeStyle = sector.color;
+            ctx.lineWidth = 2;
+            ctx.globalAlpha = 0.3;
+            ctx.beginPath();
+            ctx.arc(sx, sy, sector.radius * zoom, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+            
+            // Draw sector label
+            ctx.fillStyle = sector.color;
+            ctx.font = `${12 * zoom}px Arial`;
+            ctx.textAlign = "center";
+            ctx.fillText(sector.name, sx, sy);
+        });
+    }
+
+    function drawSector() {
+        // Draw systems in selected sector
+        ctx.fillStyle = "#ffcc88";
+        ctx.font = `14px Arial`;
+        ctx.textAlign = "center";
+        ctx.fillText("SECTOR VIEW - Click system to zoom", canvas.width / 2, 30);
+    }
+
+    function drawSystem() {
+        ctx.fillStyle = "#ffcc88";
+        ctx.font = `14px Arial`;
+        ctx.textAlign = "center";
+        ctx.fillText("SYSTEM VIEW - Orbital mechanics", canvas.width / 2, 30);
+    }
+
+    function drawPlanets() {
+        ctx.fillStyle = "#ffcc88";
+        ctx.font = `14px Arial`;
+        ctx.textAlign = "center";
+        ctx.fillText("PLANET VIEW", canvas.width / 2, 30);
+    }
+
+    // Mouse wheel zoom
+    canvas.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        zoom *= e.deltaY > 0 ? 0.9 : 1.1;
+        zoom = Math.max(0.3, Math.min(5, zoom));
+        draw();
+    }, { passive: false });
+
+    // Drag/pan
     canvas.addEventListener("mousedown", (e) => {
         isDragging = true;
         dragStartX = e.clientX;
@@ -209,53 +227,40 @@ function initializeMapRenderer() {
 
     window.addEventListener("mousemove", (e) => {
         if (!isDragging) return;
-        const dx = (e.clientX - dragStartX) / zoom / MAP_CONFIG.scale;
-        const dy = (e.clientY - dragStartY) / zoom / MAP_CONFIG.scale;
-        offsetX = dragOriginX + dx;
-        offsetY = dragOriginY + dy;
+        offsetX = dragOriginX - (e.clientX - dragStartX) / zoom;
+        offsetY = dragOriginY - (e.clientY - dragStartY) / zoom;
         draw();
     });
 
+    // Click to select/zoom
     canvas.addEventListener("click", (e) => {
         const rect = canvas.getBoundingClientRect();
         const sx = e.clientX - rect.left;
         const sy = e.clientY - rect.top;
+        const { x, y } = screenToWorld(sx, sy);
 
-        const sd = MAP_CONFIG.stardust;
-        const { sx: sdx, sy: sdy } = worldToScreen(sd.x, sd.y);
-        const distSd = Math.hypot(sx - sdx, sy - sdy);
-        if (distSd <= sd.radius * zoom + 4) {
-            setSelected(sd);
-            return;
-        }
-
-        for (const obj of MAP_CONFIG.objects) {
-            const { sx: ox, sy: oy } = worldToScreen(obj.x, obj.y);
-            const dist = Math.hypot(sx - ox, sy - oy);
-            if (dist <= obj.radius * zoom + 4) {
-                setSelected(obj);
-                return;
+        if (zoomLevel === 0) {
+            // Check if clicked on sector
+            for (const sector of sectors) {
+                const dist = Math.hypot(x - sector.x, y - sector.y);
+                if (dist <= sector.radius) {
+                    selectedSystem = sector;
+                    zoomLevel = 1;
+                    offsetX = -sector.x + canvas.width / (2 * zoom);
+                    offsetY = -sector.y + canvas.height / (2 * zoom);
+                    draw();
+                    return;
+                }
             }
         }
-
-        setSelected(null);
     });
 
-    function setSelected(obj) {
-        const selectedNameEl = document.getElementById("selectedName");
-        const selectedTypeEl = document.getElementById("selectedType");
-        const selectedNotesEl = document.getElementById("selectedNotes");
-        const mapInfoPanel = document.getElementById("mapInfoPanel");
-        
-        if (!obj) {
-            mapInfoPanel.style.display = "none";
-            return;
-        }
-        
-        selectedNameEl.textContent = obj.name;
-        selectedTypeEl.textContent = obj.type;
-        selectedNotesEl.textContent = obj.notes || "—";
-        mapInfoPanel.style.display = "block";
+    // Close panel button
+    const closeBtn = document.getElementById("close-map-panel");
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            document.getElementById("mapInfoPanel").style.display = "none";
+        });
     }
 
     resizeCanvas();
