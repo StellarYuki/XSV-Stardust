@@ -137,6 +137,7 @@ async function initializeHierarchicalMap() {
     function resizeCanvas() {
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
+        zoom = Math.min(0.6, canvas.width / 1200);
         draw();
     }
 
