@@ -1,17 +1,37 @@
-<!-- Databanks Button -->
-<button id="open-databanks">Databanks</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCARS Databanks</title>
 
-<!-- Databanks UI -->
-<div id="databanks">
-    <div id="db-categories"></div>
-    <div id="db-entries"></div>
-</div>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
-<!-- Reader Panel -->
-<div id="db-panel">
-    <h2 id="db-panel-title"></h2>
-    <div id="db-panel-content"></div>
-    <button onclick="closePanel()">Close</button>
-</div>
+<body>
+    <!-- LCARS Header -->
+    <header style="background:#ff9966; color:black; padding:15px; border-radius:0 0 20px 0;">
+        <h1>LCARS Databanks Interface</h1>
+    </header>
 
-<script type="module" src="js/app.js"></script>
+    <!-- Databanks Button -->
+    <button id="open-databanks" class="lcars-button">Open Databanks</button>
+
+    <!-- Databanks Container -->
+    <div id="databanks" class="lcars-container hidden">
+        <div id="db-categories" class="lcars-column"></div>
+        <div id="db-entries" class="lcars-column"></div>
+    </div>
+
+    <!-- Reader Panel -->
+    <div id="db-panel" class="lcars-panel hidden">
+        <h2 id="db-panel-title"></h2>
+        <div id="db-panel-content"></div>
+        <button id="close-panel" class="lcars-button">Close</button>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
