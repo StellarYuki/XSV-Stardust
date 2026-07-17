@@ -4,6 +4,7 @@
 
 import { loadCategories, loadEntries } from "./ui.js";
 import { closePanel } from "./panel.js";
+import { initializeStarMap } from "./starmap.js";
 
 const header = document.getElementById("main-header");
 const mainContent = document.getElementById("main-content");
@@ -61,11 +62,10 @@ tabs.forEach(btn => {
             case "ASTROMETRICS":
                 header.textContent = "ASTROMETRICS";
                 mainContent.innerHTML = `
-                    <h2>ASTROMETRICS</h2>
-                    <p>
-                        This section will show star systems, routes, and navigation data.
-                    </p>
+                    <h2>ASTROMETRICS - STELLAR CARTOGRAPHY</h2>
+                    <div id="starmap-container" style="width: 100%; height: 500px; margin-top: 20px; border: 2px solid #ff9900; background: #111; border-radius: 10px;"></div>
                 `;
+                setTimeout(() => initializeStarMap(), 100);
                 break;
 
             case "STORAGE BANKS":
