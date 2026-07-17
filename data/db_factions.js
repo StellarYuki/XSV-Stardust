@@ -1,69 +1,80 @@
-
 // ==========================================
 // DATABANK: FACTIONS
 // ==========================================
 
 export const db_factions = [
-
-    // --------------------------------------------------
-    // Astral Supply Co.
-    // --------------------------------------------------
     {
-        id: "astral_supply",
+        id: "astral_supply_co",
         category: "Factions",
         title: "Astral Supply Co.",
-        tags: ["Astral Supply Co", "Freight Company", "Tora-Katasu Clan", "Crux Constellation", "Zavares", "Stations", "Night Star", "Day Star"],
+        tags: ["Astral Supply Co", "Tora-katasu", "Transport", "Freight", "Day Star", "Night Star"],
         content: `
 ⦿ Overview:
-Astral Supply Co. is an upcoming interstellar medium-sized freight company specializing in the transportation of hard and hazardous materials. Family-owned by the Tora-Katasu clan, company positions are operated by siblings. They work within the Crux Constellation under a legal ISRB contract.
+Astral Supply Co. is an interstellar medium-sized freight company specializing in the transportation of hard and hazardous materials. Family-owned by the Tora-katasu clan, with company positions run by siblings. Operating within the Crux Constellation via a legal contract bounded by the ISRB.
 
 The company operates a small private fleet of transport and security ships while maintaining two refurbished space stations: Night Star and Day Star.
 
 ⦿ History:
-Originally founded as Kata Deliveries in 4862 S.Y. on the planet Gastron, the company began as a small food delivery service. After Gastron’s economic boom, Kata Deliveries rebranded into Astral Supply Co. and expanded operations beyond the Brunhilde Star System.
+The company started as a small food delivery service on the planet Gastron, delivering produce from plantations to settlements. It soon expanded to orbit, providing similar services to colonies and mining operations.
 
-Astral Supply Co. now operates stations, secures trade routes, and provides mining vessels with safe refineries and trade hubs. Day Star serves as the company HQ and primary revenue source, while Night Star is used to open new routes through the Varix corridors.
+Established in 4862 S.Y., Kata Deliveries was run by family head Marulis Tora and later taken over by his son Xemis Tora, who sought to expand to much larger markets. After Gastron's economic boom, the small company rebranded as Astral Supply Co. and expanded operations outside the Brunhilde Star System.
 
-Fleet Composition:
-• 4 large frigates (transport)
-• 12 small delivery vessels
-• 2 battleships (security)
-• 3 light cruisers
-• Small fighter complement
+They now operate stations and secure old trade routes where mining vessels can safely mine, refine, and sell materials. The Day Star station serves as company HQ and provides most revenue through massive cargo facilities and fleet maintenance. The Night Star station pursues opening the old east corridors to branch new income sources from the Varix Gas Clouds.
+
+⦿ Fleet Composition:
+• 4 large frigates for transporting goods
+• 12 smaller delivery vessels
+• Private security fleet: 2 battleships and 3 light cruisers
+• Small number of fighters housed in each battleship
+
+⦿ Key Locations:
+• Day Star Station - Company headquarters, bright nebula surroundings
+• Night Star Station - Expansion hub in Varix Gas Clouds
+• Orbital facilities throughout Brunhilde system
 
 ⦿ Notes:
-• Kata Deliveries has existed for 11 family generations.
-• Day Star is named after the bright nebulae surrounding it.
-• Lumix Noodles are the clan’s favorite dish.
-• Astral Supply Co. is primarily a transport business with small security and promotional departments.
-• S.Y. = Stellar Year.
+• Kata Deliveries has been in business for 11 family generations.
+• Day Star station received its name from the bright nebulae around it.
+• Lumix Noodles is the Katasu clan's favorite dish (family secret recipe).
+• Astral Supply Co. is primarily a transport business with smaller security and promotional departments.
+• S.Y. refers to the Stellar Year of the Universal Coordinate Plane.
         `
     },
 
-    // --------------------------------------------------
-    // Independent Services Review Board (ISRB)
-    // --------------------------------------------------
     {
         id: "isrb",
         category: "Factions",
         title: "Independent Services Review Board (ISRB)",
-        tags: ["ISRB", "Setrean Government", "Contracts", "Licensing", "Solar Companies", "Zavares", "Crux Constellation"],
+        tags: ["ISRB", "Government", "Contracts", "Licensing", "Zavares", "Crux Constellation"],
         content: `
 ⦿ Overview:
-The Independent Services Review Board (ISRB) is an organization responsible for handling contracts, licenses, certifications, and legal rights for enterprises operating within recognized territories. It legitimizes operations under the official ISRB registrar.
+The Independent Services Review Board (ISRB) is an independent supranational organization that handles contracts, licenses, certifications, and rights to legitimize enterprises, operations, and institutions legally signed under the official ISRB registrar.
 
 ⦿ History:
-Created in 5072 S.Y. by the Setrean government, the ISRB began as a temporary subcommittee to regulate solar companies. It later evolved into a supranational organization recognized across multiple autonomous states.
+Created in 5072 S.Y. by the Setrean government with representatives from each territorial clan on Gastron. A Sub Committee was initially set up to handle the growing influx of solar companies as a temporary safeguard before laws were enacted.
 
-In 5091 S.Y., the ISRB Solar Committee was formed, establishing departments for disputes, complaints, security, and arbitration. The ISRB acts as a court, banking system, and contract broker.
+The ISRB Central Committee was established to create an official registrar for solar companies wishing to be legally recognized by the Setrean government. In 5090 S.Y., the original committee was dissolved and recreated with representatives from each autonomous state, making it a true supranational organization.
 
-Solar companies operating under ISRB jurisdiction are ranked and certified. Those breaking contracts are classified as rogues. Independents may operate outside the registrar but face difficulty due to lack of recognized certifications.
+In 5091 S.Y., the ISRB Solar Committee was created with dedicated departments to handle disputes, complaints, security, and employer-contractor relations.
+
+⦿ Functions:
+The ISRB acts as a court, banking system, broker, and arbitrator for:
+• Contract brokering and arbitration
+• License and certification issuance
+• Rights recognition and protection
+• Dispute resolution
+• Ranking and review systems
+
+⦿ Enforcement:
+Solar companies breaking contracts are classified as "rouges." While companies can operate as independents outside the ISRB registrar, non-registration makes operations difficult due to the ISRB's ranking system and certification status, which are widely used for vetting services and businesses.
+
+The ISRB enforces guidelines using extensive political influence within recognized territories and beyond.
 
 ⦿ Notes:
-• “Solar Company” refers to any enterprise or institution.
-• “Autonomous State” refers to governments that legislate solar systems.
-• S.Y. = Stellar Year.
+• A Solar Company is any enterprise, institution, or business entity.
+• Autonomous States are governments with legislative authority over solar systems.
+• ISRB certification provides legitimacy and access to markets.
+• S.Y. refers to the Stellar Year of the Universal Coordinate Plane.
         `
     }
-
 ];
