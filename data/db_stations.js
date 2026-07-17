@@ -1,146 +1,166 @@
-// ==========================================
-// DATABANK: STATIONS
-// ==========================================
+// ===============================
+// Stations Databank
+// ===============================
 
-export const db_stations = [
+export const stations = [
     {
-        id: "day_star_station",
-        category: "Stations",
+        id: "day_star",
         title: "Day Star Station",
-        tags: ["Day Star", "Astral Supply Co", "Station", "Trade Hub", "Headquarters"],
+        image: null, // later: "assets/vessels/day_star.png" or similar
         content: `
 ⦿ Overview:
-Day Star is the primary space station owned and operated by Astral Supply Co., serving as the company's headquarters and main revenue generator. It functions as a massive port for cargo containers and a hub for fleet maintenance and trading operations.
+Day Star is the primary headquarters station of Astral Supply Co.
+It serves as a massive port for cargo containers and facilities to keep their fleet and other vessels maintained.
+The station provides most of Astral Supply Co.'s revenue stream.
 
-⦿ Location:
-Orbit of Gastron, Brunhilde Star System
+Astral Supply collaborates with smaller businesses, providing protection and transportation of their goods for a fee.
+Using Day Star as a central hub, traders can sell their wares while vessels refuel, restock, and undergo maintenance.
 
-⦿ Services:
-• Cargo container facilities
-• Fleet and vessel maintenance
-• Refueling and restocking
-• Trade hub for merchants
-• Administrative headquarters for Astral Supply Co.
-• Collaboration with smaller businesses for protection and goods transportation
-
-⦿ History:
-Named from the bright nebulae surrounding it in the Brunhilde system. Day Star serves as the central hub for Astral Supply Co.'s expanding operations throughout the Crux Constellation.
+⦿ Operations:
+• Central HQ for Astral Supply Co.
+• Major cargo port and container hub.
+• On-board refineries for mining vessels to refine and sell materials.
+• Maintenance facilities for Astral Supply's private fleet and visiting ships.
 
 ⦿ Notes:
-• Day Star received its name from the bright nebulae around it.
-• High-value, high-traffic station with significant security presence.
-• Primary docking point for company frigates and security vessels.
+• Day Star station received its name from the bright nebulae around it.
+• Astral Supply Co. is mainly a transport business with smaller departments for security and promotional products.
         `
     },
-
     {
-        id: "night_star_station",
-        category: "Stations",
+        id: "night_star",
         title: "Night Star Station",
-        tags: ["Night Star", "Astral Supply Co", "Station", "Varix", "Refinery", "Bar"],
+        image: null,
         content: `
 ⦿ Overview:
-Night Star is a refurbished space station owned and operated by Astral Supply Co., serving as a beacon along the mid-point of the Varix corridor. It is a hub of activity for layovers, refueling, resupplying, commerce, and trading. Though small in physical stature, the station is constantly being renovated from its pre-war condition.
+The Night Star is a refurbished space station owned and operated by Astral Supply Co.
+Serving as a beacon along the mid-point of the Varix corridor, the station is a hub of activity from layovers,
+refueling and resupplying, to commerce and trading.
+
+Although small in physical stature, the station is constantly being renovated from its pre-war condition,
+when it once served as an outpost during the great Leiverta war. Tucked within the Crux Constellation,
+it has opened up many new routes along an old forgotten frontier.
+
+Astral Supply uses the station as a refinery for fuel and other commodities.
+Small patrols are often seen in and around the station due to a recent uprise of pirate activity.
 
 ⦿ Location:
-Varix Gas Clouds, Crux Constellation, Zavares Sector
-
-⦿ History:
-Originally designated "Black Cloud," the station was created by the Leiverta Proliferation Front in 4821 S.Y. as a military installation masquerading as a local refinery. Its two main purposes were refining Varix fuel and espionage operations via a powerful gain antenna array (now decommissioned).
-
-The Black Cloud lay dormant for 240 years after the Leiverta collapsed until discovered by Astral Supply Co.'s security fleet in 5061 S.Y. It served as a base of operations during the Liberation Treaty wars.
-
-⦿ Current Operations:
-• Varix fuel refinery using on-board refineries
-• Trading post for merchants
-• Refueling and resupply point
-• Hangars and space docks
-• Small pirate patrols due to recent activity
+Varix Gas Clouds, Crux Constellation, Zavares Sector.
 
 ⦿ Night Star Bar - Twilight:
-A small cozy bar within the station with robotic staff. Located between the waiting area, hangars, and space docks, travelers find the bar's specialty: Lumix Noodles—glowing blue ramen said to be a local delicacy. Travelers discuss trade, business, and mining while newcomers seek directions and rest.
+A small bar residing within the Night Star itself.
+Offering a cozy atmosphere and friendly services via its robotic staff.
+Sitting between the waiting area, hangars, and space docks, travelers can find the bar's specialty:
+"Lumix Noodles"—glowing blue ramen said to be a local delicacy among connoisseurs.
+
+Travelers often talk of trade, business, and mining within the bar's walls while newcomers ask for directions
+while looking for a place to rest.
+
+⦿ History:
+The Night Star was originally created by the Leiverta Proliferation Front in 4821 S.Y.
+Being a military installation, it was masked as just a local refinery for the Varix clouds.
+Its two main purposes were refining fuel using on-board refineries and espionage with its now decommissioned
+powerful gain antenna array.
+
+The station was once designated the "Black Cloud" due to poor work conditions and quality of equipment,
+keeping everything covered in the byproduct of Xar combustion.
+
+After recent discoveries from an exploration team sent in by Astral Supply Co., the station has regained a new life
+named Night Star.
+
+The Black Cloud laid dormant for 240 years and was abandoned when Leiverta collapsed until its eventual discovery
+in 5061 S.Y. by Astral Supply Co.'s private security fleet.
+
+Black Cloud took part as a base of operations during the Liberation Treaty wars.
 
 ⦿ Notes:
-• Night Star received its name as a navigational aid on star charts.
-• Twilight bar got its name from distant stars and their soft glow through Varix gas clouds.
-• Lumix Noodles are extremely spicy and glow due to Var powder.
-• Varix Clouds are gaseous pockets of heavy particles that can be used as fuel and spice.
-• Small pirate patrols are common in the area.
-• S.Y. refers to the Stellar Year of the Universal Coordinate Plane.
+• The Night Star received its name acting as a navigational aid on star charts.
+• The Twilight got its name from distant stars and their soft glow through the Varix gas clouds.
+• Lumix Noodles are extremely spicy and glow due to Var powder in them.
+• Varix Clouds are gaseous pockets of heavy particles which can be used as fuel and spice.
+• Varix corridor has an abundance of mineable clouds which blot out much of the ambient light,
+  creating a dangerous route to navigate.
+• Xar combustion is the byproduct of infusing silicate matter with Varix particles.
         `
     },
-
     {
         id: "terminus_outpost",
-        category: "Stations",
         title: "Terminus Outpost",
-        tags: ["Terminus", "Free-Port", "Independent", "Mercenary", "Black Market", "Zavares"],
+        image: null,
         content: `
 ⦿ Overview:
-Terminus Outpost is a small, independent Forward Operating Base (FOB) and free-port operated by independent contractors and recognized by the ISRB as a private sanctuary. It serves as a discreet layover for mercenary crews, smugglers, and privateers operating in the Zavares Sector.
+Terminus Outpost is a small, independent Forward Operating Base (FOB) and free-port.
+Operated by independent contractors and recognized by the ISRB as a private sanctuary.
+It serves as a discreet layover for mercenary crews, smugglers, and privateers operating in the Zavares Sector.
 
-⦿ Technical Specifications:
 • Type: Independent Free-Port / Forward Operating Base
 • Class: Modular Deep-Space Habitat
 • Manufacture: Scavenged (Mixed Leiverta Monarchy & Setrean Tech)
-• Length: 120m | Width: 120m | Height: 45m
-• Tonnage: 14,200 tons
-• Armor: Scavenged Zeplox Plating
-• Shielding: Surplus Mana Range Generators
-• Sensors: Passive CCX-VS04 Array (Stealth-Oriented)
-• Power: Twin Hydrogen Reactors
-• Bays: 2 External Landing Pads, 1 Internal Maintenance Bay
-• Max Population: 45
-• Weapons: Automated Flak Turrets, Point-Defense Lasers
 
 ⦿ History:
-Terminus began as a Leiverta Monarchy deep-space communications relay hidden in the outer edges of the Brunhilde Star System. After the Monarchy's collapse, the relay was abandoned and stripped by pirates.
+Terminus began as a Leiverta Monarchy deep-space communications relay, hidden in the outer edges of the Brunhilde Star System.
+After the collapse of the Monarchy, the relay was abandoned and stripped of its most valuable technology by pirates.
 
-In 5075 S.Y., a coalition of independent mercenary crews tired of Astral Supply Co.'s exorbitant docking fees pooled resources to claim the derelict structure. They towed it into stable orbit and rebuilt it using salvaged Setrean technology and surplus armor plating.
+In 5075 S.Y., a coalition of independent mercenary crews—tired of paying the docking fees at Astral Supply Co.'s Day Star—
+pooled their resources to claim the derelict structure. They towed it into a stable, hidden orbit and rebuilt it using
+salvaged Setrean technology and surplus armor plating.
 
-⦿ Current Services:
-• Black Market: Discreet brokers dealing in unregistered weapons, Varix spice, and salvaged tech
-• Maintenance Bay: Specialized repair for small-to-medium vessels without corporate oversight
-• Off the Grid: Passive sensors and hidden location make detection by military vessels extremely difficult
-• Amenities: Functional life support, synthetic rations, and cheap ale
+Today, Terminus Outpost is a fully functional, off-the-books free-port. While it holds a basic ISRB certification to avoid
+being classified as a pirate haven, it operates with almost zero oversight.
+
+⦿ Features:
+• Two external landing pads and one internal maintenance bay.
+• Automated flak turrets and point-defense lasers.
+• Twin hydrogen reactors for power.
+• Passive sensor array optimized for stealth.
 
 ⦿ Notes:
-• The station holds basic ISRB certification to avoid pirate classification.
-• Operates with almost zero oversight despite certification.
-• Water and power carefully monitored.
-• Perfect for crews needing to lay low, repair battle damage, or take shadow-contracts.
-• S.Y. refers to the Stellar Year of the Universal Coordinate Plane.
+• The Black Market: Terminus lacks a massive promenade, but its small lounge serves as a discreet meeting place for brokers
+  dealing in unregistered weapons, Varix spice, and salvaged tech.
+• Maintenance Bay: Specialized repair bay for small-to-medium vessels.
+• Off the Grid: Difficult for larger military vessels to detect.
+• Amenities: Functional but not luxurious; water and power are carefully monitored.
         `
     },
-
     {
         id: "outpost_79",
-        category: "Stations",
         title: "Outpost 79",
-        tags: ["Outpost 79", "Starfleet", "Federation", "Warren Gateway", "Alpha Quadrant"],
+        image: null,
         content: `
 ⦿ Overview:
-Outpost 79 is a Federation deep-space research and monitoring station established by Starfleet in the Alpha Quadrant. It serves as the primary hub for studying the Warren Gateway—a stable inter-dimensional gateway connecting Federation space to the Crux Constellation and Setrean territory.
+Outpost 79 is a roleplay-focused station and hub, serving as a gateway to a vibrant world of adventures.
+It operates under a 24/7 open role-play format, complemented by scheduled events that add depth and excitement
+to the shared narrative.
 
-⦿ Command:
-Admiral Orion Windwalker
+The station welcomes both civilian personnel and non-officer roles, allowing characters to join without
+requiring Starfleet training.
 
-⦿ History:
-Established in 5068 S.Y. (Late 24th Century Trek Era), Outpost 79 was built to research and monitor the Warren Gateway. The station made first contact with the Setrean people in the Crux Constellation on the other side of the gateway.
+⦿ Roleplay Structure:
+• Open RP at all times with larger story arcs.
+• Training program for new or returning role-players.
+• Civilian and non-officer roles with probationary periods.
+• Officer applicants undergo a longer probation before promotion consideration.
 
-⦿ Primary Functions:
-• Gateway research and monitoring
-• First contact and diplomatic operations
-• Federation coordination with cross-dimensional entities
-• Contract brokering with the Independent Services Review Board (ISRB)
+⦿ Rules & Guidelines (Summary):
+• No griefing or spamming.
+• No sexual harassment; strict consent and privacy rules.
+• No age-play or child avatars; players must be 18+.
+• Dress code for staff and trainees; titlers showing rank and position.
+• Keep OOC comments minimal during RP and use (( )) for OOC.
+• No god-modding or OOC harassment.
+• Only authorized personnel may carry weapons on the station.
+• Everyone is encouraged to share ideas for events and plots.
 
-⦿ Role in Campaign:
-The XSV Stardust is frequently hired to transport Federation personnel and cargo through the gateway, delivering goods and VIPs between Setrean space and Federation territory. Outpost 79 represents potential clients and mission origins.
+⦿ Departments & Colors:
+• Red: Command, Tactical, CONN.
+• Gold: Engineering, Operations, Security.
+• Teal/Blue: Science, Medical, Counseling.
+• Gray: Training program.
+• White: Civilian and non-officer roles.
 
 ⦿ Notes:
-• One of many hubs visited during RP; not the exclusive station.
-• Represents Federation interests in cross-dimensional trade and diplomacy.
-• S.Y. refers to the Stellar Year of the Universal Coordinate Plane.
+Outpost 79 is a flexible hub where characters from other groups can participate without changing uniforms.
+Ranking and promotion are based on commitment, maturity, and responsibility within the station.
         `
     }
 ];
