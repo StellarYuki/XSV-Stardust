@@ -4,8 +4,6 @@
 
 import { loadCategories } from "./ui.js";
 import { closePanel } from "./panel.js";
-import { starSystems } from "../data/db_star_systems.js";
-import orbitsData from "../data/db_orbits.js";
 
 const header = document.getElementById("main-header");
 const mainContent = document.getElementById("main-content");
@@ -104,7 +102,11 @@ closePanelBtn.addEventListener("click", () => {
 });
 
 // Hierarchical Map System
-function initializeHierarchicalMap() {
+async function initializeHierarchicalMap() {
+    // Load data
+    const { starSystems } = await import("../data/db_star_systems.js");
+    const orbitsData = (await import("../data/db_orbits.js")).default;
+
     const canvas = document.getElementById("starMapCanvas");
     if (!canvas) return;
 
