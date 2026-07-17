@@ -1,5 +1,5 @@
 // ==========================================
-// UI: Databanks Category + Entry Loader
+// Databanks Category + Entry Loader
 // ==========================================
 
 import { db_species } from "../data/db_species.js";
@@ -12,7 +12,6 @@ import { db_lore_extended } from "../data/db_lore_extended.js";
 
 import { openPanel } from "./panel.js";
 
-// All databanks combined
 export const databanks = {
     "Species": db_species,
     "Factions": db_factions,
@@ -23,11 +22,9 @@ export const databanks = {
     "Extended Lore": db_lore_extended
 };
 
-// DOM elements
 const categoryList = document.getElementById("db-categories");
 const entryList = document.getElementById("db-entries");
 
-// Load categories into UI
 export function loadCategories() {
     categoryList.innerHTML = "";
 
@@ -42,7 +39,6 @@ export function loadCategories() {
     });
 }
 
-// Load entries for selected category
 export function loadEntries(category) {
     entryList.innerHTML = "";
 
