@@ -1,30 +1,32 @@
-// ==========================================
-// LCARS Navigation + Databanks Wiring
-// ==========================================
+// ===============================
+// LCARS Navigation + Databanks
+// ===============================
 
-import { loadCategories, loadEntries } from "./ui.js";
+import { loadCategories, loadEntriesForCategory } from "./ui.js";
 import { closePanel } from "./panel.js";
-import { initializeStarMap } from "./starmap.js";
 
 const header = document.getElementById("main-header");
 const mainContent = document.getElementById("main-content");
-const databanksContainer = document.getElementById("databanks");
+const databanks = document.getElementById("databanks");
 const panel = document.getElementById("db-panel");
 const closePanelBtn = document.getElementById("close-panel");
 
 const tabs = document.querySelectorAll(".lcars-tab");
 
 window.addEventListener("DOMContentLoaded", () => {
-    databanksContainer.classList.add("hidden");
+    databanks.classList.add("hidden");
+    panel.classList.add("hidden");
 });
+
+// Sidebar navigation
 
 tabs.forEach(btn => {
     btn.addEventListener("click", () => {
         const label = btn.textContent.trim();
 
+        // Hide panel and databanks by default
         panel.classList.add("hidden");
-        databanksContainer.classList.add("hidden");
-        databanksContainer.classList.remove("show");
+        databanks.classList.add("hidden");
 
         switch (label) {
             case "HOME STATION":
@@ -44,7 +46,8 @@ tabs.forEach(btn => {
                 mainContent.innerHTML = `
                     <h2>CREW RULES & GUIDE</h2>
                     <p>
-                        This section will contain your rules, guidelines, and operational procedures for the XSV Stardust.
+                        This section will contain your rules, guidelines, and operational procedures for the XSV Stardust
+                        and associated stations or outposts.
                     </p>
                 `;
                 break;
@@ -54,7 +57,7 @@ tabs.forEach(btn => {
                 mainContent.innerHTML = `
                     <h2>CREW REGISTRY</h2>
                     <p>
-                        This section will list your crew members, roles, and profiles.
+                        This section will list your crew members, roles, and profiles. (Stellar: Blue, Aika & Roman: Red.)
                     </p>
                 `;
                 break;
@@ -62,20 +65,18 @@ tabs.forEach(btn => {
             case "ASTROMETRICS":
                 header.textContent = "ASTROMETRICS";
                 mainContent.innerHTML = `
-                    <h2>ASTROMETRICS - STELLAR CARTOGRAPHY</h2>
-                    <div id="starmap-container" style="width: 100%; height: 500px; margin-top: 20px; border: 2px solid #ff9900; background: #111; border-radius: 10px;"></div>
+                    <h2>ASTROMETRICS</h2>
+                    <p>
+                        This section will show star systems, routes, and navigation data for Brunhilde, Var Lupra,
+                        and other regions in the Crux Constellation.
+                    </p>
                 `;
-                setTimeout(() => initializeStarMap(), 100);
                 break;
 
             case "STORAGE BANKS":
                 header.textContent = "STORAGE BANKS";
-                mainContent.innerHTML = `
-                    <h2>LORE STORAGE BANKS</h2>
-                    <p>Select a category and entry from the databanks.</p>
-                `;
-                databanksContainer.classList.remove("hidden");
-                databanksContainer.classList.add("show");
+                mainContent.innerHTML = "";
+                databanks.classList.remove("hidden");
                 loadCategories();
                 break;
 
@@ -83,16 +84,18 @@ tabs.forEach(btn => {
                 header.textContent = "DOCKED VESSELS";
                 mainContent.innerHTML = `
                     <h2>DOCKED VESSELS</h2>
-                    <p>Select a vessel entry from the databanks.</p>
+                    <p>
+                        This section will list vessels currently docked or associated with Astral Supply Co. and the XSV Stardust.
+                    </p>
                 `;
-                databanksContainer.classList.remove("hidden");
-                databanksContainer.classList.add("show");
-                loadEntries("Vessels");
+                // Later: loadEntriesForCategory("Vessels");
                 break;
         }
     });
 });
 
-closePanelBtn.onclick = () => {
+// Close panel button
+
+closePanelBtn.addEventListener("click", () => {
     closePanel();
-};
+});
