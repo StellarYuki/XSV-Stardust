@@ -16,11 +16,11 @@ export function openPanel(entry) {
 
     panelContent.innerHTML = imgHTML + formatContent(entry.content);
 
-    panel.classList.remove("hidden");
+    panel.classList.add("open");
 }
 
 export function closePanel() {
-    panel.classList.add("hidden");
+    panel.classList.remove("open");
 }
 
 function formatContent(text) {
