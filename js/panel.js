@@ -1,6 +1,6 @@
-// ==========================================
-// Databank Reader Panel
-// ==========================================
+// ===============================
+// Centered Detail Panel
+// ===============================
 
 const panel = document.getElementById("db-panel");
 const panelTitle = document.getElementById("db-panel-title");
@@ -17,11 +17,9 @@ export function openPanel(entry) {
     panelContent.innerHTML = imgHTML + formatContent(entry.content);
 
     panel.classList.remove("hidden");
-    panel.classList.add("open");
 }
 
 export function closePanel() {
-    panel.classList.remove("open");
     panel.classList.add("hidden");
 }
 
