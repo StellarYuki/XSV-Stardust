@@ -17,7 +17,9 @@ export const db_lore_extended = [
             <ul>
                 <li><strong>Class:</strong> Long-Range Utility Shuttle</li>
                 <li><strong>Type:</strong> Modified Type-17 Argo (Retrofitted)</li>
-                <li><strong>Length:</strong> 26 meters</li>
+                <li><strong>Registry:</strong> XSV-74877-C</li>
+                <li><strong>Lineage:</strong> STARDUST from the USS VALKYRIE</li>
+                <li><strong>Length:</strong> 32 meters</li>
                 <li><strong>Width:</strong> 14 meters</li>
                 <li><strong>Height:</strong> 6.5 meters</li>
                 <li><strong>Tonnage:</strong> 420 tons fully loaded</li>
@@ -52,6 +54,8 @@ export const db_lore_extended = [
                 <li>Known for reliability and sensor-baffling hull composition.</li>
                 <li>Crew often customizes interior modules for mission needs.</li>
                 <li>Water reclamation system is easily overtaxed, requiring strict rationing.</li>
+                <li><strong>Refit Mk II:</strong> Upgraded to 32 meters with a reinforced spine insert and expanded mission-support systems.</li>
+                <li><strong>Operational Impact:</strong> Better endurance and logistics at the cost of slightly slower impulse cornering.</li>
             </ul>
         `
     },
