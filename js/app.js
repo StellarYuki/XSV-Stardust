@@ -14,6 +14,7 @@ const closePanelBtn = document.getElementById("close-panel");
 const tabs = document.querySelectorAll(".lcars-tab");
 let mapAbortController = null;
 const CAPTAINS_LOG_FOLDER = "assets/logs/";
+const GITHUB_REPO_LOGS_API = "https://api.github.com/repos/StellarYuki/XSV-Stardust/contents/assets/logs";
 let captainLogRenderToken = 0;
 
 const fallbackCaptainLogEntries = [
@@ -145,19 +146,37 @@ function parseCaptainLogText(text, fileName) {
 }
 
 async function listCaptainLogFiles() {
-    const response = await fetch(CAPTAINS_LOG_FOLDER, { cache: "no-store" });
-    if (!response.ok) throw new Error(`Unable to read ${CAPTAINS_LOG_FOLDER}`);
-    const html = await response.text();
-    const doc = new DOMParser().parseFromString(html, "text/html");
+    try {
+        const response = await fetch(CAPTAINS_LOG_FOLDER, { cache: "no-store" });
+        if (!response.ok) throw new Error(`Unable to read ${CAPTAINS_LOG_FOLDER}`);
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const files = [...doc.querySelectorAll("a")]
+            .map((link) => decodeLogHref(link.getAttribute("href") || ""))
+            .filter((href) => href
+                && !href.startsWith("?")
+                && !href.startsWith(".")
+                && !href.endsWith("/")
+                && !/^index\.(html?|json)$/i.test(href)
+                && !/\.(png|jpe?g|gif|webp|svg|ico|css|js)$/i.test(href));
 
-    return [...doc.querySelectorAll("a")]
-        .map((link) => decodeLogHref(link.getAttribute("href") || ""))
-        .filter((href) => href
-            && !href.startsWith("?")
-            && !href.startsWith(".")
-            && !href.endsWith("/")
-            && !/^index\.(html?|json)$/i.test(href)
-            && !/\.(png|jpe?g|gif|webp|svg|ico|css|js)$/i.test(href));
+        if (files.length) return files;
+    } catch {
+        // Fall back to GitHub's contents API when the hosted site does not expose directory listings.
+    }
+
+    const apiResponse = await fetch(GITHUB_REPO_LOGS_API, {
+        cache: "no-store",
+        headers: { Accept: "application/vnd.github+json" }
+    });
+    if (!apiResponse.ok) throw new Error(`Unable to read ${GITHUB_REPO_LOGS_API}`);
+    const payload = await apiResponse.json();
+    if (!Array.isArray(payload)) return [];
+
+    return payload
+        .filter((entry) => entry?.type === "file" && typeof entry.name === "string")
+        .map((entry) => entry.name)
+        .filter((name) => !name.startsWith(".") && !/\.(png|jpe?g|gif|webp|svg|ico|css|js)$/i.test(name));
 }
 
 async function loadCaptainLogEntries() {
