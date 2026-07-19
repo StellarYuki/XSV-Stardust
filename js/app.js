@@ -304,9 +304,9 @@ function renderHomeStationContent() {
             </p>
 
             <h3>Join Us</h3>
-            <p>
-                If you're okay with a uniform that's a little too short, a bladder that's a little too full, and a crew that's not uptight 
-                about pure Trek canon or rigid rules - you'll fit right in aboard the XSV Stardust. We're here for good stories, sharp banter, 
+            <p> 
+                If you enjoy short skirts or playful urgency in RP, a crew that's not uptight 
+                about pure Trek canon, harsh rigid rules - you'll fit right in aboard the XSV Stardust. We're here for good stories, sharp banter, 
                 and the thrill of deep-space chaos.
             </p>
             <p>
